@@ -133,7 +133,7 @@
 <script src="/js/main.js"></script>
 <!-- search -->
 
-  <script src="/js/search_new.js"></script>
+  <script src="/js/search.js"></script>
   <script type="text/javascript">
   $(function() {
 
@@ -155,8 +155,7 @@
       }
     });
 
-    <!--
-      var observer = new MutationObserver(function(mutationsList, observer) {
+    var observer = new MutationObserver(function(mutationsList, observer) {
       if (mutationsList[0].addedNodes) {
         $(".search-no-result").show(200);
       } else {
@@ -164,18 +163,7 @@
       }
     });
 
-    observer.observe($resultArea, { childList: true }); 
-     -->
-   
-    $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
-    if (!$(e.target).text()) {
-        $(".no-result").show(200); 
-    } else {
-      $(".no-result").hide();
-    }
-    })
-
-
+    observer.observe($resultArea, { childList: true });
 
   });
   </script>
