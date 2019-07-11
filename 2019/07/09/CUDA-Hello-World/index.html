@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="简介&amp;nbsp;&amp;nbsp;第一次尝试编写CUDA C程序，主要是和以后的希望从事的方向有关，想从事大规模机器学习和深度学习系统的开发，CUDA是不可避免的需要掌握的并行计算的框架. 正好实验室有gpu服务器，趁着暑假来学习一波CUDA编程.&amp;nbsp;&amp;nbsp;CUDA是NVIDIA推出的运算平台，是一种并行计算的架构，使用GPU来进行通用计算. 编译CUDA程序的流程&amp;nbsp;&amp;nbsp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T14:13:25.120Z">
+<meta property="og:updated_time" content="2019-07-11T03:49:09.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA Hello World">
 <meta name="twitter:description" content="简介&amp;nbsp;&amp;nbsp;第一次尝试编写CUDA C程序，主要是和以后的希望从事的方向有关，想从事大规模机器学习和深度学习系统的开发，CUDA是不可避免的需要掌握的并行计算的框架. 正好实验室有gpu服务器，趁着暑假来学习一波CUDA编程.&amp;nbsp;&amp;nbsp;CUDA是NVIDIA推出的运算平台，是一种并行计算的架构，使用GPU来进行通用计算. 编译CUDA程序的流程&amp;nbsp;&amp;nbsp;">
@@ -172,7 +172,15 @@
 </ul>
 <p>vec_add在gpu上运行，而out,a,b这三个向量，传入的是cpu上的地址空间，因此结果和我们预期的不一样. 这里还有个疑问，那为啥程序不报错呢，传入的是cpu上的存储地址.核函数内部居然不报错？</p>
 <p>这个程序相比于前面的hello world程序有很多新的函数需要解释：</p>
-<h3 id="cudaMalloc和cudaFree"><a href="#cudaMalloc和cudaFree" class="headerlink" title="cudaMalloc和cudaFree"></a>cudaMalloc和cudaFree</h3><h3 id="cudaMemcpy"><a href="#cudaMemcpy" class="headerlink" title="cudaMemcpy"></a>cudaMemcpy</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cuda-tutorial.readthedocs.io/en/latest/tutorials/tutorial01/" target="_blank" rel="noopener">Tutorial 01:Say Hello to CUDA</a><br><a href="https://stackoverflow.com/questions/19193468/why-do-we-need-cudadevicesynchronize-in-kernels-with-device-printf" target="_blank" rel="noopener">why do we need cudaDeviceSynchronize</a><br><a href="https://stackoverflow.com/questions/25332476/cudadevicesynchronize-and-performing-sequential-work?noredirect=1" target="_blank" rel="noopener">cudaDeviceSynchronize and performing sequential work</a></p>
+<h3 id="cudaMalloc和cudaFree"><a href="#cudaMalloc和cudaFree" class="headerlink" title="cudaMalloc和cudaFree"></a>cudaMalloc和cudaFree</h3><p>&nbsp;&nbsp;这两个函数类似于c语言中的malloc和free函数，只不过这两个函数是在device memory上分配空间, 他们的函数原型如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cudaMalloc(<span class="keyword">void</span> **devPtr, <span class="keyword">size_t</span> count);</span><br><span class="line">cudaFree(<span class="keyword">void</span> *devPtr);</span><br></pre></td></tr></table></figure>
+
+<p>cudaMalloc函数在device memory上分配size为count的空间，然后让devPtr指向分配的空间. 而 cudaFree将devPtr指向的空间给free了.</p>
+<h3 id="cudaMemcpy"><a href="#cudaMemcpy" class="headerlink" title="cudaMemcpy"></a>cudaMemcpy</h3><p>&nbsp;&nbsp;cudaMemcpy函数用来在host和device之间传递数据，和c中的memcpy函数很像. 语法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cudaMemcpy(<span class="keyword">void</span> *dst, <span class="keyword">void</span> *src, <span class="keyword">size_t</span> count, cudaMemcpyKind kind)</span><br></pre></td></tr></table></figure>
+
+<p>这个函数将size为count的存储从src复制到dst,kind指示复制的方向，最常用的值是cudaMemcpyHostToDevice 以及 cudaMemcpyDeviceToHost，分别表示从host复制到device以及从device复制到host.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cuda-tutorial.readthedocs.io/en/latest/tutorials/tutorial01/" target="_blank" rel="noopener">Tutorial 01:Say Hello to CUDA</a><br><a href="https://stackoverflow.com/questions/19193468/why-do-we-need-cudadevicesynchronize-in-kernels-with-device-printf" target="_blank" rel="noopener">why do we need cudaDeviceSynchronize</a><br><a href="https://stackoverflow.com/questions/25332476/cudadevicesynchronize-and-performing-sequential-work?noredirect=1" target="_blank" rel="noopener">cudaDeviceSynchronize and performing sequential work</a></p>
 
   </div>
 </article>
