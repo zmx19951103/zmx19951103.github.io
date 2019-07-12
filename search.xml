@@ -8,7 +8,7 @@
       <link href="/2019/07/12/CUDA-in-Actions/"/>
       <url>/2019/07/12/CUDA-in-Actions/</url>
       
-        <content type="html"><![CDATA[<p>##简介<br>&nbsp;&nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性.</p><h2 id="lt-lt-lt-…-gt-gt-gt-语法"><a href="#lt-lt-lt-…-gt-gt-gt-语法" class="headerlink" title="&lt;&lt;&lt;…&gt;&gt;&gt;语法"></a>&lt;&lt;&lt;…&gt;&gt;&gt;语法</h2>]]></content>
+        <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性.</p><h2 id="lt-lt-lt-…-gt-gt-gt-语法"><a href="#lt-lt-lt-…-gt-gt-gt-语法" class="headerlink" title="&lt;&lt;&lt;…&gt;&gt;&gt;语法"></a>&lt;&lt;&lt;…&gt;&gt;&gt;语法</h2>]]></content>
       
       
       
