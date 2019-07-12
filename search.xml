@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>CUDA in Actions</title>
+      <link href="/2019/07/12/CUDA-in-Actions/"/>
+      <url>/2019/07/12/CUDA-in-Actions/</url>
+      
+        <content type="html"><![CDATA[<p>##简介<br>&nbsp;&nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性.</p><h2 id="lt-lt-lt-…-gt-gt-gt-语法"><a href="#lt-lt-lt-…-gt-gt-gt-语法" class="headerlink" title="&lt;&lt;&lt;…&gt;&gt;&gt;语法"></a>&lt;&lt;&lt;…&gt;&gt;&gt;语法</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LSTM,RNN,Bi-LSTM,On-LSTM</title>
+      <link href="/2019/07/12/LSTM-RNN-Bi-LSTM-On-LSTM/"/>
+      <url>/2019/07/12/LSTM-RNN-Bi-LSTM-On-LSTM/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GPU架构</title>
       <link href="/2019/07/10/GPU%E6%9E%B6%E6%9E%84/"/>
       <url>/2019/07/10/GPU%E6%9E%B6%E6%9E%84/</url>
