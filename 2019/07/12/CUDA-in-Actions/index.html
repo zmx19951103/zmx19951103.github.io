@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/thread_block.png">
 <meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/02_parallel_block.png">
 <meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/multiblock.png">
-<meta property="og:updated_time" content="2019-07-22T17:19:08.078Z">
+<meta property="og:updated_time" content="2019-07-22T17:48:18.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA in Actions">
 <meta name="twitter:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
@@ -200,11 +200,6 @@
 <td>Multiple blocks</td>
 <td>0.13274</td>
 <td>7360.25x</td>
-</tr>
-<tr>
-<td>-</td>
-<td>-</td>
-<td>-</td>
 </tr>
 </tbody></table>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇博客分别通过用一个thread block,每个thread block 256个线程和多个thread block，每个thread block 256个线程计算向量相加来展示如何使用gpu来并行计算.其中强调了三个概念 grid , threadblock以及 thread….接下来我们学习一个gpu的架构.</p>
