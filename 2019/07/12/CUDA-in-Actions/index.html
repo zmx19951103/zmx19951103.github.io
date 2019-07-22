@@ -14,9 +14,9 @@
 <meta property="og:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/01_parallel_thread.png">
-<meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/">
+<meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/thread_block.png">
 <meta property="og:image" content="http://yoursite.com/images/CUDA_in_Actions/02_parallel_block.png">
-<meta property="og:updated_time" content="2019-07-22T10:25:10.748Z">
+<meta property="og:updated_time" content="2019-07-22T10:29:51.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA in Actions">
 <meta name="twitter:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
@@ -158,7 +158,7 @@
 
 <p>上面的代码的想法可以用如下的图来说明:<br><img src="/images/CUDA_in_Actions/01_parallel_thread.png" alt title="向量相加"></p>
 <p>不同线程写不同位置，不存在冲突，这里突然想起来，如果按照一个线程的写法但是开多个线程运行，是不是应该会冲突？？之后可以学习一下gpu线程的同步问题.</p>
-<p>我们用nvprof来验证用1个线程和256个线程完成向量相加的执行情况，主要看执行时间：<br><img src="/images/CUDA_in_Actions/" alt title="对比图"></p>
+<p>我们用nvprof来验证用1个线程和256个线程完成向量相加的执行情况，主要看执行时间：<br><img src="/images/CUDA_in_Actions/thread_block.png" alt title="对比图"></p>
 <p>可以看到执行时间明显缩短了.现在的程序只开了一个thread block,我们尝试开启多个thread block.</p>
 <h2 id="多个thread-block并行计算向量相加"><a href="#多个thread-block并行计算向量相加" class="headerlink" title="多个thread block并行计算向量相加"></a>多个thread block并行计算向量相加</h2><p>&nbsp;&nbsp;cuda提供了内置的变量来获取thread block的信息，包括block的编号(blockIdx.x)，一个grid有多少个blocks(gridDim.x).<br>&nbsp;&nbsp;使用多个grid来并行化向量相加的示意图如下所示:<br><img src="/images/CUDA_in_Actions/02_parallel_block.png" alt title="multiblock"></p>
 <p>&nbsp;&nbsp;想法就是每个block有256个thread,每个thread负责一个计算一个元素相加，然后总共有 N/256个thread block,因为N不一定是256的倍数，所以在核函数中还要判断index是否小于N..<br>这样每个元素都是同时计算的,进一步加大并行化.期望的执行时间也应该减少.</p>
