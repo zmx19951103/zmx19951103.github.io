@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUDA in Actions">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/index.html">
+<meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/.com//01_parallel_thread.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/images/...">
+<meta property="og:image" content="http://yoursite.com/.com//...">
+<meta property="og:updated_time" content="2019-07-22T08:57:55.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CUDA in Actions">
+<meta name="twitter:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
+<meta name="twitter:image" content="http://yoursite.com/.com//01_parallel_thread.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>CUDA in Actions</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="https://github.com/zmx19951103">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/07/12/c-11之Deducing-Types/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/07/12/LSTM-RNN-Bi-LSTM-On-LSTM/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&text=CUDA in Actions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&is_video=false&description=CUDA in Actions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CUDA in Actions&body=Check out this article: http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&name=CUDA in Actions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-lt-lt-…-gt-gt-gt-语法"><span class="toc-number">2.</span> <span class="toc-text">&lt;&lt;&lt;…&gt;&gt;&gt;语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#threadIdx-x-blockDim-x-以及-blockIdx-x"><span class="toc-number">2.1.</span> <span class="toc-text">threadIdx.x, blockDim.x 以及 blockIdx.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行计算-vector-addition"><span class="toc-number">3.</span> <span class="toc-text">并行计算 vector addition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多个thread-block并行计算向量相加"><span class="toc-number">4.</span> <span class="toc-text">多个thread block并行计算向量相加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能比较"><span class="toc-number">5.</span> <span class="toc-text">性能比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        CUDA in Actions
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZMX's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-12T02:41:00.000Z" itemprop="datePublished">2019-07-12</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性.</p>
+<h2 id="lt-lt-lt-…-gt-gt-gt-语法"><a href="#lt-lt-lt-…-gt-gt-gt-语法" class="headerlink" title="&lt;&lt;&lt;…&gt;&gt;&gt;语法"></a>&lt;&lt;&lt;…&gt;&gt;&gt;语法</h2><p>&nbsp;&nbsp;&lt;&lt;&lt;…&gt;&gt;&gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(thread block)，kernel可以启动很多线程块，并且把它们组织成grid数据结构(grid).<br>&nbsp;&nbsp;核函数启动设置的语法是</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt; M , T &gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;表示kernel函数执行启动了一个grid,这个grid有M个线程块(thread block),每个线程块有T个线程.</p>
+<h3 id="threadIdx-x-blockDim-x-以及-blockIdx-x"><a href="#threadIdx-x-blockDim-x-以及-blockIdx-x" class="headerlink" title="threadIdx.x, blockDim.x 以及 blockIdx.x"></a>threadIdx.x, blockDim.x 以及 blockIdx.x</h3><p>&nbsp;&nbsp;cuda提供了内置变量来获取线程信息，这里我们使用两个. threadIdx.x 表示线程块中的线程编号(以0开始), blockIdx.x表示线程块中的线程数.因为可以获取线程信息，所以函数内部可以根据当前的线程来决定执行怎样的操作.比如向量相加，不同的线程计算不同区间的向量相加，先获取当前线程号，根据线程号确定向量相加的范围，执行计算.blockDim.x表示一个thread block的线程数量.</p>
+<h2 id="并行计算-vector-addition"><a href="#并行计算-vector-addition" class="headerlink" title="并行计算 vector addition"></a>并行计算 vector addition</h2><p>假设一个线程块有256个线程</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = threadIdx.x;</span><br><span class="line">    <span class="keyword">int</span> stride = blockDim.x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; n; i += stride)&#123;</span><br><span class="line">        out[i] = a[i] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码的想法可以用如下的图来说明:<br><img src="/.com//01_parallel_thread.png" alt title="向量相加"></p>
+<p>不同线程写不同位置，不存在冲突，这里突然想起来，如果按照一个线程的写法但是开多个线程运行，是不是应该会冲突？？之后可以学习一下gpu线程的同步问题.</p>
+<p>我们用nvprof来验证用1个线程和256个线程完成向量相加的执行情况，主要看执行时间：<br><img src="./images/..." alt title="对比图"></p>
+<p>可以看到执行时间明显缩短了.现在的程序只开了一个thread block,我们尝试开启多个thread block.</p>
+<h2 id="多个thread-block并行计算向量相加"><a href="#多个thread-block并行计算向量相加" class="headerlink" title="多个thread block并行计算向量相加"></a>多个thread block并行计算向量相加</h2><p>&nbsp;&nbsp;cuda提供了内置的变量来获取thread block的信息，包括block的编号(blockIdx.x)，一个grid有多少个blocks(gridDim.x).<br>&nbsp;&nbsp;使用多个grid来并行化向量相加的示意图如下所示:<br><img src="/.com//..." alt></p>
+<p>&nbsp;&nbsp;想法就是每个block有256个thread,每个thread负责一个计算一个元素相加，然后总共有 N/256个thread block,因为N不一定是256的倍数，所以在核函数中还要判断index是否小于N..<br>这样每个元素都是同时计算的,进一步加大并行化.期望的执行时间也应该减少.</p>
+<p>对应的程序如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//int index=threadIdx.x;</span></span><br><span class="line">   <span class="comment">//int stride=blockDim.x;</span></span><br><span class="line">   <span class="comment">//printf("%d\n",stride);</span></span><br><span class="line">   <span class="keyword">int</span> i = blockIdx.x*blockDim.x+threadIdx.x;</span><br><span class="line">   <span class="comment">//for(int i = index; i &lt; n; i+=stride)&#123;</span></span><br><span class="line">   <span class="keyword">if</span>(i&lt;N)out[i] = a[i] + b[i];</span><br><span class="line">   <span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h2><p>N=700000</p>
+<table>
+<thead>
+<tr>
+<th>version</th>
+<th>Execution Time(ms)</th>
+<th>Speedup</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 thread</td>
+<td>977.26</td>
+<td>1.00x</td>
+</tr>
+<tr>
+<td>1 block</td>
+<td>5.5417</td>
+<td>176.35x</td>
+</tr>
+<tr>
+<td>Multiple blocks</td>
+<td>1.0120</td>
+<td>965.97x</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇博客分别通过用一个thread block,每个thread block 256个线程和多个thread block，每个thread block 256个线程计算向量相加来展示如何使用gpu来并行计算.其中强调了三个概念 grid , threadblock以及 thread….接下来我们学习一个gpu的架构.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cuda-tutorial.readthedocs.io/en/latest/tutorials/tutorial02/" target="_blank" rel="noopener">Tutorial 02 CUDA in Actions</a></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="https://github.com/zmx19951103">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-lt-lt-…-gt-gt-gt-语法"><span class="toc-number">2.</span> <span class="toc-text">&lt;&lt;&lt;…&gt;&gt;&gt;语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#threadIdx-x-blockDim-x-以及-blockIdx-x"><span class="toc-number">2.1.</span> <span class="toc-text">threadIdx.x, blockDim.x 以及 blockIdx.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行计算-vector-addition"><span class="toc-number">3.</span> <span class="toc-text">并行计算 vector addition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多个thread-block并行计算向量相加"><span class="toc-number">4.</span> <span class="toc-text">多个thread block并行计算向量相加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能比较"><span class="toc-number">5.</span> <span class="toc-text">性能比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&text=CUDA in Actions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&is_video=false&description=CUDA in Actions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CUDA in Actions&body=Check out this article: http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&name=CUDA in Actions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Zmx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="https://github.com/zmx19951103">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zmxdream';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
