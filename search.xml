@@ -72,7 +72,10 @@
   <entry>
     <title><![CDATA[GPU架构]]></title>
     <url>%2F2019%2F07%2F10%2FGPU%E6%9E%B6%E6%9E%84%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[参考Programming Massively Parallel Processors]]></content>
+      <tags>
+        <tag>CUDA Programming</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
