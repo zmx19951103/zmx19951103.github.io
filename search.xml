@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[REVISITING DISTRIBUTED SYNCHRONOUS SGD]]></title>
+    <url>%2F2019%2F07%2F23%2FREVISITING-DISTRIBUTED-SYNCHRONOUS-SGD%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[caffe源码(1)]]></title>
     <url>%2F2019%2F07%2F22%2Fcaffe%E6%BA%90%E7%A0%81-1%2F</url>
     <content type="text"></content>
