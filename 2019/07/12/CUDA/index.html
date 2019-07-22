@@ -9,18 +9,18 @@
     <meta name="description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CUDA in Actions">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/CUDA/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/images/01_parallel_thread.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/images/...">
-<meta property="og:image" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/iamges/...">
-<meta property="og:updated_time" content="2019-07-12T08:56:19.138Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/12/CUDA/images/01_parallel_thread.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/12/CUDA/images/...">
+<meta property="og:image" content="http://yoursite.com/.com//...">
+<meta property="og:updated_time" content="2019-07-22T08:34:17.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA in Actions">
 <meta name="twitter:description" content="简介&amp;nbsp;&amp;nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;语法&amp;nbsp;&amp;nbsp;&amp;lt;&amp;lt;&amp;lt;…&amp;gt;&amp;gt;&amp;gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(th">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/12/CUDA-in-Actions/images/01_parallel_thread.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/12/CUDA/images/01_parallel_thread.png">
     
     
         
@@ -94,16 +94,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&text=CUDA in Actions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&is_video=false&description=CUDA in Actions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=CUDA in Actions&body=Check out this article: http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&name=CUDA in Actions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/CUDA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/CUDA/&text=CUDA in Actions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/CUDA/&is_video=false&description=CUDA in Actions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CUDA in Actions&body=Check out this article: http://yoursite.com/2019/07/12/CUDA/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/CUDA/&name=CUDA in Actions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -160,7 +160,7 @@
 <p>不同线程写不同位置，不存在冲突，这里突然想起来，如果按照一个线程的写法但是开多个线程运行，是不是应该会冲突？？之后可以学习一下gpu线程的同步问题.</p>
 <p>我们用nvprof来验证用1个线程和256个线程完成向量相加的执行情况，主要看执行时间：<br><img src="./images/..." alt title="对比图"></p>
 <p>可以看到执行时间明显缩短了.现在的程序只开了一个thread block,我们尝试开启多个thread block.</p>
-<h2 id="多个thread-block并行计算向量相加"><a href="#多个thread-block并行计算向量相加" class="headerlink" title="多个thread block并行计算向量相加"></a>多个thread block并行计算向量相加</h2><p>&nbsp;&nbsp;cuda提供了内置的变量来获取thread block的信息，包括block的编号(blockIdx.x)，一个grid有多少个blocks(gridDim.x).<br>&nbsp;&nbsp;使用多个grid来并行化向量相加的示意图如下所示:<br><img src="./iamges/..." alt></p>
+<h2 id="多个thread-block并行计算向量相加"><a href="#多个thread-block并行计算向量相加" class="headerlink" title="多个thread block并行计算向量相加"></a>多个thread block并行计算向量相加</h2><p>&nbsp;&nbsp;cuda提供了内置的变量来获取thread block的信息，包括block的编号(blockIdx.x)，一个grid有多少个blocks(gridDim.x).<br>&nbsp;&nbsp;使用多个grid来并行化向量相加的示意图如下所示:<br><img src="/.com//..." alt></p>
 <p>&nbsp;&nbsp;想法就是每个block有256个thread,每个thread负责一个计算一个元素相加，然后总共有 N/256个thread block,因为N不一定是256的倍数，所以在核函数中还要判断index是否小于N..<br>这样每个元素都是同时计算的,进一步加大并行化.期望的执行时间也应该减少.</p>
 <p>对应的程序如下：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//int index=threadIdx.x;</span></span><br><span class="line">   <span class="comment">//int stride=blockDim.x;</span></span><br><span class="line">   <span class="comment">//printf("%d\n",stride);</span></span><br><span class="line">   <span class="keyword">int</span> i = blockIdx.x*blockDim.x+threadIdx.x;</span><br><span class="line">   <span class="comment">//for(int i = index; i &lt; n; i+=stride)&#123;</span></span><br><span class="line">   <span class="keyword">if</span>(i&lt;N)out[i] = a[i] + b[i];</span><br><span class="line">   <span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
@@ -230,16 +230,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&text=CUDA in Actions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&is_video=false&description=CUDA in Actions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=CUDA in Actions&body=Check out this article: http://yoursite.com/2019/07/12/CUDA-in-Actions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&title=CUDA in Actions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/CUDA-in-Actions/&name=CUDA in Actions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/CUDA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/CUDA/&text=CUDA in Actions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/CUDA/&is_video=false&description=CUDA in Actions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CUDA in Actions&body=Check out this article: http://yoursite.com/2019/07/12/CUDA/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/CUDA/&title=CUDA in Actions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/CUDA/&name=CUDA in Actions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
