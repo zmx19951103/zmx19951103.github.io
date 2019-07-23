@@ -112,7 +112,7 @@
   <entry>
     <title><![CDATA[GPU架构]]></title>
     <url>%2F2019%2F07%2F10%2FGPU%E6%9E%B6%E6%9E%84%2F</url>
-    <content type="text"><![CDATA[参考Programming Massively Parallel Processors]]></content>
+    <content type="text"><![CDATA[thread block organization&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行 参考Programming Massively Parallel Processors]]></content>
       <tags>
         <tag>CUDA Programming</tag>
       </tags>
