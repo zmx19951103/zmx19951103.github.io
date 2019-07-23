@@ -112,7 +112,7 @@
   <entry>
     <title><![CDATA[GPU架构]]></title>
     <url>%2F2019%2F07%2F10%2FGPU%E6%9E%B6%E6%9E%84%2F</url>
-    <content type="text"><![CDATA[thread block organization&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.&nbsp;&nbsp;从上图中可以看到每个block都有一个Shared Memory,是所有block中的thread所共享的,每个thread有自己的Local Memory和Registers. 一个Grid中的所有blocks共享Global Memory, Constant Memory以及Texture Memory. 所有blocks中的thread都共享这三种Memory,下面我们来看看这三种Memory: Global MemoryConstant MemoryTexture Memory参考Programming Massively Parallel Processors]]></content>
+    <content type="text"><![CDATA[thread block organization&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.&nbsp;&nbsp;从上图中可以看到每个block都有一个Shared Memory,是所有block中的thread所共享的,每个thread有自己的Local Memory和Registers. 一个Grid中的所有blocks共享Global Memory, Constant Memory以及Texture Memory. 所有blocks中的thread都共享这三种Memory,下面我们来看看这三种Memory: Global MemoryConstant MemoryTexture MemoryDim3 数据结构参考Programming Massively Parallel Processors]]></content>
       <tags>
         <tag>CUDA Programming</tag>
       </tags>
