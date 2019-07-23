@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[cudnn实践]]></title>
+    <url>%2F2019%2F07%2F23%2Fcudnn%E5%AE%9E%E8%B7%B5%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[矩阵乘法优化cublas]]></title>
+    <url>%2F2019%2F07%2F23%2F%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E4%BC%98%E5%8C%96cublas%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[intel向量化指令]]></title>
+    <url>%2F2019%2F07%2F23%2Fintel%E5%90%91%E9%87%8F%E5%8C%96%E6%8C%87%E4%BB%A4%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[model parallelism/data parallelism]]></title>
+    <url>%2F2019%2F07%2F23%2Fmodel-parallelism-data-parallelism%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[BSP/SSP/A-SGD]]></title>
+    <url>%2F2019%2F07%2F23%2FBSP-SSP-A-SGD%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[BatchNormalization]]></title>
     <url>%2F2019%2F07%2F23%2FBatchNormalization%2F</url>
     <content type="text"></content>
