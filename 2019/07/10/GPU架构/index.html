@@ -14,17 +14,18 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="Streaming Multiprocessors The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but ma">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/gpu_arch/SMs.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/thread_block_org.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/thread_cooperate.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/uint3.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/dim3.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/result.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/cudaDeviceRest.png">
-<meta property="og:updated_time" content="2019-07-25T10:03:51.727Z">
+<meta property="og:updated_time" content="2019-07-25T10:33:00.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GPU架构">
 <meta name="twitter:description" content="Streaming Multiprocessors The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but ma">
-<meta name="twitter:image" content="http://yoursite.com/images/gpu_arch/thread_block_org.png">
+<meta name="twitter:image" content="http://yoursite.com/images/gpu_arch/SMs.png">
     
     
         
@@ -159,7 +160,10 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="Streaming-Multiprocessors"><a href="#Streaming-Multiprocessors" class="headerlink" title="Streaming Multiprocessors"></a>Streaming Multiprocessors</h2><blockquote>
-<p>The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but many do.Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel.<br>All threads running on the cores of an SM at a given cycle are executing the same instruction – hence Single Instruction, Multiple Threads. However, each thread has its own registers, so these instructions process different data.</p>
+<p>The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but many do.Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel.</p>
+</blockquote>
+<blockquote>
+<p>All threads running on the cores of an SM at a given cycle are executing the same instruction – hence Single Instruction, Multiple Threads. However, each thread has its own registers, so these instructions process different data.<br><img src="/images/gpu_arch/SMs.png" alt title="SMs"><br>&nbsp;&nbsp;可以看到一个thread block跑在一个SM上面.</p>
 </blockquote>
 <h2 id="thread-block-organization"><a href="#thread-block-organization" class="headerlink" title="thread block organization"></a>thread block organization</h2><p><img src="/images/gpu_arch/thread_block_org.png" alt title="thread block organization"><br>&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.</p>
 <p><img src="/images/gpu_arch/thread_cooperate.png" alt title="thread cooperate"><br>&nbsp;&nbsp;同一个block内的所有thread可以合作(因为有个Shared Memory??)，不同block的thread不可以合作.</p>
@@ -172,7 +176,7 @@
 <h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/images/gpu_arch/result.png" alt title="result.png"></p>
 <h3 id="cudaDeviceReset"><a href="#cudaDeviceReset" class="headerlink" title="cudaDeviceReset"></a>cudaDeviceReset</h3><p><img src="/images/gpu_arch/cudaDeviceRest.png" alt title="cudaDeviceRest"><br>可以看到这个函数是用来<strong>销毁一个CUDA的上下文的</strong>. It will reset the device immediately.虽然它表现上具有同步的功能，但是靠这个函数来同步是不安全的，所以建议如果是想同步的话，使用cudaDeviceSynchronize或者cudaMemcpy.</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://pan.baidu.com/s/1AveSDmaRpR6ZyVisNTHm1A" target="_blank" rel="noopener">Programming Massively Parallel Processors</a><br><a href="https://stackoverflow.com/questions/36012289/what-is-the-role-of-cudadevicereset-in-cuda" target="_blank" rel="noopener">What is the role of cudaDeviceReset() in Cuda
-</a></p>
+</a><br><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#scalable-programming-model" target="_blank" rel="noopener">CUDA C Programming Guide</a></p>
 
   </div>
 </article>
