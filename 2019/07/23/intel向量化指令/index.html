@@ -6,14 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
-<meta property="og:title" content="intel向量化指令">
+    <meta name="description" content="SIMD 向量化">
+<meta name="keywords" content="parallel programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SIMD">
 <meta property="og:url" content="http://yoursite.com/2019/07/23/intel向量化指令/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="SIMD 向量化">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-23T03:36:16.653Z">
+<meta property="og:image" content="http://yoursite.com/images/simd/simd_1.png">
+<meta property="og:image" content="http://yoursite.com/images/simd/simd_2.png">
+<meta property="og:updated_time" content="2019-07-25T02:56:41.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="intel向量化指令">
+<meta name="twitter:title" content="SIMD">
+<meta name="twitter:description" content="SIMD 向量化">
+<meta name="twitter:image" content="http://yoursite.com/images/simd/simd_1.png">
     
     
         
@@ -33,7 +40,7 @@
         
     
     <!-- title -->
-    <title>intel向量化指令</title>
+    <title>SIMD</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -90,20 +97,20 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/23/intel向量化指令/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/23/intel向量化指令/&text=intel向量化指令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/23/intel向量化指令/&is_video=false&description=intel向量化指令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=intel向量化指令&body=Check out this article: http://yoursite.com/2019/07/23/intel向量化指令/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/23/intel向量化指令/&name=intel向量化指令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/23/intel向量化指令/&text=SIMD"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/23/intel向量化指令/&is_video=false&description=SIMD"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SIMD&body=Check out this article: http://yoursite.com/2019/07/23/intel向量化指令/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/23/intel向量化指令/&name=SIMD&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SIMD"><span class="toc-number">1.</span> <span class="toc-text">SIMD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向量化"><span class="toc-number">2.</span> <span class="toc-text">向量化</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -115,7 +122,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        intel向量化指令
+        SIMD
     </h1>
 
 
@@ -136,13 +143,20 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/parallel-programming/">parallel programming</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="SIMD"><a href="#SIMD" class="headerlink" title="SIMD"></a>SIMD</h2><p><img src="/images/simd/simd_1.png" alt title="simd"></p>
+<h2 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h2><p><img src="/images/simd/simd_2.png" alt title="向量化"></p>
+
   </div>
 </article>
 
@@ -177,21 +191,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SIMD"><span class="toc-number">1.</span> <span class="toc-text">SIMD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向量化"><span class="toc-number">2.</span> <span class="toc-text">向量化</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/23/intel向量化指令/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/23/intel向量化指令/&text=intel向量化指令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/23/intel向量化指令/&is_video=false&description=intel向量化指令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=intel向量化指令&body=Check out this article: http://yoursite.com/2019/07/23/intel向量化指令/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=intel向量化指令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/23/intel向量化指令/&name=intel向量化指令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/23/intel向量化指令/&text=SIMD"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/23/intel向量化指令/&is_video=false&description=SIMD"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SIMD&body=Check out this article: http://yoursite.com/2019/07/23/intel向量化指令/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/23/intel向量化指令/&title=SIMD"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/23/intel向量化指令/&name=SIMD&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
