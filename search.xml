@@ -1,146 +1,368 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[knowledge distillation]]></title>
-    <url>%2F2019%2F07%2F24%2Fknowledge-distillation%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[cudnn实践]]></title>
-    <url>%2F2019%2F07%2F23%2Fcudnn%E5%AE%9E%E8%B7%B5%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[矩阵乘法优化cublas]]></title>
-    <url>%2F2019%2F07%2F23%2F%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E4%BC%98%E5%8C%96cublas%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[SIMD]]></title>
-    <url>%2F2019%2F07%2F23%2Fintel%E5%90%91%E9%87%8F%E5%8C%96%E6%8C%87%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[SIMD 向量化]]></content>
-      <tags>
-        <tag>parallel programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[model parallelism/data parallelism]]></title>
-    <url>%2F2019%2F07%2F23%2Fmodel-parallelism-data-parallelism%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[BSP/SSP/A-SGD]]></title>
-    <url>%2F2019%2F07%2F23%2FBSP-SSP-A-SGD%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[BatchNormalization]]></title>
-    <url>%2F2019%2F07%2F23%2FBatchNormalization%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Dropout]]></title>
-    <url>%2F2019%2F07%2F23%2FDropout%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[mixed precision]]></title>
-    <url>%2F2019%2F07%2F23%2Fmixed-precision%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[REVISITING DISTRIBUTED SYNCHRONOUS SGD]]></title>
-    <url>%2F2019%2F07%2F23%2FREVISITING-DISTRIBUTED-SYNCHRONOUS-SGD%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[caffe源码(1)]]></title>
-    <url>%2F2019%2F07%2F22%2Fcaffe%E6%BA%90%E7%A0%81-1%2F</url>
-    <content type="text"></content>
-      <tags>
-        <tag>caffe</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[词向量]]></title>
-    <url>%2F2019%2F07%2F20%2F%E8%AF%8D%E5%90%91%E9%87%8F%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[模型压缩]]></title>
-    <url>%2F2019%2F07%2F20%2F%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[bert]]></title>
-    <url>%2F2019%2F07%2F20%2Fbert%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[attention is all you need]]></title>
-    <url>%2F2019%2F07%2F20%2Fattention-is-all-you-need%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[各种激活函数总结]]></title>
-    <url>%2F2019%2F07%2F20%2F%E5%90%84%E7%A7%8D%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[sequence2sequence实现机器翻译]]></title>
-    <url>%2F2019%2F07%2F12%2Fsequence2sequence%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[bilstm+CRF实现命名实体识别]]></title>
-    <url>%2F2019%2F07%2F12%2Fbilstm-CRF%E5%AE%9E%E7%8E%B0%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[c++11之Deducing Types]]></title>
-    <url>%2F2019%2F07%2F12%2Fc-11%E4%B9%8BDeducing-Types%2F</url>
-    <content type="text"></content>
-      <tags>
-        <tag>c++11</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CUDA in Actions]]></title>
-    <url>%2F2019%2F07%2F12%2FCUDA-in-Actions%2F</url>
-    <content type="text"><![CDATA[简介&nbsp;&nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性. &lt;&lt;&lt;…&gt;&gt;&gt;语法&nbsp;&nbsp;&lt;&lt;&lt;…&gt;&gt;&gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(thread block)，kernel可以启动很多线程块，并且把它们组织成grid数据结构(grid).&nbsp;&nbsp;核函数启动设置的语法是 &lt;&lt;&lt; M , T &gt;&gt;&gt; &nbsp;&nbsp;表示kernel函数执行启动了一个grid,这个grid有M个线程块(thread block),每个线程块有T个线程. threadIdx.x, blockDim.x 以及 blockIdx.x&nbsp;&nbsp;cuda提供了内置变量来获取线程信息，这里我们使用两个. threadIdx.x 表示线程块中的线程编号(以0开始), blockIdx.x表示线程块中的线程数.因为可以获取线程信息，所以函数内部可以根据当前的线程来决定执行怎样的操作.比如向量相加，不同的线程计算不同区间的向量相加，先获取当前线程号，根据线程号确定向量相加的范围，执行计算.blockDim.x表示一个thread block的线程数量. 并行计算 vector addition假设一个线程块有256个线程 __global__ void vector_add(float *out, float *a, float *b, int n) &#123; int index = threadIdx.x; int stride = blockDim.x; for(int i = index; i &lt; n; i += stride)&#123; out[i] = a[i] + b[i]; &#125;&#125; 上面的代码的想法可以用如下的图来说明: 不同线程写不同位置，不存在冲突，这里突然想起来，如果按照一个线程的写法但是开多个线程运行，是不是应该会冲突？？之后可以学习一下gpu线程的同步问题. 我们用nvprof来验证用1个线程和256个线程完成向量相加的执行情况，主要看执行时间： 可以看到执行时间明显缩短了.现在的程序只开了一个thread block,我们尝试开启多个thread block. 多个thread block并行计算向量相加&nbsp;&nbsp;cuda提供了内置的变量来获取thread block的信息，包括block的编号(blockIdx.x)，一个grid有多少个blocks(gridDim.x).&nbsp;&nbsp;使用多个grid来并行化向量相加的示意图如下所示: &nbsp;&nbsp;想法就是每个block有256个thread,每个thread负责一个计算一个元素相加，然后总共有 N/256个thread block,因为N不一定是256的倍数，所以在核函数中还要判断index是否小于N..这样每个元素都是同时计算的,进一步加大并行化.期望的执行时间也应该减少. 对应的程序如下： __global__ void vector_add(float *out, float *a, float *b, int n) &#123; int i = blockIdx.x*blockDim.x+threadIdx.x; if(i&lt;n)out[i] = a[i] + b[i]; 程序运行性能如下: 性能比较N=700000 version Execution Time(ms) Speedup 1 thread 977.26 1.00x 1 block 5.5417 176.35x Multiple blocks 0.13274 7360.25x 总结这篇博客分别通过用一个thread block,每个thread block 256个线程和多个thread block，每个thread block 256个线程计算向量相加来展示如何使用gpu来并行计算.其中强调了三个概念 grid , threadblock以及 thread….接下来我们学习一个gpu的架构. 参考Tutorial 02 CUDA in Actions]]></content>
-      <tags>
-        <tag>CUDA Programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LSTM,RNN,Bi-LSTM,On-LSTM]]></title>
-    <url>%2F2019%2F07%2F12%2FLSTM-RNN-Bi-LSTM-On-LSTM%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[GPU架构]]></title>
-    <url>%2F2019%2F07%2F10%2FGPU%E6%9E%B6%E6%9E%84%2F</url>
-    <content type="text"><![CDATA[Streaming MultiprocessorsGPU是由流多处理器构成的，每个SM内部有多个core, 每个core跑一个thread. The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but many do.Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel. All threads running on the cores of an SM at a given cycle are executing the same instruction – hence Single Instruction, Multiple Threads. However, each thread has its own registers, so these instructions process different data. &nbsp;&nbsp;可以看到一个thread block跑在一个SM上面. &nbsp;&nbsp;一个SM只有一个指令单元，SM内的所有thread共享这个指令单元. thread block organization&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行. &nbsp;&nbsp;同一个block内的所有thread可以合作(因为有个Shared Memory??)，不同block的thread不可以合作. &nbsp;&nbsp;从上图中可以看到每个block都有一个Shared Memory,是所有block中的thread所共享的,每个thread有自己的Local Memory和Registers. 一个Grid中的所有blocks共享Global Memory, Constant Memory以及Texture Memory. 所有blocks中的thread都共享这三种Memory,下面我们来看看这三种Memory: Global MemoryConstant MemoryTexture Memoryuint3和Dim3 数据结构uint3 dim3 block and grid dimensions#include &lt;cuda_runtime.h&gt;#include &lt;stdio.h&gt;__global__ void checkIndex(void) &#123;printf("threadIdx:(%d, %d, %d) blockIdx:(%d, %d, %d) blockDim:(%d, %d, %d) ""gridDim:(%d, %d, %d)\n", threadIdx.x, threadIdx.y, threadIdx.z, blockIdx.x, blockIdx.y, blockIdx.z, blockDim.x, blockDim.y, blockDim.z, gridDim.x,gridDim.y,gridDim.z);&#125;int main(int argc, char **argv) &#123; // define total data elementint nElem = 6;// define grid and block structuredim3 block (3);dim3 grid ((nElem+block.x-1)/block.x);// check grid and block dimension from host sideprintf("grid.x %d grid.y %d grid.z %d\n",grid.x, grid.y, grid.z);printf("block.x %d block.y %d block.z %d\n",block.x, block.y, block.z);// check grid and block dimension from device side checkIndex&lt;&lt;&lt;grid, block&gt;&gt;&gt;();// reset device before you leavecudaDeviceReset();return(0);&#125; &nbsp;&nbsp;可以看到上面的程序定义了两个dim3类型的变量block和grid. 因为nElem的值是6,所以grid的x分量是2,因为这两个变量都只是指定了x分量，所以其余的分量都初始化为1.目前来看&lt;&lt;…&gt;&gt;&gt;传入的两个参数都是dim3类型的，之前的程序中直接传入int类型的,它应该会转换成dim3类型的.&nbsp;&nbsp;一个很直观的想法是可以把一个grid想像成一个三维的直角坐标系，然后一个block就是坐标系中的一个点,如果指定gridDim的x,y,z分别为2,3,4那么就有24个block,每个block可以用一个三维坐标来表示,同理可以可以把一个block想象成一个直角坐标系，thread也是其中的点. 运行结果 cudaDeviceReset可以看到这个函数是用来销毁一个CUDA的上下文的. It will reset the device immediately.虽然它表现上具有同步的功能，但是靠这个函数来同步是不安全的，所以建议如果是想同步的话，使用cudaDeviceSynchronize或者cudaMemcpy. 参考Programming Massively Parallel ProcessorsWhat is the role of cudaDeviceReset() in Cuda CUDA C Programming Guide]]></content>
-      <tags>
-        <tag>CUDA Programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F07%2F09%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new "My New Post" More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[CUDA Hello World]]></title>
-    <url>%2F2019%2F07%2F09%2FCUDA-Hello-World%2F</url>
-    <content type="text"><![CDATA[简介&nbsp;&nbsp;第一次尝试编写CUDA C程序，主要是和以后的希望从事的方向有关，想从事大规模机器学习和深度学习系统的开发，CUDA是不可避免的需要掌握的并行计算的框架. 正好实验室有gpu服务器，趁着暑假来学习一波CUDA编程.&nbsp;&nbsp;CUDA是NVIDIA推出的运算平台，是一种并行计算的架构，使用GPU来进行通用计算. 编译CUDA程序的流程&nbsp;&nbsp;编译一个CUDA程序和C程序一样，CUDA程序的编译器是nvcc, CUDA程序文件的后缀是.cu. 开设我们有一个CUDA程序文件，命名为hello.cu, 那么我们用nvcc将它编译为可执行文件的命令如下: nvcc hello.cu -o hello CUDA Hello World&nbsp;&nbsp;学习任何程序设计语言的入门都是打印Hello World.CUDA程序也不例外， 下面我们以打印Hello World为例来解释CUDA程序的要素. #include&lt;stdio.h&gt;__global__ void hello()&#123; printf("hello world from GPU\n");&#125;int main()&#123; printf("hello world from CPU\n"); hello&lt;&lt;&lt;1, 10&gt;&gt;&gt;(); cudaDeviceSynchronize(); return 0;&#125; 我们用与之功能相近的普通C程序作为对比 #include &lt;stdio.h&gt;void hello()&#123; printf("Hello World!\n");&#125;int main() &#123; hello(); return 0;&#125; 可以看到cuda程序相对于普通的c程序，有几点不同: __global__ 限定符&nbsp;&nbsp;在cuda程序中，cpu和gpu都用来做计算。我们把cpu叫做host，gpu叫做device. cpu和gpu拥有各自的存储空间。通常我们在cpu上顺序执行代码，在gpu上进行并行计算(Typically, we run serial workload on CPU and offload parallel computation to GPUs).&nbsp;&nbsp;__global__限定符表示hello函数是在gpu上执行的，是device代码,而且被该修饰符修饰的函数可以被host上的代码调用(这一点很重要，之后我们会看到，有的限定符表示只能被device代码或者只能被host代码调用)，我们的例子里hello函数就是被host上的main函数调用的,这样的函数也叫”kernels”. A kernel function must have a void return type(核函数的返回类型必须是void) &lt;&lt;&lt;…&gt;&gt;&gt; 语法&nbsp;&nbsp;当我们调用kernel的时候，它的执行的配置是通过&lt;&lt;&lt;…&gt;&gt;&gt;语法提供的，所谓的配置包括执行这个kernel用几个线程块，每个线程块开几个线程（这个涉及到gpu的结构）.比如上面的例子中，hello&lt;&lt;&lt;1, 10&gt;&gt;&gt;();. 在cuda中，这个叫做”kernel launch”(核启动). 具体参数之后的博客来说明. cudaDeviceSynchronize&nbsp;&nbsp; a kernel launch is asynchronous.因为kernel launch是异步执行的，当执行到device code的时候，在gpu上开启进程的时候，程序控制权就会回到cpu，不管gpu上的程序是否执行完毕。在我们的cuda程序中，如果没有cudaDeviceSynchronize函数，我们的程序就结束退出了，这样的话gpu端打印的hello world就不能打印到标准输出了. 而有了cudaDeviceSynchronize，cpu端的程序就会等device上的程序执行完后才退出，所以cudaDeviceSynchronize函数会阻塞直到device上的代码执行完毕. Vector Addition&nbsp;&nbsp;下面我们来看使用gpu进行向量相加运算的代码. 首先是使用cpu进行运算的代码： #define N 10000000void vector_add(float *out, float *a, float *b, int n) &#123; for(int i = 0; i &lt; n; i++)&#123; out[i] = a[i] + b[i]; &#125;&#125;int main()&#123; float *a, *b, *out; // Allocate memory a = (float*)malloc(sizeof(float) * N); b = (float*)malloc(sizeof(float) * N); out = (float*)malloc(sizeof(float) * N); // Initialize array for(int i = 0; i &lt; N; i++)&#123; a[i] = 1.0f; b[i] = 2.0f; &#125; // Main function vector_add(out, a, b, N);&#125; 下面我们把向量相加的部分放到gpu上进行并行运算: #define N 100000__global__ void vector_add(float *out, float *a, float *b, int n) &#123; for(int i = 0; i &lt; n; i++)&#123; out[i] = a[i] + b[i]; &#125;&#125;int main()&#123; float *a, *b, *out; // Allocate memory a = (float*)malloc(sizeof(float) * N); b = (float*)malloc(sizeof(float) * N); out = (float*)malloc(sizeof(float) * N); // Initialize array for(int i = 0; i &lt; N; i++)&#123; a[i] = 1.0f; b[i] = 2.0f; &#125; float *d_a; float *d_b; float *d_out; cudaMalloc((void**)&amp;d_a, sizeof(float) * N); cudaMalloc((void**)&amp;d_b, sizeof(float) * N); cudaMalloc((void**)&amp;d_out, sizeof(float) * N); cudaMemcpy(d_a, a, sizeof(float) * N, cudaMemcpyHostToDevice); cudaMemcpy(d_b, b, sizeof(float) * N, cudaMemcpyHostToDevice); cudaMemcpy(d_out, out, sizeof(float) * N, cudaMemcpyHostToDevice); // Main function vector_add&lt;&lt;&lt;1,10&gt;&gt;&gt;(d_out, d_a, d_b, N); //cudaMemcpy(a, d_a, sizeof(float) * N, cudaMemcpyDeviceToHost); //cudaMemcpy(b, d_b, sizeof(float) * N, cudaMemcpyDeviceToHost); cudaMemcpy(out, d_out, sizeof(float) * N, cudaMemcpyDeviceToHost); for(int i=0;i&lt; N;i++)&#123; printf("%f\n",out[i]); &#125; printf("end!!!!"); cudaFree(d_a); cudaFree(d_b); cudaFree(d_out); free(a); free(b); free(out);&#125; &nbsp;&nbsp;可能一开始，我们会向hello world程序一样，给vector_add函数添加__global__修饰符.然后在main函数中调用vector_add函数的地方添加&lt;&lt;&lt;…&gt;&gt;&gt;. 这样以后我们编译运行程序但是发现程序的执行结果和我们预想的不一样. 是什么原因导致的呢？&nbsp;&nbsp;原因是cpu和gpu是各自拥有自己的存储空间,cpu无法直接获取gpu存储上的内容，gpu也无法直接获取到cpu存储上的内容. 在 cuda的术语里, cpu的存储叫做host memory, gpu的存储叫做device memory. 指向cpu内存的指针叫做host pointer, 指向gpu内存的指针叫做device pointer. 如果要让gpu能够获取到数据，那么数据必须在device memory上，cuda提供了分配device memory和在host和device之间进行数据迁移的api,cuda 程序的一个常见的流程如下: 分配host memory并初始化host上的数据 分配device memory(cudaMalloc) 将kernel函数要用的数据从host迁移到device上(cudaMemcpy) 执行kernel函数 将kernel函数的输出从device迁移到host上(cudaMemcpy) vec_add在gpu上运行，而out,a,b这三个向量，传入的是cpu上的地址空间，因此结果和我们预期的不一样. 这里还有个疑问，那为啥程序不报错呢，传入的是cpu上的存储地址.核函数内部居然不报错？ 这个程序相比于前面的hello world程序有很多新的函数需要解释： cudaMalloc和cudaFree&nbsp;&nbsp;这两个函数类似于c语言中的malloc和free函数，只不过这两个函数是在device memory上分配空间, 他们的函数原型如下： cudaMalloc(void **devPtr, size_t count);cudaFree(void *devPtr); cudaMalloc函数在device memory上分配size为count的空间，然后让devPtr指向分配的空间. 而 cudaFree将devPtr指向的空间给free了. cudaMemcpy&nbsp;&nbsp;cudaMemcpy函数用来在host和device之间传递数据，和c中的memcpy函数很像. 语法如下： cudaMemcpy(void *dst, void *src, size_t count, cudaMemcpyKind kind) 这个函数将size为count的存储从src复制到dst,kind指示复制的方向，最常用的值是cudaMemcpyHostToDevice 以及 cudaMemcpyDeviceToHost，分别表示从host复制到device以及从device复制到host. 参考Tutorial 01:Say Hello to CUDAwhy do we need cudaDeviceSynchronizecudaDeviceSynchronize and performing sequential work]]></content>
-      <tags>
-        <tag>CUDA Programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[逻辑回归交叉熵损失函数梯度推导]]></title>
-    <url>%2F2019%2F07%2F06%2F%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC%2F</url>
-    <content type="text"></content>
-  </entry>
+<search> 
+  
+  
+    
+    <entry>
+      <title>knowledge distillation</title>
+      <link href="/2019/07/24/knowledge-distillation/"/>
+      <url>/2019/07/24/knowledge-distillation/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cudnn实践</title>
+      <link href="/2019/07/23/cudnn%E5%AE%9E%E8%B7%B5/"/>
+      <url>/2019/07/23/cudnn%E5%AE%9E%E8%B7%B5/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>矩阵乘法优化cublas</title>
+      <link href="/2019/07/23/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E4%BC%98%E5%8C%96cublas/"/>
+      <url>/2019/07/23/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E4%BC%98%E5%8C%96cublas/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SIMD</title>
+      <link href="/2019/07/23/intel%E5%90%91%E9%87%8F%E5%8C%96%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/07/23/intel%E5%90%91%E9%87%8F%E5%8C%96%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h2 id="SIMD"><a href="#SIMD" class="headerlink" title="SIMD"></a>SIMD</h2><p><img src="/images/simd/simd_1.png" alt title="simd"></p><h2 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h2><p><img src="/images/simd/simd_2.png" alt title="向量化"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> parallel programming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>model parallelism/data parallelism</title>
+      <link href="/2019/07/23/model-parallelism-data-parallelism/"/>
+      <url>/2019/07/23/model-parallelism-data-parallelism/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BSP/SSP/A-SGD</title>
+      <link href="/2019/07/23/BSP-SSP-A-SGD/"/>
+      <url>/2019/07/23/BSP-SSP-A-SGD/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>BatchNormalization</title>
+      <link href="/2019/07/23/BatchNormalization/"/>
+      <url>/2019/07/23/BatchNormalization/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Dropout</title>
+      <link href="/2019/07/23/Dropout/"/>
+      <url>/2019/07/23/Dropout/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mixed precision</title>
+      <link href="/2019/07/23/mixed-precision/"/>
+      <url>/2019/07/23/mixed-precision/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>REVISITING DISTRIBUTED SYNCHRONOUS SGD</title>
+      <link href="/2019/07/23/REVISITING-DISTRIBUTED-SYNCHRONOUS-SGD/"/>
+      <url>/2019/07/23/REVISITING-DISTRIBUTED-SYNCHRONOUS-SGD/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>caffe源码(1)</title>
+      <link href="/2019/07/22/caffe%E6%BA%90%E7%A0%81-1/"/>
+      <url>/2019/07/22/caffe%E6%BA%90%E7%A0%81-1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> caffe </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>词向量</title>
+      <link href="/2019/07/20/%E8%AF%8D%E5%90%91%E9%87%8F/"/>
+      <url>/2019/07/20/%E8%AF%8D%E5%90%91%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>模型压缩</title>
+      <link href="/2019/07/20/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9/"/>
+      <url>/2019/07/20/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>bert</title>
+      <link href="/2019/07/20/bert/"/>
+      <url>/2019/07/20/bert/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>attention is all you need</title>
+      <link href="/2019/07/20/attention-is-all-you-need/"/>
+      <url>/2019/07/20/attention-is-all-you-need/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>各种激活函数总结</title>
+      <link href="/2019/07/20/%E5%90%84%E7%A7%8D%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/"/>
+      <url>/2019/07/20/%E5%90%84%E7%A7%8D%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sequence2sequence实现机器翻译</title>
+      <link href="/2019/07/12/sequence2sequence%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/"/>
+      <url>/2019/07/12/sequence2sequence%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>bilstm+CRF实现命名实体识别</title>
+      <link href="/2019/07/12/bilstm-CRF%E5%AE%9E%E7%8E%B0%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/"/>
+      <url>/2019/07/12/bilstm-CRF%E5%AE%9E%E7%8E%B0%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>c++11之Deducing Types</title>
+      <link href="/2019/07/12/c-11%E4%B9%8BDeducing-Types/"/>
+      <url>/2019/07/12/c-11%E4%B9%8BDeducing-Types/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> c++11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CUDA in Actions</title>
+      <link href="/2019/07/12/CUDA-in-Actions/"/>
+      <url>/2019/07/12/CUDA-in-Actions/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;之前我们用cuda实现了打印hello world以及向量相加. 这篇博客，我们来探究如何利用gpu的并行性. gpu的power就在于它的并行性.</p><h2 id="lt-lt-lt-…-gt-gt-gt-语法"><a href="#lt-lt-lt-…-gt-gt-gt-语法" class="headerlink" title="&lt;&lt;&lt;…&gt;&gt;&gt;语法"></a>&lt;&lt;&lt;…&gt;&gt;&gt;语法</h2><p>&nbsp;&nbsp;&lt;&lt;&lt;…&gt;&gt;&gt;是kernel函数执行的设置，比如用几个线程来执行核函数. cuda 将线程组织成线程块(thread block)，kernel可以启动很多线程块，并且把它们组织成grid数据结构(grid).<br>&nbsp;&nbsp;核函数启动设置的语法是</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt; M , T &gt;&gt;&gt;</span><br></pre></td></tr></table></figure><p>&nbsp;&nbsp;表示kernel函数执行启动了一个grid,这个grid有M个线程块(thread block),每个线程块有T个线程.</p><h3 id="threadIdx-x-blockDim-x-以及-blockIdx-x"><a href="#threadIdx-x-blockDim-x-以及-blockIdx-x" class="headerlink" title="threadIdx.x, blockDim.x 以及 blockIdx.x"></a>threadIdx.x, blockDim.x 以及 blockIdx.x</h3><p>&nbsp;&nbsp;cuda提供了内置变量来获取线程信息，这里我们使用两个. threadIdx.x 表示线程块中的线程编号(以0开始), blockIdx.x表示线程块中的线程数.因为可以获取线程信息，所以函数内部可以根据当前的线程来决定执行怎样的操作.比如向量相加，不同的线程计算不同区间的向量相加，先获取当前线程号，根据线程号确定向量相加的范围，执行计算.blockDim.x表示一个thread block的线程数量.</p><h2 id="并行计算-vector-addition"><a href="#并行计算-vector-addition" class="headerlink" title="并行计算 vector addition"></a>并行计算 vector addition</h2><p>假设一个线程块有256个线程</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = threadIdx.x;</span><br><span class="line">    <span class="keyword">int</span> stride = blockDim.x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; n; i += stride)&#123;</span><br><span class="line">        out[i] = a[i] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上面的代码的想法可以用如下的图来说明:<br><img src="/images/CUDA_in_Actions/01_parallel_thread.png" alt title="向量相加"></p><p>不同线程写不同位置，不存在冲突，这里突然想起来，如果按照一个线程的写法但是开多个线程运行，是不是应该会冲突？？之后可以学习一下gpu线程的同步问题.</p><p>我们用nvprof来验证用1个线程和256个线程完成向量相加的执行情况，主要看执行时间：<br><img src="/images/CUDA_in_Actions/thread_block.png" alt title="对比图"></p><p>可以看到执行时间明显缩短了.现在的程序只开了一个thread block,我们尝试开启多个thread block.</p><h2 id="多个thread-block并行计算向量相加"><a href="#多个thread-block并行计算向量相加" class="headerlink" title="多个thread block并行计算向量相加"></a>多个thread block并行计算向量相加</h2><p>&nbsp;&nbsp;cuda提供了内置的变量来获取thread block的信息，包括block的编号(blockIdx.x)，一个grid有多少个blocks(gridDim.x).<br>&nbsp;&nbsp;使用多个grid来并行化向量相加的示意图如下所示:<br><img src="/images/CUDA_in_Actions/02_parallel_block.png" alt title="multithread"></p><p>&nbsp;&nbsp;想法就是每个block有256个thread,每个thread负责一个计算一个元素相加，然后总共有 N/256个thread block,因为N不一定是256的倍数，所以在核函数中还要判断index是否小于N..<br>这样每个元素都是同时计算的,进一步加大并行化.期望的执行时间也应该减少.</p><p>对应的程序如下：</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i = blockIdx.x*blockDim.x+threadIdx.x;</span><br><span class="line">   <span class="keyword">if</span>(i&lt;n)out[i] = a[i] + b[i];</span><br></pre></td></tr></table></figure><p>程序运行性能如下:<br><img src="/images/CUDA_in_Actions/multiblock.png" alt title="multiblock"></p><h2 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h2><p>N=700000</p><table><thead><tr><th>version</th><th>Execution Time(ms)</th><th>Speedup</th></tr></thead><tbody><tr><td>1 thread</td><td>977.26</td><td>1.00x</td></tr><tr><td>1 block</td><td>5.5417</td><td>176.35x</td></tr><tr><td>Multiple blocks</td><td>0.13274</td><td>7360.25x</td></tr></tbody></table><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇博客分别通过用一个thread block,每个thread block 256个线程和多个thread block，每个thread block 256个线程计算向量相加来展示如何使用gpu来并行计算.其中强调了三个概念 grid , threadblock以及 thread….接下来我们学习一个gpu的架构.</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cuda-tutorial.readthedocs.io/en/latest/tutorials/tutorial02/" target="_blank" rel="noopener">Tutorial 02 CUDA in Actions</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CUDA Programming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LSTM,RNN,Bi-LSTM,On-LSTM</title>
+      <link href="/2019/07/12/LSTM-RNN-Bi-LSTM-On-LSTM/"/>
+      <url>/2019/07/12/LSTM-RNN-Bi-LSTM-On-LSTM/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GPU架构</title>
+      <link href="/2019/07/10/GPU%E6%9E%B6%E6%9E%84/"/>
+      <url>/2019/07/10/GPU%E6%9E%B6%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Streaming-Multiprocessors"><a href="#Streaming-Multiprocessors" class="headerlink" title="Streaming Multiprocessors"></a>Streaming Multiprocessors</h2><p>GPU是由流多处理器构成的，每个SM内部有多个core, 每个core跑一个thread.</p><blockquote><p>The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but many do.Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel.</p></blockquote><blockquote><p>All threads running on the cores of an SM at a given cycle are executing the same instruction – hence Single Instruction, Multiple Threads. However, each thread has its own registers, so these instructions process different data.</p></blockquote><p><img src="/images/gpu_arch/SMs.png" alt title="SMs"><br>&nbsp;&nbsp;可以看到一个thread block跑在一个SM上面.</p><p><img src="/images/gpu_arch/inside_1.png" alt title="inside a gpu"><br>&nbsp;&nbsp;一个SM只有一个指令单元，SM内的所有thread共享这个指令单元.</p><h3 id="Warps"><a href="#Warps" class="headerlink" title="Warps"></a>Warps</h3><h2 id="thread-block-organization"><a href="#thread-block-organization" class="headerlink" title="thread block organization"></a>thread block organization</h2><p><img src="/images/gpu_arch/thread_block_org.png" alt title="thread block organization"><br>&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.</p><p><img src="/images/gpu_arch/thread_cooperate.png" alt title="thread cooperate"><br>&nbsp;&nbsp;同一个block内的所有thread可以合作(因为有个Shared Memory??)，不同block的thread不可以合作.</p><p>&nbsp;&nbsp;从上图中可以看到每个block都有一个Shared Memory,是所有block中的thread所共享的,每个thread有自己的Local Memory和Registers. 一个Grid中的所有blocks共享Global Memory, Constant Memory以及Texture Memory. 所有blocks中的thread都共享这三种Memory,下面我们来看看这三种Memory:</p><h3 id="Global-Memory"><a href="#Global-Memory" class="headerlink" title="Global Memory"></a>Global Memory</h3><h3 id="Constant-Memory"><a href="#Constant-Memory" class="headerlink" title="Constant Memory"></a>Constant Memory</h3><h3 id="Texture-Memory"><a href="#Texture-Memory" class="headerlink" title="Texture Memory"></a>Texture Memory</h3><h2 id="uint3和Dim3-数据结构"><a href="#uint3和Dim3-数据结构" class="headerlink" title="uint3和Dim3 数据结构"></a>uint3和Dim3 数据结构</h2><h3 id="uint3"><a href="#uint3" class="headerlink" title="uint3"></a>uint3</h3><p><img src="/images/gpu_arch/uint3.png" alt title="uint3"></p><h3 id="dim3"><a href="#dim3" class="headerlink" title="dim3"></a>dim3</h3><p><img src="/images/gpu_arch/dim3.png" alt title="dim3"></p><h3 id="block-and-grid-dimensions"><a href="#block-and-grid-dimensions" class="headerlink" title="block and grid dimensions"></a>block and grid dimensions</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cuda_runtime.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">checkIndex</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"threadIdx:(%d, %d, %d) blockIdx:(%d, %d, %d) blockDim:(%d, %d, %d) "</span></span><br><span class="line"><span class="string">"gridDim:(%d, %d, %d)\n"</span>, threadIdx.x, threadIdx.y, threadIdx.z, blockIdx.x, blockIdx.y, blockIdx.z, blockDim.x, blockDim.y, blockDim.z, gridDim.x,gridDim.y,gridDim.z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123; <span class="comment">// define total data element</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> nElem = <span class="number">6</span>;</span><br><span class="line"><span class="comment">// define grid and block structure</span></span><br><span class="line"></span><br><span class="line"><span class="function">dim3 <span class="title">block</span> <span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line"><span class="function">dim3 <span class="title">grid</span> <span class="params">((nElem+block.x<span class="number">-1</span>)/block.x)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// check grid and block dimension from host side</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"grid.x %d grid.y %d grid.z %d\n"</span>,grid.x, grid.y, grid.z);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"block.x %d block.y %d block.z %d\n"</span>,block.x, block.y, block.z);</span><br><span class="line"></span><br><span class="line"><span class="comment">// check grid and block dimension from device side </span></span><br><span class="line">checkIndex&lt;&lt;&lt;grid, block&gt;&gt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// reset device before you leave</span></span><br><span class="line">cudaDeviceReset();</span><br><span class="line"><span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&nbsp;&nbsp;可以看到上面的程序定义了两个dim3类型的变量block和grid. 因为nElem的值是6,所以grid的x分量是2,因为这两个变量都只是指定了x分量，所以其余的分量都初始化为1.目前来看&lt;&lt;…&gt;&gt;&gt;传入的两个参数都是dim3类型的，之前的程序中直接传入int类型的,它应该会转换成dim3类型的.<br>&nbsp;&nbsp;<strong>一个很直观的想法是可以把一个grid想像成一个三维的直角坐标系，然后一个block就是坐标系中的一个点,如果指定gridDim的x,y,z分别为2,3,4那么就有24个block,每个block可以用一个三维坐标来表示,同理可以可以把一个block想象成一个直角坐标系，thread也是其中的点.</strong></p><h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/images/gpu_arch/result.png" alt title="result.png"></p><h3 id="cudaDeviceReset"><a href="#cudaDeviceReset" class="headerlink" title="cudaDeviceReset"></a>cudaDeviceReset</h3><p><img src="/images/gpu_arch/cudaDeviceRest.png" alt title="cudaDeviceRest"><br>可以看到这个函数是用来<strong>销毁一个CUDA的上下文的</strong>. It will reset the device immediately.虽然它表现上具有同步的功能，但是靠这个函数来同步是不安全的，所以建议如果是想同步的话，使用cudaDeviceSynchronize或者cudaMemcpy.</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://pan.baidu.com/s/1AveSDmaRpR6ZyVisNTHm1A" target="_blank" rel="noopener">Programming Massively Parallel Processors</a><br><a href="https://stackoverflow.com/questions/36012289/what-is-the-role-of-cudadevicereset-in-cuda" target="_blank" rel="noopener">What is the role of cudaDeviceReset() in Cuda</a><br><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#scalable-programming-model" target="_blank" rel="noopener">CUDA C Programming Guide</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CUDA Programming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/07/09/hello-world/"/>
+      <url>/2019/07/09/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CUDA Hello World</title>
+      <link href="/2019/07/09/CUDA-Hello-World/"/>
+      <url>/2019/07/09/CUDA-Hello-World/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;第一次尝试编写CUDA C程序，主要是和以后的希望从事的方向有关，想从事大规模机器学习和深度学习系统的开发，CUDA是不可避免的需要掌握的并行计算的框架. 正好实验室有gpu服务器，趁着暑假来学习一波CUDA编程.<br>&nbsp;&nbsp;CUDA是NVIDIA推出的运算平台，是一种并行计算的架构，使用GPU来进行通用计算.</p><h2 id="编译CUDA程序的流程"><a href="#编译CUDA程序的流程" class="headerlink" title="编译CUDA程序的流程"></a>编译CUDA程序的流程</h2><p>&nbsp;&nbsp;编译一个CUDA程序和C程序一样，CUDA程序的编译器是nvcc, CUDA程序文件的后缀是.cu. 开设我们有一个CUDA程序文件，命名为hello.cu, 那么我们用nvcc将它编译为可执行文件的命令如下:</p><p><code>nvcc hello.cu -o hello</code></p><h2 id="CUDA-Hello-World"><a href="#CUDA-Hello-World" class="headerlink" title="CUDA Hello World"></a>CUDA Hello World</h2><p>&nbsp;&nbsp;学习任何程序设计语言的入门都是打印Hello World.CUDA程序也不例外， 下面我们以打印Hello World为例来解释CUDA程序的要素.</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello world from GPU\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello world from CPU\n"</span>);</span><br><span class="line">  hello&lt;&lt;&lt;<span class="number">1</span>, <span class="number">10</span>&gt;&gt;&gt;();</span><br><span class="line">  cudaDeviceSynchronize();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>我们用与之功能相近的普通C程序作为对比</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello World!\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    hello();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>可以看到cuda程序相对于普通的c程序，有几点不同:</p><h3 id="global-限定符"><a href="#global-限定符" class="headerlink" title="__global__ 限定符"></a>__global__ 限定符</h3><p>&nbsp;&nbsp;在cuda程序中，cpu和gpu都用来做计算。我们把cpu叫做host，gpu叫做device. cpu和gpu拥有各自的存储空间。通常我们在cpu上顺序执行代码，在gpu上进行并行计算(Typically, we run serial workload on CPU and offload parallel computation to GPUs).<br>&nbsp;&nbsp;__global__限定符表示hello函数是在gpu上执行的，是device代码,而且<strong>被该修饰符修饰的函数可以被host上的代码调用</strong>(这一点很重要，之后我们会看到，有的限定符表示只能被device代码或者只能被host代码调用)，我们的例子里hello函数就是被host上的main函数调用的,这样的函数也叫”kernels”. <strong>A kernel function must have a void return type(核函数的返回类型必须是void)</strong></p><h3 id="lt-lt-lt-…-gt-gt-gt-语法"><a href="#lt-lt-lt-…-gt-gt-gt-语法" class="headerlink" title="&lt;&lt;&lt;…&gt;&gt;&gt; 语法"></a>&lt;&lt;&lt;…&gt;&gt;&gt; 语法</h3><p>&nbsp;&nbsp;当我们调用kernel的时候，它的执行的配置是通过&lt;&lt;&lt;…&gt;&gt;&gt;语法提供的，所谓的配置包括执行这个kernel用几个线程块，每个线程块开几个线程（这个涉及到gpu的结构）.比如上面的例子中，<code>hello&lt;&lt;&lt;1, 10&gt;&gt;&gt;();</code>. 在cuda中，这个叫做”kernel launch”(核启动). 具体参数之后的博客来说明.</p><h3 id="cudaDeviceSynchronize"><a href="#cudaDeviceSynchronize" class="headerlink" title="cudaDeviceSynchronize"></a>cudaDeviceSynchronize</h3><p>&nbsp;&nbsp; a kernel launch is asynchronous.因为kernel launch是异步执行的，当执行到device code的时候，在gpu上开启进程的时候，程序控制权就会回到cpu，不管gpu上的程序是否执行完毕。在我们的cuda程序中，如果没有cudaDeviceSynchronize函数，我们的程序就结束退出了，这样的话gpu端打印的hello world就不能打印到标准输出了. 而有了cudaDeviceSynchronize，cpu端的程序就会等device上的程序执行完后才退出，所以cudaDeviceSynchronize函数会阻塞直到device上的代码执行完毕.</p><h2 id="Vector-Addition"><a href="#Vector-Addition" class="headerlink" title="Vector Addition"></a>Vector Addition</h2><p>&nbsp;&nbsp;下面我们来看使用gpu进行向量相加运算的代码. 首先是使用cpu进行运算的代码：</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10000000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        out[i] = a[i] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> *a, *b, *out; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Allocate memory</span></span><br><span class="line">    a   = (<span class="keyword">float</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    b   = (<span class="keyword">float</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    out = (<span class="keyword">float</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Initialize array</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">        a[i] = <span class="number">1.0f</span>; b[i] = <span class="number">2.0f</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Main function</span></span><br><span class="line">    vector_add(out, a, b, N);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>下面我们把向量相加的部分放到gpu上进行并行运算:</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100000</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">vector_add</span><span class="params">(<span class="keyword">float</span> *out, <span class="keyword">float</span> *a, <span class="keyword">float</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        out[i] = a[i] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> *a, *b, *out;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Allocate memory</span></span><br><span class="line">    a   = (<span class="keyword">float</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    b   = (<span class="keyword">float</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    out = (<span class="keyword">float</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Initialize array</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">        a[i] = <span class="number">1.0f</span>; b[i] = <span class="number">2.0f</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> *d_a;</span><br><span class="line">    <span class="keyword">float</span> *d_b;</span><br><span class="line">    <span class="keyword">float</span> *d_out;</span><br><span class="line"></span><br><span class="line">    cudaMalloc((<span class="keyword">void</span>**)&amp;d_a, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    cudaMalloc((<span class="keyword">void</span>**)&amp;d_b, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    cudaMalloc((<span class="keyword">void</span>**)&amp;d_out, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N);</span><br><span class="line">    cudaMemcpy(d_a, a, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N, cudaMemcpyHostToDevice);</span><br><span class="line">    cudaMemcpy(d_b, b, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N, cudaMemcpyHostToDevice);</span><br><span class="line">    cudaMemcpy(d_out, out, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N, cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Main function</span></span><br><span class="line">    vector_add&lt;&lt;&lt;<span class="number">1</span>,<span class="number">10</span>&gt;&gt;&gt;(d_out, d_a, d_b, N);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//cudaMemcpy(a, d_a, sizeof(float) * N, cudaMemcpyDeviceToHost);</span></span><br><span class="line">    <span class="comment">//cudaMemcpy(b, d_b, sizeof(float) * N, cudaMemcpyDeviceToHost);</span></span><br><span class="line">    cudaMemcpy(out, d_out, <span class="keyword">sizeof</span>(<span class="keyword">float</span>) * N, cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt; N;i++)&#123;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%f\n"</span>,out[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"end!!!!"</span>);</span><br><span class="line">    cudaFree(d_a);</span><br><span class="line">    cudaFree(d_b);</span><br><span class="line">    cudaFree(d_out);</span><br><span class="line">    <span class="built_in">free</span>(a);</span><br><span class="line">    <span class="built_in">free</span>(b);</span><br><span class="line">    <span class="built_in">free</span>(out);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&nbsp;&nbsp;可能一开始，我们会向hello world程序一样，给vector_add函数添加__global__修饰符.然后在main函数中调用vector_add函数的地方添加&lt;&lt;&lt;…&gt;&gt;&gt;. 这样以后我们编译运行程序但是发现程序的执行结果和我们预想的不一样. 是什么原因导致的呢？<br>&nbsp;&nbsp;原因是cpu和gpu是各自拥有自己的存储空间,cpu无法直接获取gpu存储上的内容，gpu也无法直接获取到cpu存储上的内容. 在 cuda的术语里, cpu的存储叫做host memory, gpu的存储叫做device memory. 指向cpu内存的指针叫做host pointer, 指向gpu内存的指针叫做device pointer. 如果要让gpu能够获取到数据，那么数据必须在device memory上，cuda提供了分配device memory和在host和device之间进行数据迁移的api,cuda 程序的一个常见的流程如下:</p><ul><li>分配host memory并初始化host上的数据</li><li>分配device memory(cudaMalloc)</li><li>将kernel函数要用的数据从host迁移到device上(cudaMemcpy)</li><li>执行kernel函数</li><li>将kernel函数的输出从device迁移到host上(cudaMemcpy)</li></ul><p>vec_add在gpu上运行，而out,a,b这三个向量，传入的是cpu上的地址空间，因此结果和我们预期的不一样. 这里还有个疑问，那为啥程序不报错呢，传入的是cpu上的存储地址.核函数内部居然不报错？</p><p>这个程序相比于前面的hello world程序有很多新的函数需要解释：</p><h3 id="cudaMalloc和cudaFree"><a href="#cudaMalloc和cudaFree" class="headerlink" title="cudaMalloc和cudaFree"></a>cudaMalloc和cudaFree</h3><p>&nbsp;&nbsp;这两个函数类似于c语言中的malloc和free函数，只不过这两个函数是在device memory上分配空间, 他们的函数原型如下：</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">cudaMalloc(<span class="keyword">void</span> **devPtr, <span class="keyword">size_t</span> count);</span><br><span class="line">cudaFree(<span class="keyword">void</span> *devPtr);</span><br></pre></td></tr></table></figure><p>cudaMalloc函数在device memory上分配size为count的空间，然后让devPtr指向分配的空间. 而 cudaFree将devPtr指向的空间给free了.</p><h3 id="cudaMemcpy"><a href="#cudaMemcpy" class="headerlink" title="cudaMemcpy"></a>cudaMemcpy</h3><p>&nbsp;&nbsp;cudaMemcpy函数用来在host和device之间传递数据，和c中的memcpy函数很像. 语法如下：</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">cudaMemcpy(<span class="keyword">void</span> *dst, <span class="keyword">void</span> *src, <span class="keyword">size_t</span> count, cudaMemcpyKind kind)</span><br></pre></td></tr></table></figure><p>这个函数将size为count的存储从src复制到dst,kind指示复制的方向，最常用的值是cudaMemcpyHostToDevice 以及 cudaMemcpyDeviceToHost，分别表示从host复制到device以及从device复制到host.</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cuda-tutorial.readthedocs.io/en/latest/tutorials/tutorial01/" target="_blank" rel="noopener">Tutorial 01:Say Hello to CUDA</a><br><a href="https://stackoverflow.com/questions/19193468/why-do-we-need-cudadevicesynchronize-in-kernels-with-device-printf" target="_blank" rel="noopener">why do we need cudaDeviceSynchronize</a><br><a href="https://stackoverflow.com/questions/25332476/cudadevicesynchronize-and-performing-sequential-work?noredirect=1" target="_blank" rel="noopener">cudaDeviceSynchronize and performing sequential work</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CUDA Programming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>逻辑回归交叉熵损失函数梯度推导</title>
+      <link href="/2019/07/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC/"/>
+      <url>/2019/07/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
