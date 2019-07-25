@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/dim3.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/result.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/cudaDeviceRest.png">
-<meta property="og:updated_time" content="2019-07-25T10:33:00.149Z">
+<meta property="og:updated_time" content="2019-07-25T10:39:15.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GPU架构">
 <meta name="twitter:description" content="Streaming Multiprocessors The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but ma">
@@ -163,8 +163,9 @@
 <p>The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but many do.Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel.</p>
 </blockquote>
 <blockquote>
-<p>All threads running on the cores of an SM at a given cycle are executing the same instruction – hence Single Instruction, Multiple Threads. However, each thread has its own registers, so these instructions process different data.<br><img src="/images/gpu_arch/SMs.png" alt title="SMs"><br>&nbsp;&nbsp;可以看到一个thread block跑在一个SM上面.</p>
+<p>All threads running on the cores of an SM at a given cycle are executing the same instruction – hence Single Instruction, Multiple Threads. However, each thread has its own registers, so these instructions process different data.</p>
 </blockquote>
+<p><img src="/images/gpu_arch/SMs.png" alt title="SMs"><br>&nbsp;&nbsp;可以看到一个thread block跑在一个SM上面.</p>
 <h2 id="thread-block-organization"><a href="#thread-block-organization" class="headerlink" title="thread block organization"></a>thread block organization</h2><p><img src="/images/gpu_arch/thread_block_org.png" alt title="thread block organization"><br>&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.</p>
 <p><img src="/images/gpu_arch/thread_cooperate.png" alt title="thread cooperate"><br>&nbsp;&nbsp;同一个block内的所有thread可以合作(因为有个Shared Memory??)，不同block的thread不可以合作.</p>
 <p>&nbsp;&nbsp;从上图中可以看到每个block都有一个Shared Memory,是所有block中的thread所共享的,每个thread有自己的Local Memory和Registers. 一个Grid中的所有blocks共享Global Memory, Constant Memory以及Texture Memory. 所有blocks中的thread都共享这三种Memory,下面我们来看看这三种Memory:</p>
