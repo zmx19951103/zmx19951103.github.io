@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/dim3.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/result.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/cudaDeviceRest.png">
-<meta property="og:updated_time" content="2019-07-25T15:56:03.046Z">
+<meta property="og:updated_time" content="2019-07-25T16:07:58.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA线程层次-从硬件和软件角度">
 <meta name="twitter:description" content="Streaming MultiprocessorsGPU是由流多处理器构成的，每个SM内部有多个core, 每个core跑一个thread.  The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millio">
@@ -169,7 +169,7 @@
 </blockquote>
 <p><img src="/images/gpu_arch/SMs.png" alt title="SMs"><br>&nbsp;&nbsp;可以看到一个thread block跑在一个SM上面. 一个block执行完毕，SM可以调度另一个block执行，在一个SM上,block的执行是顺序的.</p>
 <p><img src="/images/gpu_arch/inside_1.png" alt title="inside a gpu"><br>&nbsp;&nbsp;一个SM只有一个指令单元，SM内的所有thread共享这个指令单元.</p>
-<h3 id="Warps"><a href="#Warps" class="headerlink" title="Warps"></a>Warps</h3><p>&nbsp;&nbsp;一个thread block在一个SM上执行,block中的thread可以继续分成warp,一个warp包括32个线程.warp是SM调度运行的基本单元,一个warp中的所有线程执行相同的指令. 任意时刻，SM中只会有一个warp在运行，其余的warp都处于就绪等其他状态. 不同架构的gpu一个SM包含不同数量的cuda核心，Turing架构的一个SM包含128个cuda core,也就是4个warp. SM中有硬件warp scheduler，用来调度warp运行. </p>
+<h3 id="Warps"><a href="#Warps" class="headerlink" title="Warps"></a>Warps</h3><p>&nbsp;&nbsp;一个thread block在一个SM上执行,block中的thread可以继续分成warp,一个warp包括32个线程.<strong>warp是SM调度运行的基本单元</strong>,一个warp中的所有线程执行相同的指令.<strong>任意时刻，SM中只会有一个warp在运行，其余的warp都处于就绪等其他状态</strong>. 不同架构的gpu一个SM包含不同数量的cuda核心，Turing架构的一个SM包含128个cuda core,也就是4个warp. SM中有硬件warp scheduler，用来调度warp运行. </p>
 <h2 id="thread-block-organization"><a href="#thread-block-organization" class="headerlink" title="thread block organization"></a>thread block organization</h2><p><img src="/images/gpu_arch/thread_block_org.png" alt title="thread block organization"><br>&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.</p>
 <p><img src="/images/gpu_arch/thread_cooperate.png" alt title="thread cooperate"><br>&nbsp;&nbsp;同一个block内的所有thread可以合作(因为有个Shared Memory??)，不同block的thread不可以合作.</p>
 <p>&nbsp;&nbsp;从上图中可以看到每个block都有一个Shared Memory,是所有block中的thread所共享的,每个thread有自己的Local Memory和Registers. 一个Grid中的所有blocks共享Global Memory, Constant Memory以及Texture Memory. 所有blocks中的thread都共享这三种Memory,内存层次会在后序的博客中进行总结.</p>
