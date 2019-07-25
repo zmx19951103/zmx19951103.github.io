@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/dim3.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/result.png">
 <meta property="og:image" content="http://yoursite.com/images/gpu_arch/cudaDeviceRest.png">
-<meta property="og:updated_time" content="2019-07-25T03:15:46.582Z">
+<meta property="og:updated_time" content="2019-07-25T04:07:35.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GPU架构">
 <meta name="twitter:description" content="Streaming Multiprocessors The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.Not all of the thousands or millions of threads actually run in parallel, but ma">
@@ -159,7 +159,7 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="Streaming-Multiprocessors"><a href="#Streaming-Multiprocessors" class="headerlink" title="Streaming Multiprocessors"></a>Streaming Multiprocessors</h2><blockquote>
-<p>The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.<br><br>Not all of the thousands or millions of threads actually run in parallel, but many do.<br><br>Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.<br><br>For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel.</p>
+<p>The idea is that the CPU spawns a thread per element, and the GPU then executes those threads.<br>Not all of the thousands or millions of threads actually run in parallel, but many do.<br>Specifically, an NVIDIA GPU contains several largely independent processors called “Streaming Multiprocessors” (SMs), each SM hosts several “cores”, and each “core” runs a thread.<br>For instance, Fermi has up to 16 SMs with 32 cores per SM – so up to 512 thread can run in parallel.</p>
 </blockquote>
 <h2 id="thread-block-organization"><a href="#thread-block-organization" class="headerlink" title="thread block organization"></a>thread block organization</h2><p><img src="/images/gpu_arch/thread_block_org.png" alt title="thread block organization"><br>&nbsp;&nbsp;grid由多个blocks组成，每个kernel function的调用都会create一个grid,所以&lt;&lt;&lt;…&gt;&gt;&gt;语法指定的是block的数量和每个block的线程数量,因为这个kernel函数只会在一个grid上运行.</p>
 <p><img src="/images/gpu_arch/thread_cooperate.png" alt title="thread cooperate"><br>&nbsp;&nbsp;同一个block内的所有thread可以合作(因为有个Shared Memory??)，不同block的thread不可以合作.</p>
