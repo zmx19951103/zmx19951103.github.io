@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>GPU内存层次</title>
+      <link href="/2019/07/25/GPU%E5%86%85%E5%AD%98%E5%B1%82%E6%AC%A1/"/>
+      <url>/2019/07/25/GPU%E5%86%85%E5%AD%98%E5%B1%82%E6%AC%A1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>knowledge distillation</title>
       <link href="/2019/07/24/knowledge-distillation/"/>
       <url>/2019/07/24/knowledge-distillation/</url>
@@ -301,7 +314,7 @@
     
     
     <entry>
-      <title>GPU线程层次</title>
+      <title>CUDA线程层次-从硬件和软件角度</title>
       <link href="/2019/07/10/GPU%E6%9E%B6%E6%9E%84/"/>
       <url>/2019/07/10/GPU%E6%9E%B6%E6%9E%84/</url>
       
