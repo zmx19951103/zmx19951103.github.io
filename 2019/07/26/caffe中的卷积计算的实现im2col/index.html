@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="CUDA Programming">
-<meta property="og:type" content="article">
-<meta property="og:title" content="GPU内存层次">
-<meta property="og:url" content="http://yoursite.com/2019/07/25/GPU内存层次/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="caffe中的卷积计算的实现im2col">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-25T16:28:12.067Z">
+<meta property="og:updated_time" content="2019-07-26T09:00:02.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GPU内存层次">
+<meta name="twitter:title" content="caffe中的卷积计算的实现im2col">
     
     
         
@@ -34,7 +33,7 @@
         
     
     <!-- title -->
-    <title>GPU内存层次</title>
+    <title>caffe中的卷积计算的实现im2col</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -74,10 +73,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/07/26/caffe中的卷积计算的实现im2col/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/07/26/傅立叶变换及其加强版FFT/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/07/24/knowledge-distillation/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/07/25/GPU内存层次/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -90,16 +89,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/25/GPU内存层次/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/25/GPU内存层次/&text=GPU内存层次"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/25/GPU内存层次/&is_video=false&description=GPU内存层次"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=GPU内存层次&body=Check out this article: http://yoursite.com/2019/07/25/GPU内存层次/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/25/GPU内存层次/&name=GPU内存层次&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&text=caffe中的卷积计算的实现im2col"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&is_video=false&description=caffe中的卷积计算的实现im2col"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=caffe中的卷积计算的实现im2col&body=Check out this article: http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&name=caffe中的卷积计算的实现im2col&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -116,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        GPU内存层次
+        caffe中的卷积计算的实现im2col
     </h1>
 
 
@@ -128,7 +127,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-07-25T14:03:10.000Z" itemprop="datePublished">2019-07-25</time>
+        <time datetime="2019-07-26T09:00:02.000Z" itemprop="datePublished">2019-07-26</time>
         
       
     </div>
@@ -137,11 +136,6 @@
       
 
       
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/CUDA-Programming/">CUDA Programming</a>
-    </div>
-
 
     </div>
   </header>
@@ -188,16 +182,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/25/GPU内存层次/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/25/GPU内存层次/&text=GPU内存层次"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/25/GPU内存层次/&is_video=false&description=GPU内存层次"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=GPU内存层次&body=Check out this article: http://yoursite.com/2019/07/25/GPU内存层次/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/25/GPU内存层次/&title=GPU内存层次"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/25/GPU内存层次/&name=GPU内存层次&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&text=caffe中的卷积计算的实现im2col"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&is_video=false&description=caffe中的卷积计算的实现im2col"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=caffe中的卷积计算的实现im2col&body=Check out this article: http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&title=caffe中的卷积计算的实现im2col"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/26/caffe中的卷积计算的实现im2col/&name=caffe中的卷积计算的实现im2col&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
