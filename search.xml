@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[sqlite architecture]]></title>
+    <url>%2F2019%2F07%2F29%2Fsqlite-architecture%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[database index]]></title>
+    <url>%2F2019%2F07%2F29%2Fdatabase-index%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[B/B+ Tree]]></title>
     <url>%2F2019%2F07%2F27%2FB-B-Tree%2F</url>
     <content type="text"></content>
+      <tags>
+        <tag>database</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[深度学习分布式训练]]></title>
