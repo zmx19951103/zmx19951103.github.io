@@ -206,7 +206,7 @@
   <entry>
     <title><![CDATA[逻辑回归交叉熵损失函数梯度推导]]></title>
     <url>%2F2019%2F07%2F06%2F%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC%2F</url>
-    <content type="text"><![CDATA[what is softmax&nbsp;&nbsp;softmax通常用于神经网络的输出层，用于多分类任务，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s} \overrightarrow{z}\in]]></content>
+    <content type="text"><![CDATA[what is softmax&nbsp;&nbsp;softmax通常用于神经网络的输出层，用于多分类任务，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s} \overrightarrow{z}\inR^n , \overrightarrow{s}\inR^n]]></content>
       <tags>
         <tag>deep learning</tag>
       </tags>
