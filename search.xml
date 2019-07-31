@@ -516,9 +516,15 @@
       <link href="/2019/07/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC/"/>
       <url>/2019/07/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="what-is-softmax"><a href="#what-is-softmax" class="headerlink" title="what is softmax"></a>what is softmax</h2><p>&nbsp;&nbsp;softmax通常用于神经网络的输出层，用于多分类任务，公式如下:<br>$$softmax(z)=$$</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> deep learning </tag>
+            
+        </tags>
       
     </entry>
     
