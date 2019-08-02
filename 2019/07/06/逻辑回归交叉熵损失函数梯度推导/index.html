@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-02T16:05:41.407Z">
+<meta property="og:updated_time" content="2019-08-02T16:09:37.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -163,8 +163,9 @@
 <script type="math/tex; mode=display">L = - \ln( \prod_{i=1}^{n} {\hat{y_i}^{y_i}(1-\hat{y_i})^{1-y_i}} ) = - \sum_{i=1}^{n} {y_i\ln\hat{y_i}+(1-y_i)\ln(1-\hat{y_i})}</script><p>我们采用梯度下降法sgd来求解模型参书w,b:</p>
 <script type="math/tex; mode=display">\frac{\partial L}{\partial w} = \sum_{i=1}^{n} {\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial w}}</script><script type="math/tex; mode=display">\frac{\partial L}{\partial \hat{y_i} }  = - [ y_i \frac{\partial \ln\hat{y_i}}{\partial \hat{y_i}}+(1-y_i) \frac{\partial \ln(1- \hat{y_i})}{\partial \hat{y_i}} ] = - [ y_i \frac{1}{ \hat{y_i} } +(1-y_i) \frac{-1}{1- \hat{y_i}} ]  = - \frac{y_i - \hat{y_i} }{ \hat{y_i} (1- \hat{y_i})}</script><script type="math/tex; mode=display">\frac{ \partial \hat{y_i} }{ \partial w} = \hat{y_i}(1- \hat{y_i} ) x_i</script><p>综上:</p>
 <script type="math/tex; mode=display">\frac{\partial L}{\partial w} = \sum_{i=1}^{n} {\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial w}} = - \sum_{i=1}^{n} {(y_i - \hat{y_i})x_i }</script><p>w的更新公式为:</p>
-<script type="math/tex; mode=display">w = w + \eta \sum_{i=1}^{n}{(y_i- \hat{y_i})x_i }</script><p>同理, b的梯度如下</p>
-
+<script type="math/tex; mode=display">w = w + \eta \sum_{i=1}^{n}{(y_i- \hat{y_i})x_i }</script><p>同理, b的梯度如下:</p>
+<script type="math/tex; mode=display">\frac{\partial L}{\partial b} = \sum_{i=1}^{n} {\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial b}} = - \sum_{i=1}^{n} {(y_i - \hat{y_i}) }</script><p>b的更新公式如下:</p>
+<script type="math/tex; mode=display">w = w + \eta \sum_{i=1}^{n}{(y_i- \hat{y_i}) }</script>
   </div>
 </article>
 
