@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-02T08:15:32.775Z">
+<meta property="og:updated_time" content="2019-08-02T08:18:57.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -158,8 +158,8 @@
 <h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>&nbsp;&nbsp;极大似然估计是一种模型参数的估计方法，是频率学派的方法（另一个是贝叶斯学派，它们的参数估计方法是最大后验概率估计,两者的区别在于极大似然估计假设模型参数是一个固定值而最大后验概率估计假设模型参数也服从一定的分布，称为先验分布). 极大似然估计假设模型的参数是$ \Theta $,那么我们观察到的数据可以表示成参数的函数$ f(xi|\Theta) $,一般我们是有一个数据集，根据这个数据集合来估计模型参数，那么使得这个数据集合被我们观察到的概率是</p>
 <script type="math/tex; mode=display">f(x_1,x_2,x_3,...x_n|\Theta)</script><p>因为数据集的数据是独立同分布的，所以下面的式子成立:</p>
 <script type="math/tex; mode=display">f(x_1,x_2,x_3,...x_n|\Theta) = \prod_{i=1}^{n} {f(x_i|\Theta)}</script><p>上面的式子就是似然函数，它是一个关于参数$ \Theta $的函数,而我们要选取使得该似然函数取得最大值的参数，这就是极大似然估计,也就是选取参数使得我们观察到的结果的可能性最大.</p>
-<h2 id="逻辑回归的损失函数推导"><a href="#逻辑回归的损失函数推导" class="headerlink" title="逻辑回归的损失函数推导"></a>逻辑回归的损失函数推导</h2><p>&nbsp;&nbs;逻辑回归的参数估计可以采用极大似然法，似然函数如下：</p>
-<script type="math/tex; mode=display">\prod_{i=1}^{n} {P(Y=1|x)^{y_i}P(y=0|x)^{1-j_i} } = \hat{y_i}^{y_i}(1-\hat{y_i})^{1-y_i}</script>
+<h2 id="逻辑回归的损失函数推导"><a href="#逻辑回归的损失函数推导" class="headerlink" title="逻辑回归的损失函数推导"></a>逻辑回归的损失函数推导</h2><p>&nbsp;&nbsp;逻辑回归的参数估计可以采用极大似然法，似然函数如下：</p>
+<script type="math/tex; mode=display">\prod_{i=1}^{n} {P(Y=1|x)^{y_i}P(Y=0|x)^{1-y_i} } = \hat{y_i}^{y_i}(1-\hat{y_i})^{1-y_i}</script>
   </div>
 </article>
 
