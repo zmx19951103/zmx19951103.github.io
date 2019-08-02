@@ -206,7 +206,7 @@
   <entry>
     <title><![CDATA[逻辑回归交叉熵损失函数梯度推导]]></title>
     <url>%2F2019%2F07%2F06%2F%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E6%A2%AF%E5%BA%A6%E6%8E%A8%E5%AF%BC%2F</url>
-    <content type="text"><![CDATA[what is softmax&nbsp;&nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \sum_{k=1}^{n} {e^{z_k}} }what is logistic regression&nbsp;&nbsp;逻辑回归是一个分类模型,假设输入$ \overrightarrow{x} \in R^n $, 模型参数$ \overrightarrow{w} \in R^n $, $ b \in R $ ,真实标签$ y \in \{0,1\} $ ,模型的预测输出是$ \hat{y} \in R $ 表示模型预测该实例为1的概率:$ \hat{y} = sigmoid(wx+b) = \frac{1}{1+e^{-wx+b}} $]]></content>
+    <content type="text"><![CDATA[what is softmax&nbsp;&nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \sum_{k=1}^{n} {e^{z_k}} }what is logistic regression&nbsp;&nbsp;逻辑回归是一个分类模型,假设输入$ \overrightarrow{x} \in R^n $, 模型参数$ \overrightarrow{w} \in R^n $, $ b \in R $ ,真实标签$ y \in \{0,1\} $ ,模型的预测输出是$ \hat{y} \in R $ 表示模型预测该实例为1的概率: \hat{y} = sigmoid(w*x+b) = \frac{1}{1+e^{-w*x+b}}]]></content>
       <tags>
         <tag>deep learning</tag>
       </tags>
