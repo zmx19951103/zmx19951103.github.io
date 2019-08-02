@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-02T05:45:01.744Z">
+<meta property="og:updated_time" content="2019-08-02T05:56:25.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -51,7 +51,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -106,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">4.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">4.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">5.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -155,6 +156,7 @@
 <script type="math/tex; mode=display">P(Y=1|x) =  \hat{y} = sigmoid(w*x+b) = \frac{1}{1+e^{-(w*x+b)}} =\frac{e^{w*x+b}}{1+e^{w*x+b}}</script><p>从而:</p>
 <script type="math/tex; mode=display">P(Y=0|x) = \frac{1}{1+e^{w*x+b}}</script><h2 id="sigmoid损失函数"><a href="#sigmoid损失函数" class="headerlink" title="sigmoid损失函数"></a>sigmoid损失函数</h2><p>&nbsp;&nbsp;sigmoid损失函数的公式和形状如下，它能将输入的范围转化到[0,1]之间,作为概率值.</p>
 <script type="math/tex; mode=display">sigmoid(z) = \frac{1}{1+e^{-z}}</script><p><img src="/images/cross_entropy/sigmoid.png" alt title="sigmoid"></p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>&nbsp;&nbsp;极大似然估计是一种模型参数的估计方法，是频率学派的方法（另一个是贝叶斯学派，它们的参数估计方法是最大后验概率估计,两者的区别在于极大似然估计假设模型参数是一个固定值而最大后验概率估计假设模型参数也服从一定的分布，称为先验分布). 极大似然估计假设模型的参数是$\Theta$</p>
 <h2 id="逻辑回归的损失函数推导"><a href="#逻辑回归的损失函数推导" class="headerlink" title="逻辑回归的损失函数推导"></a>逻辑回归的损失函数推导</h2><p>&nbsp;&nbsp;</p>
 
   </div>
@@ -191,7 +193,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">4.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">4.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">5.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -274,26 +276,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
