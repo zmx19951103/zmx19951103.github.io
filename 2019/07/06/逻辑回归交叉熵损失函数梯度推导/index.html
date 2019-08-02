@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-02T05:58:13.904Z">
+<meta property="og:updated_time" content="2019-08-02T06:04:09.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -155,7 +155,7 @@
 <script type="math/tex; mode=display">P(Y=1|x) =  \hat{y} = sigmoid(w*x+b) = \frac{1}{1+e^{-(w*x+b)}} =\frac{e^{w*x+b}}{1+e^{w*x+b}}</script><p>从而:</p>
 <script type="math/tex; mode=display">P(Y=0|x) = \frac{1}{1+e^{w*x+b}}</script><h2 id="sigmoid损失函数"><a href="#sigmoid损失函数" class="headerlink" title="sigmoid损失函数"></a>sigmoid损失函数</h2><p>&nbsp;&nbsp;sigmoid损失函数的公式和形状如下，它能将输入的范围转化到[0,1]之间,作为概率值.</p>
 <script type="math/tex; mode=display">sigmoid(z) = \frac{1}{1+e^{-z}}</script><p><img src="/images/cross_entropy/sigmoid.png" alt title="sigmoid"></p>
-<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>&nbsp;&nbsp;极大似然估计是一种模型参数的估计方法，是频率学派的方法（另一个是贝叶斯学派，它们的参数估计方法是最大后验概率估计,两者的区别在于极大似然估计假设模型参数是一个固定值而最大后验概率估计假设模型参数也服从一定的分布，称为先验分布). 极大似然估计假设模型的参数是$ \Theta $</p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>&nbsp;&nbsp;极大似然估计是一种模型参数的估计方法，是频率学派的方法（另一个是贝叶斯学派，它们的参数估计方法是最大后验概率估计,两者的区别在于极大似然估计假设模型参数是一个固定值而最大后验概率估计假设模型参数也服从一定的分布，称为先验分布). 极大似然估计假设模型的参数是$ \Theta $,那么我们观察到的数据可以表示成参数的函数$ f(xi|\Theta) $,</p>
 <h2 id="逻辑回归的损失函数推导"><a href="#逻辑回归的损失函数推导" class="headerlink" title="逻辑回归的损失函数推导"></a>逻辑回归的损失函数推导</h2><p>&nbsp;&nbsp;</p>
 
   </div>
