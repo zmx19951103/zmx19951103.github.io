@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-02T10:26:49.229Z">
+<meta property="og:updated_time" content="2019-08-02T10:48:57.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -161,7 +161,7 @@
 <h2 id="逻辑回归的损失函数推导"><a href="#逻辑回归的损失函数推导" class="headerlink" title="逻辑回归的损失函数推导"></a>逻辑回归的损失函数推导</h2><p>&nbsp;&nbsp;逻辑回归的参数估计可以采用极大似然法，似然函数如下：</p>
 <script type="math/tex; mode=display">\prod_{i=1}^{n} {P(Y=1|x)^{y_i}P(Y=0|x)^{1-y_i} } = \prod_{i=1}^{n} {\hat{y_i}^{y_i}(1-\hat{y_i})^{1-y_i}}</script><p>我们使用负对数似然，对数函数不改变单调性，取负数使得该值大于0，那么损失函数如下：</p>
 <script type="math/tex; mode=display">L = - \ln( \prod_{i=1}^{n} {\hat{y_i}^{y_i}(1-\hat{y_i})^{1-y_i}} ) = - \sum_{i=1}^{n} {y_i\ln\hat{y_i}+(1-y_i)\ln(1-\hat{y_i})}</script><p>我们采用梯度下降法sgd来求解模型参数w,b:</p>
-<script type="math/tex; mode=display">\frac{\partial L}{\partial w} =\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial w} = - \sum_{i=1}^{n} {y_i \frac{\partial \ln\hat{y_i}}{\partial \hat{y_i}}+(1-y_i) \frac{\partial \ln(1- \hat{y_i})}{\partial \hat{y_i}} } = - \sum_{i=1}^{n} {y_i \frac{1}{ \hat{y_i} } +(1-y_i) \frac{-1}{1- \hat{y_i}} }</script>
+<script type="math/tex; mode=display">\frac{\partial L}{\partial w} =\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial w} = - \sum_{i=1}^{n} {\[ y_i \frac{\partial \ln\hat{y_i}}{\partial \hat{y_i}}+(1-y_i) \frac{\partial \ln(1- \hat{y_i})}{\partial \hat{y_i}} \] } = - \sum_{i=1}^{n} { \[ y_i \frac{1}{ \hat{y_i} } +(1-y_i) \frac{-1}{1- \hat{y_i}} \] }</script>
   </div>
 </article>
 
