@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-02T16:09:37.334Z">
+<meta property="og:updated_time" content="2019-08-02T16:11:50.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">4.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">5.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">4.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">5.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交叉熵损失函数以及softmax函数的梯度推导"><span class="toc-number">6.</span> <span class="toc-text">交叉熵损失函数以及softmax函数的梯度推导</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -165,7 +165,7 @@
 <script type="math/tex; mode=display">\frac{\partial L}{\partial w} = \sum_{i=1}^{n} {\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial w}} = - \sum_{i=1}^{n} {(y_i - \hat{y_i})x_i }</script><p>w的更新公式为:</p>
 <script type="math/tex; mode=display">w = w + \eta \sum_{i=1}^{n}{(y_i- \hat{y_i})x_i }</script><p>同理, b的梯度如下:</p>
 <script type="math/tex; mode=display">\frac{\partial L}{\partial b} = \sum_{i=1}^{n} {\frac{\partial L}{\partial \hat{y_i}} \frac{\partial \hat{y_i}}{\partial b}} = - \sum_{i=1}^{n} {(y_i - \hat{y_i}) }</script><p>b的更新公式如下:</p>
-<script type="math/tex; mode=display">w = w + \eta \sum_{i=1}^{n}{(y_i- \hat{y_i}) }</script>
+<script type="math/tex; mode=display">b = b + \eta \sum_{i=1}^{n}{(y_i- \hat{y_i}) }</script><h2 id="交叉熵损失函数以及softmax函数的梯度推导"><a href="#交叉熵损失函数以及softmax函数的梯度推导" class="headerlink" title="交叉熵损失函数以及softmax函数的梯度推导"></a>交叉熵损失函数以及softmax函数的梯度推导</h2>
   </div>
 </article>
 
@@ -200,7 +200,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">4.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">5.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-softmax"><span class="toc-number">1.</span> <span class="toc-text">what is softmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-logistic-regression"><span class="toc-number">2.</span> <span class="toc-text">what is logistic regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid损失函数"><span class="toc-number">3.</span> <span class="toc-text">sigmoid损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">4.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归的损失函数推导"><span class="toc-number">5.</span> <span class="toc-text">逻辑回归的损失函数推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交叉熵损失函数以及softmax函数的梯度推导"><span class="toc-number">6.</span> <span class="toc-text">交叉熵损失函数以及softmax函数的梯度推导</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
