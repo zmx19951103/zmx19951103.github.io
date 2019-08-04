@@ -15,7 +15,7 @@
 <meta property="og:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
-<meta property="og:updated_time" content="2019-08-04T04:34:44.326Z">
+<meta property="og:updated_time" content="2019-08-04T04:44:03.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -171,7 +171,7 @@
 <script type="math/tex; mode=display">\frac{\partial L}{\partial w_j } = \sum_{i=1}^{n} {\frac{ \partial L }{ \partial z_{ij} } \frac{\partial z_{ij} }{\partial w_j }}</script><script type="math/tex; mode=display">\frac{ \partial L }{ \partial z_{ij} } = \sum_{k=1}^{c} { \frac{ \partial L}{ \partial \hat{y_{ik}} } \frac{ \partial \hat{y_{ik}}}{\partial z_{ij}} }</script><script type="math/tex; mode=display">\frac{\partial L }{\partial \hat{y_{ik}}} = \frac{ \partial [ -y_{ik} \ln \hat{y_{ik}}] }{ \partial \hat{y_{ik}}}= \frac{-y_{ik}}{ \hat{y_{ik}}}</script><p>下面得分两种情况考虑:<br>如果 $ k=j  $,</p>
 <script type="math/tex; mode=display">\frac{ \partial \hat{y_{ik}}}{\partial z_{ij}}  = \frac{ \partial \frac{e^{z_{ij}}}{ \sum_{q=1}^{c} {e^{z_{iq}}}} }{ \partial z_{ij} } = \frac{ e^{z_{ij}} \sum_{q=1}^{c}{ e^{z_{iq}}} - e^{z_{ij}} e^{z_{ij}}  }{ [ \sum_{q=1}^{c} {e^{z_{iq}}} ]^{2} } = \hat{y_{ij}} (1- \hat{y_{ij}} )</script><p>如果 $ k \ne j $,</p>
 <script type="math/tex; mode=display">\frac{ \partial \hat{y_{ik}}}{\partial z_{ij}} =  \frac{ \partial \frac{e^{z_{ik}}}{ \sum_{q=1}^{c} {e^{z_{iq}}}} }{ \partial z_{ij} } = \frac{ 0- e^{z_{ik}} e^{z_{ij}} }{ [ \sum_{q=1}^{c} {e^{z_{iq}}} ]^{2} } = - \hat{y_{ik}} \hat{y_{ij}}</script><p>将上面的两个式子综合一下，得到如下的式子：</p>
-<script type="math/tex; mode=display">\frac{ \partial L }{ \partial z_{ij} } = - y_{ij} (1- \hat{ y_{ij} })  + \sum_{k \ne j}^{c}{ -y_{ik} \hat{y_{ij}} }</script><p>综上,$ w $的更新公式如下：</p>
+<script type="math/tex; mode=display">\frac{ \partial L }{ \partial z_{ij} } = - y_{ij} (1- \hat{ y_{ij} })  + \sum_{k \ne j}^{c}{ y_{ik} \hat{y_{ij}} } = -y_{ij} + \hat{y_{ij}} \sum_{q=1}^{c} {y_{ik}}</script><p>综上,$ w $的更新公式如下：</p>
 <script type="math/tex; mode=display">w = w - \eta</script><p>同理,b的更新公式如下：</p>
 <script type="math/tex; mode=display">b = b - \eta</script>
   </div>
