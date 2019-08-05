@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[beam search]]></title>
+    <url>%2F2019%2F08%2F05%2Fbeam-search%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[隐马尔可夫模型]]></title>
+    <url>%2F2019%2F08%2F05%2F%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[RNN梯度消失和爆炸]]></title>
     <url>%2F2019%2F08%2F04%2FRNN%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E5%92%8C%E7%88%86%E7%82%B8%2F</url>
     <content type="text"></content>
+      <tags>
+        <tag>deep learning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BP反向传播/BPTT]]></title>
     <url>%2F2019%2F08%2F04%2FBP%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-BPTT%2F</url>
-    <content type="text"><![CDATA[BP (BackPropagation)&nbsp;&nbsp; BPTT (BackPropagation Through Time)&nbsp;&nbsp;]]></content>
+    <content type="text"><![CDATA[BP (BackPropagation)&nbsp;&nbsp; BPTT (BackPropagation Through Time)&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:]]></content>
       <tags>
         <tag>deep learning</tag>
       </tags>
