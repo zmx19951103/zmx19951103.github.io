@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[meta learning]]></title>
+    <url>%2F2019%2F08%2F05%2Fmeta-learning%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[自动微分]]></title>
     <url>%2F2019%2F08%2F05%2F%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86%2F</url>
     <content type="text"><![CDATA[参考一天实现自己的自动微分自动微分简介]]></content>
