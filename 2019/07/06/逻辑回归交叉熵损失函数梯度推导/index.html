@@ -16,7 +16,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/sigmoid.png">
 <meta property="og:image" content="http://yoursite.com/images/cross_entropy/code.png">
-<meta property="og:updated_time" content="2019-08-04T15:05:45.851Z">
+<meta property="og:updated_time" content="2019-08-05T01:53:25.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归交叉熵损失函数梯度推导">
 <meta name="twitter:description" content="what is softmax&amp;nbsp;&amp;nbsp;softmax通常用于神经网络的输出层，用于多分类任务, 为每个类别产生一个概率，公式如下: softmax(\overrightarrow{z})=\overrightarrow{s}\overrightarrow{z} \in R^n , \overrightarrow{s} \in R^ns_i = \frac{e^{z_i}}{ \su">
@@ -175,7 +175,8 @@
 <script type="math/tex; mode=display">\frac{ \partial L }{ \partial z_{ij} } = - y_{ij} (1- \hat{ y_{ij} })  + \sum_{k \ne j}^{c}{ y_{ik} \hat{y_{ij}} } = -y_{ij} + \hat{y_{ij}} \sum_{q=1}^{c} {y_{ik}} = \hat{ y_{ij}} -y_{ij}</script><p>因为:</p>
 <script type="math/tex; mode=display">\frac{\partial z_{ij}}{ \partial w_j } = x_i</script><script type="math/tex; mode=display">\frac{\partial z_{ij}}{ \partial b_j } = 1</script><p>综上,$ w_j $的更新公式如下：</p>
 <script type="math/tex; mode=display">w_j = w_j - \eta \sum_{i=1}^{n}{ ( \hat{ y_{ij}} -y_{ij}) x_i }</script><p>同理,b的更新公式如下：</p>
-<script type="math/tex; mode=display">b_j = b_j - \eta \sum_{i=1}^{n}{ ( \hat{ y_{ij}} -y_{ij}) }</script><p>上面的公式可以由下面的代码来验证:<br><img src="/images/cross_entropy/code.png" alt title="code"></p>
+<script type="math/tex; mode=display">b_j = b_j - \eta \sum_{i=1}^{n}{ ( \hat{ y_{ij}} -y_{ij}) }</script><p>上面的公式可以由下面的代码来验证:</p>
+<p><img src="/images/cross_entropy/code.png" alt title="code"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
   </div>
 </article>
