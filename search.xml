@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[自动微分]]></title>
     <url>%2F2019%2F08%2F05%2F%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86%2F</url>
-    <content type="text"><![CDATA[符号微分数值微分前向自动微分反向自动微分参考一天实现自己的自动微分自动微分简介tensorflow 自动微分c++ 实现自动微分wikpedia automatic differentiation]]></content>
+    <content type="text"><![CDATA[符号微分数值微分前向自动微分反向自动微分参考一天实现自己的自动微分自动微分简介tensorflow 自动微分c++ 实现自动微分wikpedia automatic differentiation自动微分法是如何用c++实现的]]></content>
       <tags>
         <tag>deep learning system</tag>
       </tags>
