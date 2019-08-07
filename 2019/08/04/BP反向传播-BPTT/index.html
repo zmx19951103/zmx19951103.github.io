@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下：标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softm">
+    <meta name="description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softmax(z(t))$ U">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BP反向传播&#x2F;BPTT">
 <meta property="og:url" content="http://yoursite.com/2019/08/04/BP反向传播-BPTT/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下：标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softm">
+<meta property="og:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softmax(z(t))$ U">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/BPTT/RNN.png">
-<meta property="og:updated_time" content="2019-08-07T13:58:30.008Z">
+<meta property="og:updated_time" content="2019-08-07T14:07:13.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BP反向传播&#x2F;BPTT">
-<meta name="twitter:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下：标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softm">
+<meta name="twitter:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softmax(z(t))$ U">
 <meta name="twitter:image" content="http://yoursite.com/images/BPTT/RNN.png">
     
     
@@ -51,7 +51,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -153,9 +154,10 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="BP-BackPropagation"><a href="#BP-BackPropagation" class="headerlink" title="BP (BackPropagation)"></a>BP (BackPropagation)</h2><p>&nbsp;&nbsp;</p>
-<h2 id="BPTT-BackPropagation-Through-Time"><a href="#BPTT-BackPropagation-Through-Time" class="headerlink" title="BPTT (BackPropagation Through Time)"></a>BPTT (BackPropagation Through Time)</h2><p>&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下：<br><img src="/images/BPTT/RNN.png" alt title="RNN"><br>标准RNN的数学表达式如下:</p>
-<script type="math/tex; mode=display">s(t) = Ux(t)+Wh(t-1)</script><script type="math/tex; mode=display">h(t) = tanh(s(t))</script><script type="math/tex; mode=display">z(t) = Vh(t)</script><script type="math/tex; mode=display">\hat{y(t)} = softmax(z(t))</script><p>$ U $ , $ W $ , $ V $ 是待优化的参数. 上面的表达式可以和图对应,<strong>RNN网络的参数在所有时间步都是共享的</strong>.</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BPTT blog</a></p>
+<h2 id="BPTT-BackPropagation-Through-Time"><a href="#BPTT-BackPropagation-Through-Time" class="headerlink" title="BPTT (BackPropagation Through Time)"></a>BPTT (BackPropagation Through Time)</h2><p>用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下：</p>
+<p><img src="/images/BPTT/RNN.png" alt title="RNN"><br>标准RNN的数学表达式如下:</p>
+<script type="math/tex; mode=display">s(t) = Ux(t)+Wh(t-1)</script><script type="math/tex; mode=display">h(t) = tanh(s(t))</script><script type="math/tex; mode=display">z(t) = Vh(t)</script><script type="math/tex; mode=display">\hat{y(t)} = softmax(z(t))</script><p>$ U $ , $ W $ , $ V $ 是待优化的参数. 上面的表达式可以和图对应,<strong>RNN网络的参数在所有时间步都是共享的</strong>.<br>因为每个时间步的输出都是一个概率向量，表示该时间步的词所属于各标签的概率分布，如果用one-hot向量表示真实标签$ y_t $，那么输出$ \hat{y_t} $和$ y_t $可以计算交叉熵损失$ E_t $, 公式如下：</p>
+<script type="math/tex; mode=display">E_t = -{y_t}^T \log( \hat{y_t})</script><script type="math/tex; mode=display">E = \sum_{t=1}^{T} {E_t}</script><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BPTT blog</a></p>
 
   </div>
 </article>
@@ -274,26 +276,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
