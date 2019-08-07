@@ -34,7 +34,7 @@
   <entry>
     <title><![CDATA[BP反向传播/BPTT]]></title>
     <url>%2F2019%2F08%2F04%2FBP%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-BPTT%2F</url>
-    <content type="text"><![CDATA[BP (BackPropagation)&nbsp;&nbsp; BPTT (BackPropagation Through Time)&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式: h(t) = f(Ux(t)+Wh(t-1))y(t) = g(Vh(t))U,W,V是待优化的参数.f,g分别代表tanh(有论文是sigmoid函数)和softmax激活函数.]]></content>
+    <content type="text"><![CDATA[BP (BackPropagation)&nbsp;&nbsp; BPTT (BackPropagation Through Time)&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式: h(t) = f(Ux(t)+Wh(t-1))y(t) = g(Vh(t))$ U $,$ W $,$ V $是待优化的参数.$ f $,$ g $分别代表tanh(有论文是sigmoid函数)和softmax激活函数.]]></content>
       <tags>
         <tag>deep learning</tag>
       </tags>
