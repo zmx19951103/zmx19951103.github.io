@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:">
+    <meta name="description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式: h(t) = f(Ux(t)+Wh(t-1))y(t) = g(Vh(t))U,W,V是待优化的参数.f,g分别代表tanh(有论文是sigmoid函数)和softmax激活函数.">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BP反向传播&#x2F;BPTT">
 <meta property="og:url" content="http://yoursite.com/2019/08/04/BP反向传播-BPTT/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:">
+<meta property="og:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式: h(t) = f(Ux(t)+Wh(t-1))y(t) = g(Vh(t))U,W,V是待优化的参数.f,g分别代表tanh(有论文是sigmoid函数)和softmax激活函数.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-05T04:40:22.487Z">
+<meta property="og:updated_time" content="2019-08-07T11:40:35.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BP反向传播&#x2F;BPTT">
-<meta name="twitter:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:">
+<meta name="twitter:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)&amp;nbsp;&amp;nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式: h(t) = f(Ux(t)+Wh(t-1))y(t) = g(Vh(t))U,W,V是待优化的参数.f,g分别代表tanh(有论文是sigmoid函数)和softmax激活函数.">
     
     
         
@@ -152,7 +152,8 @@
   <div class="content" itemprop="articleBody">
     <h2 id="BP-BackPropagation"><a href="#BP-BackPropagation" class="headerlink" title="BP (BackPropagation)"></a>BP (BackPropagation)</h2><p>&nbsp;&nbsp;</p>
 <h2 id="BPTT-BackPropagation-Through-Time"><a href="#BPTT-BackPropagation-Through-Time" class="headerlink" title="BPTT (BackPropagation Through Time)"></a>BPTT (BackPropagation Through Time)</h2><p>&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:</p>
-<script type="math/tex; mode=display"> </script>
+<script type="math/tex; mode=display">h(t) = f(Ux(t)+Wh(t-1))</script><script type="math/tex; mode=display">y(t) = g(Vh(t))</script><p>U,W,V是待优化的参数.f,g分别代表tanh(有论文是sigmoid函数)和softmax激活函数.</p>
+
   </div>
 </article>
 
