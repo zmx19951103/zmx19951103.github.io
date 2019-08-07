@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>GBDT</title>
+      <link href="/2019/08/07/GBDT/"/>
+      <url>/2019/08/07/GBDT/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>meta learning</title>
       <link href="/2019/08/05/meta-learning/"/>
       <url>/2019/08/05/meta-learning/</url>
@@ -85,7 +98,7 @@
       <link href="/2019/08/04/BP%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-BPTT/"/>
       <url>/2019/08/04/BP%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-BPTT/</url>
       
-        <content type="html"><![CDATA[<h2 id="BP-BackPropagation"><a href="#BP-BackPropagation" class="headerlink" title="BP (BackPropagation)"></a>BP (BackPropagation)</h2><p>&nbsp;&nbsp;</p><h2 id="BPTT-BackPropagation-Through-Time"><a href="#BPTT-BackPropagation-Through-Time" class="headerlink" title="BPTT (BackPropagation Through Time)"></a>BPTT (BackPropagation Through Time)</h2><p>&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:</p><script type="math/tex; mode=display">h(t) = f(Ux(t)+Wh(t-1))</script><script type="math/tex; mode=display">y(t) = g(Vh(t))</script><p>$ U $ , $ W $ , $ V $ 是待优化的参数. $ f $ , $ g $ 分别代表tanh(有论文是sigmoid函数)和softmax激活函数.</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="BP-BackPropagation"><a href="#BP-BackPropagation" class="headerlink" title="BP (BackPropagation)"></a>BP (BackPropagation)</h2><p>&nbsp;&nbsp;</p><h2 id="BPTT-BackPropagation-Through-Time"><a href="#BPTT-BackPropagation-Through-Time" class="headerlink" title="BPTT (BackPropagation Through Time)"></a>BPTT (BackPropagation Through Time)</h2><p>&nbsp;&nbsp;用于循环神经网络的BP算法.首先我们回顾一下RNN的公式:</p><script type="math/tex; mode=display">h(t) = f(Ux(t)+Wh(t-1))</script><script type="math/tex; mode=display">\hat{y(t)} = g(Vh(t))</script><p>$ U $ , $ W $ , $ V $ 是待优化的参数. $ f $ , $ g $ 分别代表tanh(有论文是sigmoid函数)和softmax激活函数.</p>]]></content>
       
       
       
