@@ -16,7 +16,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/BPTT/RNN.png">
 <meta property="og:image" content="http://yoursite.com/images/BPTT/model.png">
-<meta property="og:updated_time" content="2019-08-08T09:08:16.337Z">
+<meta property="og:updated_time" content="2019-08-08T12:26:06.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BPTT">
 <meta name="twitter:description" content="BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)+bh(t) = tanh(s(t))z(t) = Vh(t)+c\hat{y(t)} = softmax(z(t))$ U $ , $ W $ , $ V $ 是待优化的参数. 上">
@@ -161,10 +161,10 @@
 <script type="math/tex; mode=display">E_t = -{y_t}^T \ln( \hat{y_t})</script><script type="math/tex; mode=display">E = \sum_{t=1}^{T} {E_t}</script><p>我们要用损失函数 $ E $ 对 $ U $ , $ W $ , $ V $ 求偏导数，然后更新参数,我么使用sgd 算法所以每次更新使用一个样本.</p>
 <p>我们拿出一个时间步的损失，并就该损失求$ U $ , $ W $ , $ V $ 的更新，结构图如下：<br><img src="/images/BPTT/model.png" alt title="model"><br>我们假设输出的概率分布的维度是 $ o $ , 并把时间维度 $ t $ 舍去, 那么:</p>
 <script type="math/tex; mode=display">E_t = -{y_t}^T \ln( \hat{y_t})  = \sum_{k=1}^{o} { -y_k \ln \hat{y_k} }</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{y_k} } = - \frac{y_k}{ \hat{y_k} }</script><script type="math/tex; mode=display">\frac{ \partial \hat{y_k} }{ \partial z_j } = \begin{cases}
-\hat{y_k}(1- \hat{y_k} ) & \text{j=k}\\
-- \hat{y_k} { \hat{y_j }}& \text{j!=k}
+\hat{y_j}(1- \hat{y_j} ) & \text{ k = j  }\\
+- \hat{y_k} { \hat{y_j }}& \text{ j != k }
 \end{cases}</script><p>综上：</p>
-<script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{z_j} } = \sum_{k=1}^{o} { \frac{ \partial E_t}{ \partial \hat{y_k} } \frac{ \partial \hat{y_k} }{ \partial z_j } }</script><h3 id="W更新"><a href="#W更新" class="headerlink" title="W更新"></a>W更新</h3><script type="math/tex; mode=display">\frac{ \partial E}{ \partial W} = \sum_{t=1}^{T} { \frac{ \partial E_t }{ \partial W }}</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial W } = \frac{ \partial E_t }{ \partial \hat{y_t}  } \frac{ \partial \hat{y_t} }{ \partial W  }</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{y_t}  } = - \frac{y_t}{ \hat{y_t}}</script><p>这里的除法是element-wise的.<br>然后是$ \frac{ \partial \hat{y_t} }{ \partial W  } $ ，<del>这是一个向量对一个矩阵求偏导</del></p>
+<script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{z_j} } = \sum_{k=1}^{o} { \frac{ \partial E_t}{ \partial \hat{y_k} } \frac{ \partial \hat{y_k} }{ \partial z_j } } = y_j - \hat{y_j}</script><h3 id="W更新"><a href="#W更新" class="headerlink" title="W更新"></a>W更新</h3><script type="math/tex; mode=display">\frac{ \partial E}{ \partial W} = \sum_{t=1}^{T} { \frac{ \partial E_t }{ \partial W }}</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial W } = \frac{ \partial E_t }{ \partial \hat{y_t}  } \frac{ \partial \hat{y_t} }{ \partial W  }</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{y_t}  } = - \frac{y_t}{ \hat{y_t}}</script><p>这里的除法是element-wise的.<br>然后是$ \frac{ \partial \hat{y_t} }{ \partial W  } $ ，<del>这是一个向量对一个矩阵求偏导</del></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BPTT blog</a><br><a href="https://pan.baidu.com/s/1BQkpjxfhDWhPnGy9E_h12w" target="_blank" rel="noopener">bptt</a></p>
 
   </div>
