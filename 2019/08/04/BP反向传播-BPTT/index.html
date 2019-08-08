@@ -9,16 +9,16 @@
     <meta name="description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)+bh(t) = tanh(s(t))z(t) = Vh(t)+c\hat{y(t)} = softmax(z(t)">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BP反向传播&#x2F;BPTT">
+<meta property="og:title" content="BPTT">
 <meta property="og:url" content="http://yoursite.com/2019/08/04/BP反向传播-BPTT/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)+bh(t) = tanh(s(t))z(t) = Vh(t)+c\hat{y(t)} = softmax(z(t)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/BPTT/RNN.png">
 <meta property="og:image" content="http://yoursite.com/images/BPTT/model.png">
-<meta property="og:updated_time" content="2019-08-08T08:27:36.523Z">
+<meta property="og:updated_time" content="2019-08-08T08:54:58.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BP反向传播&#x2F;BPTT">
+<meta name="twitter:title" content="BPTT">
 <meta name="twitter:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)+bh(t) = tanh(s(t))z(t) = Vh(t)+c\hat{y(t)} = softmax(z(t)">
 <meta name="twitter:image" content="http://yoursite.com/images/BPTT/RNN.png">
     
@@ -40,7 +40,7 @@
         
     
     <!-- title -->
-    <title>BP反向传播/BPTT</title>
+    <title>BPTT</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -96,15 +96,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/04/BP反向传播-BPTT/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&text=BP反向传播/BPTT"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&is_video=false&description=BP反向传播/BPTT"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=BP反向传播/BPTT&body=Check out this article: http://yoursite.com/2019/08/04/BP反向传播-BPTT/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&name=BP反向传播/BPTT&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&text=BPTT"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&is_video=false&description=BPTT"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BPTT&body=Check out this article: http://yoursite.com/2019/08/04/BP反向传播-BPTT/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&name=BPTT&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -121,7 +121,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        BP反向传播/BPTT
+        BPTT
     </h1>
 
 
@@ -161,7 +161,10 @@
 <script type="math/tex; mode=display">z_j(t) = \sum_{q=1}^{m} {h_q(t)v_{jq}}+c_j</script><p>因为每个时间步的输出都是一个概率向量，表示该时间步的词所属于各标签的概率分布，如果用one-hot向量表示真实标签$ y_t $，那么输出$ \hat{y_t} $和$ y_t $可以计算交叉熵损失$ E_t $, 公式如下：</p>
 <script type="math/tex; mode=display">E_t = -{y_t}^T \ln( \hat{y_t})</script><script type="math/tex; mode=display">E = \sum_{t=1}^{T} {E_t}</script><p>我们要用损失函数 $ E $ 对 $ U $ , $ W $ , $ V $ 求偏导数，然后更新参数,我么使用sgd 算法所以每次更新使用一个样本.</p>
 <p>我们拿出一个时间步的损失，并就该损失求$ U $ , $ W $ , $ V $ 的更新，结构图如下：<br><img src="/images/BPTT/model.png" alt title="model"><br>我们假设输出的概率分布的维度是 $ o $ , 并把时间维度 $ t $ 舍去, 那么:</p>
-<script type="math/tex; mode=display">E_t = -{y_t}^T \ln( \hat{y_t})  = \sum_{k=1}^{o} { y_k \ln \hat{y_k} }</script><h3 id="W更新"><a href="#W更新" class="headerlink" title="W更新"></a>W更新</h3><script type="math/tex; mode=display">\frac{ \partial E}{ \partial W} = \sum_{t=1}^{T} { \frac{ \partial E_t }{ \partial W }}</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial W } = \frac{ \partial E_t }{ \partial \hat{y_t}  } \frac{ \partial \hat{y_t} }{ \partial W  }</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{y_t}  } = - \frac{y_t}{ \hat{y_t}}</script><p>这里的除法是element-wise的.<br>然后是$ \frac{ \partial \hat{y_t} }{ \partial W  } $ ，<del>这是一个向量对一个矩阵求偏导</del></p>
+<script type="math/tex; mode=display">E_t = -{y_t}^T \ln( \hat{y_t})  = \sum_{k=1}^{o} { -y_k \ln \hat{y_k} }</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{y_k} } = - \frac{y_k}{ \hat{y_k} }</script><script type="math/tex; mode=display">\frac{ \partial \hat{y_k} }{ \partial z_j } = \begin{cases}
+\hat{y_k}(1- \hat{y_K} ) & \text{j=k}\\
+- \hat{y_k} { \hat{y_j }}& \text{j!=k}
+\end{cases}</script><h3 id="W更新"><a href="#W更新" class="headerlink" title="W更新"></a>W更新</h3><script type="math/tex; mode=display">\frac{ \partial E}{ \partial W} = \sum_{t=1}^{T} { \frac{ \partial E_t }{ \partial W }}</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial W } = \frac{ \partial E_t }{ \partial \hat{y_t}  } \frac{ \partial \hat{y_t} }{ \partial W  }</script><script type="math/tex; mode=display">\frac{ \partial E_t }{ \partial \hat{y_t}  } = - \frac{y_t}{ \hat{y_t}}</script><p>这里的除法是element-wise的.<br>然后是$ \frac{ \partial \hat{y_t} }{ \partial W  } $ ，<del>这是一个向量对一个矩阵求偏导</del></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BPTT blog</a><br><a href="https://pan.baidu.com/s/1BQkpjxfhDWhPnGy9E_h12w" target="_blank" rel="noopener">bptt</a></p>
 
   </div>
@@ -204,15 +207,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/04/BP反向传播-BPTT/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&text=BP反向传播/BPTT"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&is_video=false&description=BP反向传播/BPTT"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=BP反向传播/BPTT&body=Check out this article: http://yoursite.com/2019/08/04/BP反向传播-BPTT/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BP反向传播/BPTT"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&name=BP反向传播/BPTT&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&text=BPTT"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&is_video=false&description=BPTT"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BPTT&body=Check out this article: http://yoursite.com/2019/08/04/BP反向传播-BPTT/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&title=BPTT"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/BP反向传播-BPTT/&name=BPTT&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
