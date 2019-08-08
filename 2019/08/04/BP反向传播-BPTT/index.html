@@ -15,7 +15,7 @@
 <meta property="og:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softmax(z(t))$ U">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/BPTT/RNN.png">
-<meta property="og:updated_time" content="2019-08-08T02:14:29.278Z">
+<meta property="og:updated_time" content="2019-08-08T02:17:00.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BP反向传播&#x2F;BPTT">
 <meta name="twitter:description" content="BP (BackPropagation)&amp;nbsp;&amp;nbsp; BPTT (BackPropagation Through Time)用于循环神经网络的BP算法.首先我们回顾一下RNN,RNN的网络结构图如下： 标准RNN的数学表达式如下: s(t) = Ux(t)+Wh(t-1)h(t) = tanh(s(t))z(t) = Vh(t)\hat{y(t)} = softmax(z(t))$ U">
@@ -157,8 +157,7 @@
 <p><img src="/images/BPTT/RNN.png" alt title="RNN"><br>标准RNN的数学表达式如下:</p>
 <script type="math/tex; mode=display">s(t) = Ux(t)+Wh(t-1)</script><script type="math/tex; mode=display">h(t) = tanh(s(t))</script><script type="math/tex; mode=display">z(t) = Vh(t)</script><script type="math/tex; mode=display">\hat{y(t)} = softmax(z(t))</script><p>$ U $ , $ W $ , $ V $ 是待优化的参数. 上面的表达式可以和图对应,<strong>RNN网络的参数在所有时间步都是共享的</strong>.<br>因为每个时间步的输出都是一个概率向量，表示该时间步的词所属于各标签的概率分布，如果用one-hot向量表示真实标签$ y_t $，那么输出$ \hat{y_t} $和$ y_t $可以计算交叉熵损失$ E_t $, 公式如下：</p>
 <script type="math/tex; mode=display">E_t = -{y_t}^T \log( \hat{y_t})</script><script type="math/tex; mode=display">E = \sum_{t=1}^{T} {E_t}</script><p>下面我们就要用损失函数 $ E $ 对 $ U $ , $ W $ , $ V $ 求偏导数，然后更新参数,我么使用sgd 算法所以每次更新使用一个样本.</p>
-<h3 id="W更新"><a href="#W更新" class="headerlink" title="W更新"></a>W更新</h3><p>$$ \frac{ \partial E}{ \partial W} = \sum_{t=1}^{T} { \frac{ \partial E_t }{ \partial W }}</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BPTT blog</a></p>
+<h3 id="W更新"><a href="#W更新" class="headerlink" title="W更新"></a>W更新</h3><script type="math/tex; mode=display">\frac{ \partial E}{ \partial W} = \sum_{t=1}^{T} { \frac{ \partial E_t }{ \partial W }}</script><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BPTT blog</a></p>
 
   </div>
 </article>
