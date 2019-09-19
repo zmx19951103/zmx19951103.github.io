@@ -7,13 +7,13 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:type" content="article">
-<meta property="og:title" content="同步sgd&#x2F;异步sgd">
-<meta property="og:url" content="http://yoursite.com/2019/09/10/同步sgd-异步sgd/index.html">
+<meta property="og:title" content="c++11 std::thread">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/c-11-std-thread/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-10T06:28:03.061Z">
+<meta property="og:updated_time" content="2019-09-18T07:48:21.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="同步sgd&#x2F;异步sgd">
+<meta name="twitter:title" content="c++11 std::thread">
     
     
         
@@ -33,7 +33,7 @@
         
     
     <!-- title -->
-    <title>同步sgd/异步sgd</title>
+    <title>c++11 std::thread</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -72,10 +72,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/09/18/c-11-std-thread/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/09/19/生产者消费者模型/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/08/30/论文阅读-Parameter-Server-for-Distributed-Machine-Learning/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/09/10/同步sgd-异步sgd/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -88,16 +88,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/10/同步sgd-异步sgd/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&text=同步sgd/异步sgd"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&is_video=false&description=同步sgd/异步sgd"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=同步sgd/异步sgd&body=Check out this article: http://yoursite.com/2019/09/10/同步sgd-异步sgd/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&name=同步sgd/异步sgd&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/18/c-11-std-thread/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/18/c-11-std-thread/&text=c++11 std::thread"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/18/c-11-std-thread/&is_video=false&description=c++11 std::thread"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=c++11 std::thread&body=Check out this article: http://yoursite.com/2019/09/18/c-11-std-thread/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/18/c-11-std-thread/&name=c++11 std::thread&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -114,7 +114,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        同步sgd/异步sgd
+        c++11 std::thread
     </h1>
 
 
@@ -126,7 +126,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-09-10T06:28:03.000Z" itemprop="datePublished">2019-09-10</time>
+        <time datetime="2019-09-18T07:48:21.000Z" itemprop="datePublished">2019-09-18</time>
         
       
     </div>
@@ -181,16 +181,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/10/同步sgd-异步sgd/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&text=同步sgd/异步sgd"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&is_video=false&description=同步sgd/异步sgd"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=同步sgd/异步sgd&body=Check out this article: http://yoursite.com/2019/09/10/同步sgd-异步sgd/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&title=同步sgd/异步sgd"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/10/同步sgd-异步sgd/&name=同步sgd/异步sgd&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/18/c-11-std-thread/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/18/c-11-std-thread/&text=c++11 std::thread"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/18/c-11-std-thread/&is_video=false&description=c++11 std::thread"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=c++11 std::thread&body=Check out this article: http://yoursite.com/2019/09/18/c-11-std-thread/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/18/c-11-std-thread/&title=c++11 std::thread"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/18/c-11-std-thread/&name=c++11 std::thread&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
