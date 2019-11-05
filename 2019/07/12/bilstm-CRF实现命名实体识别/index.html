@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="参考Bidirectional LSTM-CRF Models for Sequence Tagging">
+    <meta name="description" content="BiLSTMCRFTensorflow implementation参考Bidirectional LSTM-CRF Models for Sequence Tagging">
 <meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bilstm+CRF实现命名实体识别">
 <meta property="og:url" content="http://yoursite.com/2019/07/12/bilstm-CRF实现命名实体识别/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="参考Bidirectional LSTM-CRF Models for Sequence Tagging">
+<meta property="og:description" content="BiLSTMCRFTensorflow implementation参考Bidirectional LSTM-CRF Models for Sequence Tagging">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-05T06:49:37.455Z">
+<meta property="og:updated_time" content="2019-11-05T06:52:28.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bilstm+CRF实现命名实体识别">
-<meta name="twitter:description" content="参考Bidirectional LSTM-CRF Models for Sequence Tagging">
+<meta name="twitter:description" content="BiLSTMCRFTensorflow implementation参考Bidirectional LSTM-CRF Models for Sequence Tagging">
     
     
         
@@ -49,8 +49,7 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -107,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BiLSTM"><span class="toc-number">1.</span> <span class="toc-text">BiLSTM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRF"><span class="toc-number">2.</span> <span class="toc-text">CRF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-implementation"><span class="toc-number">3.</span> <span class="toc-text">Tensorflow implementation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -151,7 +150,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://pan.baidu.com/s/1bReq4ygj7ZKUmZSUNdONEQ" target="_blank" rel="noopener">Bidirectional LSTM-CRF Models for Sequence Tagging</a></p>
+    <h2 id="BiLSTM"><a href="#BiLSTM" class="headerlink" title="BiLSTM"></a>BiLSTM</h2><h2 id="CRF"><a href="#CRF" class="headerlink" title="CRF"></a>CRF</h2><h2 id="Tensorflow-implementation"><a href="#Tensorflow-implementation" class="headerlink" title="Tensorflow implementation"></a>Tensorflow implementation</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://pan.baidu.com/s/1bReq4ygj7ZKUmZSUNdONEQ" target="_blank" rel="noopener">Bidirectional LSTM-CRF Models for Sequence Tagging</a></p>
 
   </div>
 </article>
@@ -187,7 +186,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BiLSTM"><span class="toc-number">1.</span> <span class="toc-text">BiLSTM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRF"><span class="toc-number">2.</span> <span class="toc-text">CRF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-implementation"><span class="toc-number">3.</span> <span class="toc-text">Tensorflow implementation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -270,6 +269,26 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
