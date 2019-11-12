@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[python的with语句以及__enter__和__exit__]]></title>
     <url>%2F2019%2F11%2F10%2Fpython%E7%9A%84with%E8%AF%AD%E5%8F%A5%E4%BB%A5%E5%8F%8A-enter-%E5%92%8C-exit%2F</url>
-    <content type="text"><![CDATA[前言想写一个DL的框架，前端想模仿tensorflow来写，看到 with tf.Graph().as_default, 就想看看Graph类如何定义，看到一个simpleflow的github项目，里面Graph的定义里有 enter和exit方法，不明白是什么意思就随手一查，反而让我知道了with语法的内部机制,苏澳是一个比较大的收获。 参考python enter 与 exit的作用，以及与 with 语句的关系]]></content>
+    <content type="text"><![CDATA[前言想写一个DL的框架，前端想模仿tensorflow来写，看到 with tf.Graph().as_default, 就想看看Graph类如何定义，看到一个simpleflow的github项目，里面Graph的定义里有 enter和exit方法，不明白是什么意思就随手一查，反而让我知道了with语法的内部机制,算是一个比较大的收获。 参考python enter 与 exit的作用，以及与 with 语句的关系]]></content>
       <tags>
         <tag>python</tag>
       </tags>
