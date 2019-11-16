@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/11.png">
 <meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/22.png">
 <meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/last_gather.png">
-<meta property="og:updated_time" content="2019-11-16T15:38:44.614Z">
+<meta property="og:updated_time" content="2019-11-16T15:43:51.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReduceScatter+Allgather">
 <meta name="twitter:description" content="前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。目前常用的分布式深度学习的框架基本就是ps架构和Ring Allreduce架构。在这篇博客中，我会首先来回顾一下最简单的Allreduce算法的实现，然后是Ring Allreduce算法的实现，并给出baidu all-reduce的源码分析。 理论Allr">
@@ -174,7 +174,8 @@
 <p><img src="/images/ReduceScatter+Allgather/1.png" alt title="split array"><br><img src="/images/ReduceScatter+Allgather/2.png" alt title="split array"><br><img src="/images/ReduceScatter+Allgather/last.png" alt title="split array"></p>
 <p>可以看到P-1次Reduce-Scatter迭代完成后，每个gpu都拥有最终结果的其中一块。我们需要把每个gpu中的这个块发送到其他gpu，这次每个gpu接收到块以后不是reduce操作，是直接覆盖对应块的内容即可。<br>方法是通过P-1次Allgather迭代，第一次迭代，第n个gpu发送第n+1个块接收第n个块.后续的迭代和Reduce-Scatter一样，也是发送上一轮迭代接收的到的块.下面是第一轮，第二轮以及最后的图示：</p>
 <p><img src="/images/ReduceScatter+Allgather/11.png" alt title="split array"><br><img src="/images/ReduceScatter+Allgather/22.png" alt title="split array"><br><img src="/images/ReduceScatter+Allgather/last_gather.png" alt title="split array"></p>
-<p>我们分析这个ring算法的总的通信量, 总共是2<em>(p-1)次迭代，每个迭代每块gpu都发送 N/P 的数据，所以每个gpu发送的数据量和接收的数据量都是 2</em>(P-1)N/P, 最后的结果与P无关。</p>
+<p>我们分析这个ring算法的总的通信量, 总共是2<em>(p-1)次迭代，每个迭代每块gpu都发送 N/P 的数据，所以每个gpu发送的数据量和接收的数据量都是 2</em>(P-1)N/P, 最后的结果与P无关。通过对比可以看到，ring allreduce算法的通信量更少而且与gpu数量无关，扩展性更好。</p>
+<p>其实allreduce算法有很多种，还有 tree-allreduce等，像Rabit库中实现的应该是tree-allreduce, 后续可以补充。ring allreduce在通信上应该是最优的.</p>
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>我们通过对baidu all-reduce源码的解读和应用来实践ring all-reduce算法.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.jianshu.com/p/8c0e7edbefb9" target="_blank" rel="noopener">[1]Ring Allreduce</a><br><a href="https://blog.csdn.net/qq_35799003/article/details/85016537" target="_blank" rel="noopener">[2]All Reduce</a><br><a href="https://github.com/dmlc/rabit" target="_blank" rel="noopener">[3]Rabit</a><br><a href="https://github.com/baidu-research/baidu-allreduce" target="_blank" rel="noopener">[4]baidu all-reduce</a></p>
 
