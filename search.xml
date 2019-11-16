@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[ReduceScatter+Allgather]]></title>
     <url>%2F2019%2F11%2F16%2FReduceScatter-Allgather%2F</url>
-    <content type="text"><![CDATA[理论实践ReferenceRing AllreduceAll ReduceRabitbaidu all-reduce]]></content>
+    <content type="text"><![CDATA[前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。 理论实践Reference[1]Ring Allreduce[2]All Reduce[3]Rabit[4]baidu all-reduce]]></content>
       <tags>
         <tag>DDL</tag>
       </tags>
