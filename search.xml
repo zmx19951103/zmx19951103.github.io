@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[ReduceScatter+Allgather]]></title>
     <url>%2F2019%2F11%2F16%2FReduceScatter-Allgather%2F</url>
-    <content type="text"><![CDATA[前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。目前常用的分布式深度学习的框架基本就是ps架构和Ring Allreduce架构。在这篇博客中，我会首先来回顾一下最简单的Allreduce算法的实现，然后是Ring Allreduce算法的实现，并给出baidu all-reduce的源码分析。 理论Allreduce 是一种集合通信原语，它的规范的定义如下： AllReduce is an operation that reduces the target arrays in all processes to a single array and returns the resultant array to all processes. 简单来说就是有很多个进程，每个进程都有一个目标数组，Allreduce要做的就是将所有进程中的数组收集起来做一个reduce操作成单个的数组，然后将这单个的数组重新发送给所有的进程。就是一个reduce+broadcast的操作。很容易理解，要实现Allreduce一个最简单的算法就是用一个process当master，其他的进程把自己的数组发送给master, master收集完后做一个reduce操作，然后再将结果数组发送给其余的所有进程，和ps架构一样。图示如下：{:height=”50%” width=”50%”} 实践Reference[1]Ring Allreduce[2]All Reduce[3]Rabit[4]baidu all-reduce]]></content>
+    <content type="text"><![CDATA[前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。目前常用的分布式深度学习的框架基本就是ps架构和Ring Allreduce架构。在这篇博客中，我会首先来回顾一下最简单的Allreduce算法的实现，然后是Ring Allreduce算法的实现，并给出baidu all-reduce的源码分析。 理论Allreduce 是一种集合通信原语，它的规范的定义如下： AllReduce is an operation that reduces the target arrays in all processes to a single array and returns the resultant array to all processes. 简单来说就是有很多个进程，每个进程都有一个目标数组，Allreduce要做的就是将所有进程中的数组收集起来做一个reduce操作成单个的数组，然后将这单个的数组重新发送给所有的进程。就是一个reduce+broadcast的操作。很容易理解，要实现Allreduce一个最简单的算法就是用一个process当master，其他的进程把自己的数组发送给master, master收集完后做一个reduce操作，然后再将结果数组发送给其余的所有进程，和ps架构一样。图示如下： {:height=”30%” width=”30%”} 实践Reference[1]Ring Allreduce[2]All Reduce[3]Rabit[4]baidu all-reduce]]></content>
       <tags>
         <tag>DDL</tag>
       </tags>
