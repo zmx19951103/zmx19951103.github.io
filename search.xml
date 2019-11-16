@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ReduceScatter+Allgather]]></title>
+    <url>%2F2019%2F11%2F16%2FReduceScatter-Allgather%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[bytescheduler在byteps中的实现]]></title>
+    <url>%2F2019%2F11%2F16%2Fbytescheduler%E5%9C%A8byteps%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[cuda Stream]]></title>
     <url>%2F2019%2F11%2F14%2Fcuda-Stream%2F</url>
     <content type="text"></content>
