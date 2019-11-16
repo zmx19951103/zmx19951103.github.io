@@ -15,7 +15,7 @@
 <meta property="og:description" content="前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。目前常用的分布式深度学习的框架基本就是ps架构和Ring Allreduce架构。在这篇博客中，我会首先来回顾一下最简单的Allreduce算法的实现，然后是Ring Allreduce算法的实现，并给出baidu all-reduce的源码分析。 理论Allr">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/master.png">
-<meta property="og:updated_time" content="2019-11-16T13:20:37.087Z">
+<meta property="og:updated_time" content="2019-11-16T13:22:07.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReduceScatter+Allgather">
 <meta name="twitter:description" content="前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。目前常用的分布式深度学习的框架基本就是ps架构和Ring Allreduce架构。在这篇博客中，我会首先来回顾一下最简单的Allreduce算法的实现，然后是Ring Allreduce算法的实现，并给出baidu all-reduce的源码分析。 理论Allr">
@@ -51,7 +51,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -277,26 +278,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
