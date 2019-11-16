@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[给ps-lite添加Angel中的psFunc]]></title>
+    <url>%2F2019%2F11%2F16%2F%E7%BB%99ps-lite%E6%B7%BB%E5%8A%A0Angel%E4%B8%AD%E7%9A%84psFunc%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[ReduceScatter+Allgather]]></title>
     <url>%2F2019%2F11%2F16%2FReduceScatter-Allgather%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[理论实践ReferenceRing AllreduceAll ReduceRabitbaidu all-reduce]]></content>
+      <tags>
+        <tag>DDL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[bytescheduler在byteps中的实现]]></title>

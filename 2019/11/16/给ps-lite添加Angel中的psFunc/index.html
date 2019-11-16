@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="caffe">
-<meta property="og:type" content="article">
-<meta property="og:title" content="caffe源码(1)">
-<meta property="og:url" content="http://yoursite.com/2019/07/22/caffe源码-1/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="给ps-lite添加Angel中的psFunc">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-22T17:04:20.210Z">
+<meta property="og:updated_time" content="2019-11-16T12:29:50.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="caffe源码(1)">
+<meta name="twitter:title" content="给ps-lite添加Angel中的psFunc">
     
     
         
@@ -34,7 +33,7 @@
         
     
     <!-- title -->
-    <title>caffe源码(1)</title>
+    <title>给ps-lite添加Angel中的psFunc</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -74,10 +73,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/07/23/REVISITING-DISTRIBUTED-SYNCHRONOUS-SGD/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/07/20/词向量/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/11/16/ReduceScatter-Allgather/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -90,16 +87,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/22/caffe源码-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/22/caffe源码-1/&text=caffe源码(1)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/22/caffe源码-1/&is_video=false&description=caffe源码(1)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=caffe源码(1)&body=Check out this article: http://yoursite.com/2019/07/22/caffe源码-1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/22/caffe源码-1/&name=caffe源码(1)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&text=给ps-lite添加Angel中的psFunc"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&is_video=false&description=给ps-lite添加Angel中的psFunc"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=给ps-lite添加Angel中的psFunc&body=Check out this article: http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&name=给ps-lite添加Angel中的psFunc&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -116,7 +113,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        caffe源码(1)
+        给ps-lite添加Angel中的psFunc
     </h1>
 
 
@@ -128,7 +125,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-07-22T08:32:37.000Z" itemprop="datePublished">2019-07-22</time>
+        <time datetime="2019-11-16T12:29:50.000Z" itemprop="datePublished">2019-11-16</time>
         
       
     </div>
@@ -137,11 +134,6 @@
       
 
       
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/caffe/">caffe</a>
-    </div>
-
 
     </div>
   </header>
@@ -188,16 +180,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/22/caffe源码-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/22/caffe源码-1/&text=caffe源码(1)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/22/caffe源码-1/&is_video=false&description=caffe源码(1)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=caffe源码(1)&body=Check out this article: http://yoursite.com/2019/07/22/caffe源码-1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/22/caffe源码-1/&title=caffe源码(1)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/22/caffe源码-1/&name=caffe源码(1)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&text=给ps-lite添加Angel中的psFunc"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&is_video=false&description=给ps-lite添加Angel中的psFunc"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=给ps-lite添加Angel中的psFunc&body=Check out this article: http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&title=给ps-lite添加Angel中的psFunc"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/16/给ps-lite添加Angel中的psFunc/&name=给ps-lite添加Angel中的psFunc&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
