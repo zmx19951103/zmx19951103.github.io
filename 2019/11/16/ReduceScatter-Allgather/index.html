@@ -16,7 +16,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/master.png">
 <meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/RingAllreduce.png">
-<meta property="og:updated_time" content="2019-11-16T14:00:26.110Z">
+<meta property="og:image" content="http://yoursite.com/images/ReduceScatter+Allgather/split.png">
+<meta property="og:updated_time" content="2019-11-16T15:07:41.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReduceScatter+Allgather">
 <meta name="twitter:description" content="前言Ring Allreduce架构也是一种常用的梯度同步架构，它的通信成本与gpu的数量无关。它是Allreduce算法的一种高效实现。目前常用的分布式深度学习的框架基本就是ps架构和Ring Allreduce架构。在这篇博客中，我会首先来回顾一下最简单的Allreduce算法的实现，然后是Ring Allreduce算法的实现，并给出baidu all-reduce的源码分析。 理论Allr">
@@ -52,7 +53,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -163,7 +165,7 @@
 <p>我们计算一下这种实现的通信量,假设数组的长度是N,总共有P个进程,那么第一步有P-1个进程将数组发送到master进程,然后master进程将reduce后的数组发送给P-1个进程，所以master总共的通信量是2(P-1)*N. 可以看到master的通信量和gpu的数量是线性关系的。而且master的带宽限制使得master成了一个瓶颈。</p>
 <p>而Ring Allreduce作为Allreduce算法的一个高效实现，它消除了master的瓶颈，使得系统的通信成本和gpu的数量无关，是一个恒定值。在该算法中，所有的gpu排列成一个环，我们给gpu标号，从0~N-1.按照顺时针的方向，每个gpu会有一个左边的邻居和右边的邻居，每个迭代中，当前gpu从左邻居中接受数据，发送数据给右边的邻居.图示如下：<br><img src="/images/ReduceScatter+Allgather/RingAllreduce.png" alt title="ring allreduce"></p>
 <p>我们来具体介绍算法流程:</p>
-<p>首先，在每个gpu上，把长度为N的数组切分成P个chunks,P是进程的数量。</p>
+<p>首先，在每个gpu上，把长度为N的数组切分成P个chunks,P是进程的数量。<br><img src="/images/ReduceScatter+Allgather/split.png" alt title="split array"></p>
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.jianshu.com/p/8c0e7edbefb9" target="_blank" rel="noopener">[1]Ring Allreduce</a><br><a href="https://blog.csdn.net/qq_35799003/article/details/85016537" target="_blank" rel="noopener">[2]All Reduce</a><br><a href="https://github.com/dmlc/rabit" target="_blank" rel="noopener">[3]Rabit</a><br><a href="https://github.com/baidu-research/baidu-allreduce" target="_blank" rel="noopener">[4]baidu all-reduce</a></p>
 
   </div>
@@ -283,26 +285,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
