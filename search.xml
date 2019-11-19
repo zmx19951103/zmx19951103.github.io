@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MPI Bcast,Gather,AllGather]]></title>
+    <url>%2F2019%2F11%2F19%2FMPI-Bcast-Gather-AllGather%2F</url>
+    <content type="text"><![CDATA[前言]]></content>
+      <tags>
+        <tag>MPI DDL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[horovod]]></title>
     <url>%2F2019%2F11%2F17%2Fhorovod%2F</url>
     <content type="text"></content>
