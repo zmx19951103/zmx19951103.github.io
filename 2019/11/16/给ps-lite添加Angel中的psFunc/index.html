@@ -15,7 +15,7 @@
 <meta property="og:description" content="前言实验室项目想把ps设计的更好，要求借鉴Angel提供psFunc,以便后续能提供对一些传统ML算法的支持，包括GBDT,LDA等。一开始并不是很懂这个psFunc有什么用，看了一下Angel的文档，当然这个Angel也是实验室和腾讯合作搞出来的。 psFuncpsFunc是在sever端的一些自定义函数，最简单的ps只提供模型的存储功能，但是针对一些特定的算法我们需要一些优化，如果我们要对模型">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/psFunc/ps.jpeg">
-<meta property="og:updated_time" content="2019-11-22T12:45:30.020Z">
+<meta property="og:updated_time" content="2019-11-22T12:48:39.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给ps-lite添加Angel中的psFunc">
 <meta name="twitter:description" content="前言实验室项目想把ps设计的更好，要求借鉴Angel提供psFunc,以便后续能提供对一些传统ML算法的支持，包括GBDT,LDA等。一开始并不是很懂这个psFunc有什么用，看了一下Angel的文档，当然这个Angel也是实验室和腾讯合作搞出来的。 psFuncpsFunc是在sever端的一些自定义函数，最简单的ps只提供模型的存储功能，但是针对一些特定的算法我们需要一些优化，如果我们要对模型">
@@ -152,7 +152,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>实验室项目想把ps设计的更好，要求借鉴Angel提供psFunc,以便后续能提供对一些传统ML算法的支持，包括GBDT,LDA等。<br>一开始并不是很懂这个psFunc有什么用，看了一下Angel的文档，当然这个Angel也是实验室和腾讯合作搞出来的。</p>
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>实验室项目想把ps设计的更好，要求借鉴Angel提供psFunc,以便后续能提供对一些传统ML算法的支持，包括GBDT,LDA等。一开始并不是很懂这个psFunc有什么用，看了一下Angel的文档，当然这个Angel也是实验室和腾讯合作搞出来的。</p>
 <h2 id="psFunc"><a href="#psFunc" class="headerlink" title="psFunc"></a>psFunc</h2><p>psFunc是在sever端的一些自定义函数，最简单的ps只提供模型的存储功能，但是针对一些特定的算法我们需要一些优化，如果我们要对模型参数进行一些操作得到某个结果，如果ps只提供了最简单的pull功能，那我们就要把模型参数从ps上全部拉过来，然后在worker上计算得到结果。这样的做法网络通信开销很大，如果server端能够提供这样的功能，那worker发一个请求，server端执行计算返回一个结果数值就好了，这样网络通信开销会大幅度降低，毕竟server也是有计算能力的，浪费掉很可惜啊。这样的想法很直观。感觉优化提升应该也不错。如下是Angel的文档:<br><img src="/images/psFunc/ps.jpeg" alt title="psfunc"></p>
 <h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bookstack.cn/read/angel/docs-design-psfFunc.md" target="_blank" rel="noopener">Angel 2.0 用户手册</a></p>
 
