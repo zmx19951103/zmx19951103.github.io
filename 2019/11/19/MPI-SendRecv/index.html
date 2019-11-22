@@ -15,7 +15,7 @@
 <meta property="og:description" content="前言baidu allreduce 代码中用SendRecv实现了ring Allgather, 如果用 Send和Receive来实现的话，因为两个都是阻塞的，所以会死锁，一个解决方法是使用Irecv和Send,另一种方法就是使用SendRecv。   实践该函数的接口如下:int MPI_Sendrecv(const void *sendbuf,                 int sen">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/MPI_SendRecv/pro.png">
-<meta property="og:updated_time" content="2019-11-22T09:43:17.375Z">
+<meta property="og:updated_time" content="2019-11-22T09:49:57.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MPI SendRecv">
 <meta name="twitter:description" content="前言baidu allreduce 代码中用SendRecv实现了ring Allgather, 如果用 Send和Receive来实现的话，因为两个都是阻塞的，所以会死锁，一个解决方法是使用Irecv和Send,另一种方法就是使用SendRecv。   实践该函数的接口如下:int MPI_Sendrecv(const void *sendbuf,                 int sen">
@@ -51,7 +51,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -276,26 +277,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
