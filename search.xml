@@ -57,7 +57,10 @@
   <entry>
     <title><![CDATA[给ps-lite添加Angel中的psFunc]]></title>
     <url>%2F2019%2F11%2F16%2F%E7%BB%99ps-lite%E6%B7%BB%E5%8A%A0Angel%E4%B8%AD%E7%9A%84psFunc%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言实验室项目想把ps设计的更好，要求借鉴Angel提供psFunc,以便后续能提供对一些传统ML算法的支持，包括GBDT,LDA等。一开始并不是很懂这个psFunc有什么用，看了一下Angel的文档，当然这个Angel也是实验室和腾讯合作搞出来的。 psFuncpsFunc是在sever端的一些自定义函数，最简单的ps只提供模型的存储功能，但是针对一些特定的算法我们需要一些优化，如果我们要对模型参数进行一些操作得到某个结果，如果ps只提供了最简单的pull功能，那我们就要把模型参数从ps上全部拉过来，然后在worker上计算得到结果。这样的做法网络通信开销很大，如果server端能够提供这样的功能，那worker发一个请求，server端执行计算返回一个结果数值就好了，这样网络通信开销会大幅度降低，毕竟server也是有计算能力的，浪费掉很可惜啊。这样的想法很直观。感觉优化提升应该也不错。如下是Angel的文档: 设计参考Angel 2.0 用户手册]]></content>
+      <tags>
+        <tag>DDL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[ReduceScatter+Allgather]]></title>
