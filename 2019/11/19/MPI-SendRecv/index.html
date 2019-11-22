@@ -6,15 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="MPI">
+    <meta name="description" content="前言baidu allreduce 代码中用SendRecv实现了ring Allgather, 如果用 Send和Receive来实现的话，因为两个都是阻塞的，所以会死锁，一个解决方法是使用Irecv和Send,另一种方法就是使用SendRecv。   实践该函数的接口如下:int MPI_Sendrecv(const void *sendbuf,                 int sen">
+<meta name="keywords" content="MPI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MPI SendRecv">
 <meta property="og:url" content="http://yoursite.com/2019/11/19/MPI-SendRecv/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言baidu allreduce 代码中用SendRecv实现了ring Allgather, 如果用 Send和Receive来实现的话，因为两个都是阻塞的，所以会死锁，一个解决方法是使用Irecv和Send,另一种方法就是使用SendRecv。   实践该函数的接口如下:int MPI_Sendrecv(const void *sendbuf,                 int sen">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-19T15:38:38.161Z">
+<meta property="og:image" content="http://yoursite.com/images/MPI_SendRecv/pro.png">
+<meta property="og:updated_time" content="2019-11-22T09:43:17.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MPI SendRecv">
+<meta name="twitter:description" content="前言baidu allreduce 代码中用SendRecv实现了ring Allgather, 如果用 Send和Receive来实现的话，因为两个都是阻塞的，所以会死锁，一个解决方法是使用Irecv和Send,另一种方法就是使用SendRecv。   实践该函数的接口如下:int MPI_Sendrecv(const void *sendbuf,                 int sen">
+<meta name="twitter:image" content="http://yoursite.com/images/MPI_SendRecv/pro.png">
     
     
         
@@ -103,7 +108,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践"><span class="toc-number">2.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -147,7 +152,13 @@
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>baidu allreduce 代码中用SendRecv实现了ring Allgather, 如果用 Send和Receive来实现的话，因为两个都是阻塞的，所以会死锁，一个解决方法是使用Irecv和Send,另一种方法就是使用SendRecv。  </p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>该函数的接口如下:<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MPI_Sendrecv</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *sendbuf,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> sendcount,</span></span></span><br><span class="line"><span class="function"><span class="params">                 MPI_Datatype sendtype,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> dest,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> sendtag,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">void</span> *recvbuf,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> recvcount, </span></span></span><br><span class="line"><span class="function"><span class="params">                 MPI_Datatype recvtype,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> source, </span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> recvtag,</span></span></span><br><span class="line"><span class="function"><span class="params">                 MPI_Comm comm,</span></span></span><br><span class="line"><span class="function"><span class="params">                 MPI_Status *status)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>每个参数都顾名思义，sendbuf是要发送的数据的地址，sendcount和sendtype是要发送数据的数量和类型，dest是目的进程的rank, sendtag和recvtag对应就好。recvbuf和recvcount是接收数据的缓冲区和接收的数量以及接收的类型,source表示从哪个进程接收,status应该是receive操作的状态。</p>
+<p>我们用一个ring的例子来实践一下该函数,代码如下：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mpi.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> nProcs, Rank, i;</span><br><span class="line">    <span class="keyword">double</span> A0,A1;</span><br><span class="line">    MPI_Status status;</span><br><span class="line"> </span><br><span class="line">    MPI_Init(&amp;argc, &amp;argv);</span><br><span class="line">    MPI_Comm_size(MPI_COMM_WORLD, &amp;nProcs);</span><br><span class="line">    MPI_Comm_rank(MPI_COMM_WORLD, &amp;Rank);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//   for(int i=0; i&lt;n; i++)&#123;</span></span><br><span class="line"> <span class="comment">//     A0[i] = Rank;</span></span><br><span class="line"> <span class="comment">//     A1[i] = Rank;</span></span><br><span class="line">  <span class="comment">//  &#125;</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nBefore exchange A0 A1:\n"</span>);</span><br><span class="line">    <span class="comment">//for(i=0;i&lt;n;i++)&#123;</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"rank:%d\t%f\t%f\n"</span>,Rank, A0, A1);</span><br><span class="line">    <span class="comment">//&#125;   </span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span> rightrank = (Rank + <span class="number">1</span>) % nProcs;</span><br><span class="line">    <span class="keyword">int</span> leftrank = (Rank + nProcs<span class="number">-1</span>)%nProcs;</span><br><span class="line"> </span><br><span class="line">    MPI_Barrier(MPI_COMM_WORLD);</span><br><span class="line">    MPI_Sendrecv(&amp;A0, <span class="number">1</span>, MPI_DOUBLE, rightrank,<span class="number">990</span>,</span><br><span class="line">             &amp;A1, <span class="number">1</span>, MPI_DOUBLE, leftrank,<span class="number">990</span>,  MPI_COMM_WORLD,&amp;status);</span><br><span class="line"> </span><br><span class="line">    MPI_Finalize();</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"After exchange A0 A1\n"</span>);</span><br><span class="line"> <span class="comment">//   for(i=0;i&lt;n;i++)&#123;</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"rank:%d %f\t%f\n"</span>,Rank,  A0, A1);</span><br><span class="line">  <span class="comment">//  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该代码的运行结果如下，可以看到每个进程都从它左边的进程接收了A1,因为每个进程都发送A0,所以A0是不变的<br><img src="/images/MPI_SendRecv/pro.png" alt title="SendRecv"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/kuangsyx/p/7903774.html" target="_blank" rel="noopener">MPI_SendRecv</a><br><a href="https://www.mpich.org/static/docs/v3.2.x/www3/MPI_Sendrecv.html" target="_blank" rel="noopener">MPI_SendRecv</a></p>
+
   </div>
 </article>
 
@@ -182,7 +193,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践"><span class="toc-number">2.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

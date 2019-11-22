@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。  参考MPI_Irecv">
+<meta name="keywords" content="MPI">
+<meta property="og:type" content="article">
 <meta property="og:title" content="MPI_Irecv">
 <meta property="og:url" content="http://yoursite.com/2019/11/22/MPI-Irecv/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。  参考MPI_Irecv">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-22T07:55:06.823Z">
+<meta property="og:updated_time" content="2019-11-22T08:38:38.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MPI_Irecv">
+<meta name="twitter:description" content="前言看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。  参考MPI_Irecv">
     
     
         
@@ -100,7 +104,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +137,20 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/MPI/">MPI</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。</p>
+<h2 id><a href="#" class="headerlink" title=" "></a> </h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mpi.deino.net/mpi_functions/MPI_Irecv.html" target="_blank" rel="noopener">MPI_Irecv</a></p>
+
   </div>
 </article>
 
@@ -174,7 +185,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
