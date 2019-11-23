@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。  参考MPI_Irecv">
-<meta name="keywords" content="MPI">
+    <meta name="description" content="前言最近看ps-lite代码，因为代码很多地方会涉及到多线程，有互斥量，条件变量等等。对c++11的多线程没怎么学过，所以就学习了一下。 std::mutex参考">
+<meta name="keywords" content="c++11">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MPI_Irecv">
-<meta property="og:url" content="http://yoursite.com/2019/11/22/MPI-Irecv/index.html">
+<meta property="og:title" content="std::mutex">
+<meta property="og:url" content="http://yoursite.com/2019/11/24/std-mutex/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。  参考MPI_Irecv">
+<meta property="og:description" content="前言最近看ps-lite代码，因为代码很多地方会涉及到多线程，有互斥量，条件变量等等。对c++11的多线程没怎么学过，所以就学习了一下。 std::mutex参考">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-22T08:38:38.110Z">
+<meta property="og:updated_time" content="2019-11-23T17:13:44.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MPI_Irecv">
-<meta name="twitter:description" content="前言看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。  参考MPI_Irecv">
+<meta name="twitter:title" content="std::mutex">
+<meta name="twitter:description" content="前言最近看ps-lite代码，因为代码很多地方会涉及到多线程，有互斥量，条件变量等等。对c++11的多线程没怎么学过，所以就学习了一下。 std::mutex参考">
     
     
         
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>MPI_Irecv</title>
+    <title>std::mutex</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -77,10 +77,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/11/24/std-mutex/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/11/22/a-hybrid-framework-providing-ps-and-allreduce-architecture-for-distributed-deep-learning/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/11/22/MPI-Irecv/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -93,21 +91,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/22/MPI-Irecv/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/22/MPI-Irecv/&text=MPI_Irecv"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/22/MPI-Irecv/&is_video=false&description=MPI_Irecv"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=MPI_Irecv&body=Check out this article: http://yoursite.com/2019/11/22/MPI-Irecv/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/22/MPI-Irecv/&name=MPI_Irecv&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/24/std-mutex/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/24/std-mutex/&text=std::mutex"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/24/std-mutex/&is_video=false&description=std::mutex"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=std::mutex&body=Check out this article: http://yoursite.com/2019/11/24/std-mutex/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/24/std-mutex/&name=std::mutex&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#std-mutex"><span class="toc-number">2.</span> <span class="toc-text">std::mutex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -119,7 +117,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        MPI_Irecv
+        std::mutex
     </h1>
 
 
@@ -131,7 +129,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-11-22T07:55:06.000Z" itemprop="datePublished">2019-11-22</time>
+        <time datetime="2019-11-23T17:11:32.000Z" itemprop="datePublished">2019-11-24</time>
         
       
     </div>
@@ -142,7 +140,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/MPI/">MPI</a>
+        <a class="tag-link" href="/tags/c-11/">c++11</a>
     </div>
 
 
@@ -151,9 +149,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看baidu的allreduce实现，第一部分的ring reduce scatter用到了这个函数，所以来学习一下。</p>
-<h2 id><a href="#" class="headerlink" title=" "></a> </h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mpi.deino.net/mpi_functions/MPI_Irecv.html" target="_blank" rel="noopener">MPI_Irecv</a></p>
-
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看ps-lite代码，因为代码很多地方会涉及到多线程，有互斥量，条件变量等等。对c++11的多线程没怎么学过，所以就学习了一下。</p>
+<h2 id="std-mutex"><a href="#std-mutex" class="headerlink" title="std::mutex"></a>std::mutex</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
   </div>
 </article>
 
@@ -188,21 +185,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#std-mutex"><span class="toc-number">2.</span> <span class="toc-text">std::mutex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/22/MPI-Irecv/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/22/MPI-Irecv/&text=MPI_Irecv"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/22/MPI-Irecv/&is_video=false&description=MPI_Irecv"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=MPI_Irecv&body=Check out this article: http://yoursite.com/2019/11/22/MPI-Irecv/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/22/MPI-Irecv/&title=MPI_Irecv"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/22/MPI-Irecv/&name=MPI_Irecv&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/24/std-mutex/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/24/std-mutex/&text=std::mutex"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/24/std-mutex/&is_video=false&description=std::mutex"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=std::mutex&body=Check out this article: http://yoursite.com/2019/11/24/std-mutex/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/24/std-mutex/&title=std::mutex"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/24/std-mutex/&name=std::mutex&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
