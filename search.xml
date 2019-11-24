@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[paxos and raft]]></title>
+    <url>%2F2019%2F11%2F24%2Fpaxos-and-raft%2F</url>
+    <content type="text"><![CDATA[参考github paxos raft]]></content>
+      <tags>
+        <tag>distributed system</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[in graph and between graph]]></title>
     <url>%2F2019%2F11%2F24%2Fin-graph-and-between-graph%2F</url>
     <content type="text"></content>
