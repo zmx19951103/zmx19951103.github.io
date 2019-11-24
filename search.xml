@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[in graph and between graph]]></title>
+    <url>%2F2019%2F11%2F24%2Fin-graph-and-between-graph%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[MIT6.824 lab1 mapreduce]]></title>
     <url>%2F2019%2F11%2F24%2FMIT6-824-lab1-mapreduce%2F</url>
     <content type="text"></content>
@@ -65,7 +70,10 @@
   <entry>
     <title><![CDATA[horovod]]></title>
     <url>%2F2019%2F11%2F17%2Fhorovod%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[参考horovod 知乎]]></content>
+      <tags>
+        <tag>DDL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[给ps-lite添加Angel中的psFunc]]></title>
