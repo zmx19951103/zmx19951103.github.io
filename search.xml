@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[tensorflow Distribution Strategy API]]></title>
     <url>%2F2019%2F11%2F25%2Ftensorflow-Distribution-Strategy-API%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言参考Distribution Strategy API]]></content>
+      <tags>
+        <tag>DDL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[SparseTensor]]></title>
