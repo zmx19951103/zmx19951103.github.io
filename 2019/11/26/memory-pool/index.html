@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。 参考">
+    <meta name="description" content="前言最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。 理论首先我们来学习一下内存池的理论，从字面意思上来看，内存池里应该有很多的内存，当我们需要一块内存的时候我们不用new或者malloc,而是从内存池里去拿就行，这样就减少了分配内存的开销，从而提升性能，不知道一次new操作会带来多大的开销呢?">
 <meta name="keywords" content="DDL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="memory pool">
 <meta property="og:url" content="http://yoursite.com/2019/11/26/memory-pool/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。 参考">
+<meta property="og:description" content="前言最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。 理论首先我们来学习一下内存池的理论，从字面意思上来看，内存池里应该有很多的内存，当我们需要一块内存的时候我们不用new或者malloc,而是从内存池里去拿就行，这样就减少了分配内存的开销，从而提升性能，不知道一次new操作会带来多大的开销呢?">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-26T08:58:21.910Z">
+<meta property="og:updated_time" content="2019-11-26T09:07:12.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="memory pool">
-<meta name="twitter:description" content="前言最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。 参考">
+<meta name="twitter:description" content="前言最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。 理论首先我们来学习一下内存池的理论，从字面意思上来看，内存池里应该有很多的内存，当我们需要一块内存的时候我们不用new或者malloc,而是从内存池里去拿就行，这样就减少了分配内存的开销，从而提升性能，不知道一次new操作会带来多大的开销呢?">
     
     
         
@@ -49,7 +49,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -75,6 +76,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2019/11/26/std-function/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2019/11/25/tensorflow-Distribution-Strategy-API/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -104,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理论"><span class="toc-number">2.</span> <span class="toc-text">理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -149,6 +152,7 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近继续写DL框架，因为涉及到频繁的new内存，开销很大会拖慢速度，所以准备用memory pool, 先开一个比较大的空间，这样的程序性能应该能提高。</p>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>首先我们来学习一下内存池的理论，从字面意思上来看，内存池里应该有很多的内存，当我们需要一块内存的时候我们不用new或者malloc,而是从内存池里去拿就行，这样就减少了分配内存的开销，从而提升性能，不知道一次new操作会带来多大的开销呢?</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
   </div>
 </article>
@@ -184,7 +188,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理论"><span class="toc-number">2.</span> <span class="toc-text">理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -267,26 +271,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
