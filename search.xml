@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[caffe的随机数产生方式]]></title>
     <url>%2F2019%2F11%2F27%2Fcaffe%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0%E4%BA%A7%E7%94%9F%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[前言完成了DL框架的执行器，现在需要测试一下，需要为参数给定随机初始值，这里参考caffe的初始值生成方式,从源码来看使用的是boost库，caffe库的代码很不错，后续还要看考它的layer, net的设计。 boost::mt19937参考]]></content>
+    <content type="text"><![CDATA[前言完成了DL框架的执行器，现在需要测试一下，需要为参数给定随机初始值，这里参考caffe的初始值生成方式,从源码来看使用的是boost库，caffe库的代码很不错，后续还要看考它的layer, net的设计。 boost::mt19937参考boost::mt19937]]></content>
       <tags>
         <tag>DDL</tag>
       </tags>
