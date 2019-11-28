@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言现在完成了GraphExecutor,测试了最简单的一个例子，另外op的正确性先不测试，我打算先把Layer,Net和Solver的整体结构搭建出来。打算参考Caffe，但是肯定要简化好多好多。 LayerNet参考">
+<meta name="keywords" content="DDL">
+<meta property="og:type" content="article">
 <meta property="og:title" content="深度学习框架的Layer和Net抽象:装饰器模式">
 <meta property="og:url" content="http://yoursite.com/2019/11/28/深度学习框架的Layer和Net抽象-装饰器模式/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言现在完成了GraphExecutor,测试了最简单的一个例子，另外op的正确性先不测试，我打算先把Layer,Net和Solver的整体结构搭建出来。打算参考Caffe，但是肯定要简化好多好多。 LayerNet参考">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-28T06:33:12.819Z">
+<meta property="og:updated_time" content="2019-11-28T06:51:43.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习框架的Layer和Net抽象:装饰器模式">
+<meta name="twitter:description" content="前言现在完成了GraphExecutor,测试了最简单的一个例子，另外op的正确性先不测试，我打算先把Layer,Net和Solver的整体结构搭建出来。打算参考Caffe，但是肯定要简化好多好多。 LayerNet参考">
     
     
         
@@ -100,7 +104,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Layer"><span class="toc-number">2.</span> <span class="toc-text">Layer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Net"><span class="toc-number">3.</span> <span class="toc-text">Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +137,19 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/DDL/">DDL</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在完成了GraphExecutor,测试了最简单的一个例子，另外op的正确性先不测试，我打算先把Layer,Net和Solver的整体结构搭建出来。打算参考Caffe，但是肯定要简化好多好多。</p>
+<h2 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h2><h2 id="Net"><a href="#Net" class="headerlink" title="Net"></a>Net</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
   </div>
 </article>
 
@@ -174,7 +184,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Layer"><span class="toc-number">2.</span> <span class="toc-text">Layer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Net"><span class="toc-number">3.</span> <span class="toc-text">Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

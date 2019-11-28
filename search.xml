@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[深度学习框架的Layer和Net抽象:装饰器模式]]></title>
     <url>%2F2019%2F11%2F28%2F%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6%E7%9A%84Layer%E5%92%8CNet%E6%8A%BD%E8%B1%A1-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言现在完成了GraphExecutor,测试了最简单的一个例子，另外op的正确性先不测试，我打算先把Layer,Net和Solver的整体结构搭建出来。打算参考Caffe，但是肯定要简化好多好多。 LayerNet参考]]></content>
+      <tags>
+        <tag>DDL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[c++可调用对象:仿函数，lambda表达式]]></title>
