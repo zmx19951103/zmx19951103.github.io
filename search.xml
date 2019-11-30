@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Raft]]></title>
+    <url>%2F2019%2F11%2F30%2FRaft%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[实现一个协程dreamcoroutine]]></title>
     <url>%2F2019%2F11%2F30%2F%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8D%8F%E7%A8%8Bdreamcoroutine%2F</url>
     <content type="text"></content>
