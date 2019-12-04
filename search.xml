@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[vtable]]></title>
     <url>%2F2019%2F12%2F04%2Fvtable%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言参考vtablevtablevtable]]></content>
+      <tags>
+        <tag>c++</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[mmap]]></title>
