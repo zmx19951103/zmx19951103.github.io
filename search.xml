@@ -8,7 +8,10 @@
   <entry>
     <title><![CDATA[shared_ptr实现]]></title>
     <url>%2F2019%2F12%2F04%2Fshared-ptr%E5%AE%9E%E7%8E%B0%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言c++面试经常会问到智能指针，我们来实现一下shared_ptr，探究一下智能指针的原理。shared_ptr的核心就是【引用计数】的实现，还有shared_ptr貌似在多线程的环境下是有问题的。智能指针主要是用来解决原生指针可能造成的问题，比如忘记手动释放内存造成内存泄漏等等。 参考]]></content>
+      <tags>
+        <tag>STL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[多个进程调用同一个.so文件]]></title>
