@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="前言在实现自己的shared_ptr的时候，习惯性的将模板类的接口和实现分别放在对应的.h文件和.cc文件中，然后在test.cc文件中包含.h头文件，进行测试，结果总是报undefinend reference的错误，一开始感觉很奇怪，我明明在编译的时候将模板类的.cc文件给包含进来了，可是居然在链接的时候找不到。最后查到了原因。原来编译器对模板类的分离式编译支持的非常差，比如STL的代码中都是">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T04:47:30.056Z">
+<meta property="og:updated_time" content="2019-12-05T04:54:25.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++模板类的分离式编译">
 <meta name="twitter:description" content="前言在实现自己的shared_ptr的时候，习惯性的将模板类的接口和实现分别放在对应的.h文件和.cc文件中，然后在test.cc文件中包含.h头文件，进行测试，结果总是报undefinend reference的错误，一开始感觉很奇怪，我明明在编译的时候将模板类的.cc文件给包含进来了，可是居然在链接的时候找不到。最后查到了原因。原来编译器对模板类的分离式编译支持的非常差，比如STL的代码中都是">
@@ -49,7 +49,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -158,7 +159,7 @@
 <h2 id="将接口和实现放在同一个-h文件中"><a href="#将接口和实现放在同一个-h文件中" class="headerlink" title="将接口和实现放在同一个.h文件中"></a>将接口和实现放在同一个.h文件中</h2><p>不过最主流的做法还是将模板类的接口和实现放在同一个.h文件中,如下:</p>
 <p>[1]DSharedPtr.h</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DSharedPtr</span>&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">T * _ptr;</span><br><span class="line"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;T*,<span class="keyword">int</span>&gt;  _cnt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">DSharedPtr(T* ptr=<span class="literal">nullptr</span>);</span><br><span class="line">~DSharedPtr();</span><br><span class="line">DSharedPtr(DSharedPtr&lt;T&gt;&amp; src);</span><br><span class="line">DSharedPtr&amp; <span class="keyword">operator</span>=(DSharedPtr&lt;T&gt;&amp; src);</span><br><span class="line">T&amp; <span class="keyword">operator</span>*();</span><br><span class="line">T* <span class="keyword">operator</span>-&gt;();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">emplate&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;T*,<span class="keyword">int</span>&gt; DSharedPtr&lt;T&gt;::_cnt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">DSharedPtr&lt;T&gt;::DSharedPtr(T* ptr)&#123;</span><br><span class="line"> _ptr = ptr;</span><br><span class="line"><span class="keyword">if</span>(_cnt.count(ptr)==<span class="number">0</span>)_cnt[ptr] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> _cnt[ptr]+=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">DSharedPtr&lt;T&gt;::~DSharedPtr()&#123;</span><br><span class="line"></span><br><span class="line">--_cnt[_ptr];</span><br><span class="line"><span class="keyword">if</span>(_cnt[_ptr]&lt;=<span class="number">0</span>) &#123;</span><br><span class="line">_cnt.erase(_ptr);</span><br><span class="line"><span class="keyword">delete</span> _ptr; <span class="comment">// delete nullptr is ok </span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">DSharedPtr&lt;T&gt;::DSharedPtr(DSharedPtr&lt;T&gt;&amp; src)&#123;</span><br><span class="line">_ptr = src._ptr;</span><br><span class="line">_cnt[_ptr]+=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">DSharedPtr&lt;T&gt;&amp; DSharedPtr&lt;T&gt;::<span class="keyword">operator</span>=(DSharedPtr&lt;T&gt;&amp; src)&#123;</span><br><span class="line"><span class="keyword">if</span>(_ptr==src._ptr) <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">--_cnt[_ptr];</span><br><span class="line"><span class="keyword">if</span> (_cnt[_ptr]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">_cnt.erase(_ptr);</span><br><span class="line"><span class="keyword">delete</span> _ptr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_ptr = src._ptr;</span><br><span class="line">_cnt[_ptr]+=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">T&amp; DSharedPtr&lt;T&gt;::<span class="keyword">operator</span>*()&#123;</span><br><span class="line"><span class="keyword">return</span> *_ptr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//why </span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">T* DSharedPtr&lt;T&gt;::<span class="keyword">operator</span>-&gt;()&#123;</span><br><span class="line"><span class="keyword">return</span> _ptr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样就不用类模板的显示实例化。上面的shared_ptr代码需要进一步改进，来支持多线程下的线程安全以及存在循环引用的问题。</p>
+<p>这样就不用类模板的显示实例化。上面的shared_ptr代码需要进一步改进，来支持多线程下的线程安全以及存在循环引用的问题。进一步改进的代码会在中<a href="https://github.com/zmx19951103/smart-pointer" target="_blank" rel="noopener">smart pointer</a>进行更新。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/u012814856/article/details/84645963" target="_blank" rel="noopener">c++模板类的分离式编译</a></p>
 
   </div>
@@ -278,26 +279,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
