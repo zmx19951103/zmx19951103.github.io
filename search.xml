@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[weak_ptr实现]]></title>
     <url>%2F2019%2F12%2F05%2Fweak-ptr%E5%AE%9E%E7%8E%B0%2F</url>
-    <content type="text"><![CDATA[前言weak_ptr是为了解决shared_ptr存在的循环引用问题而诞生的。它依赖于shared_ptr,不能直接管理一块动态开辟的空间。 循环引用问题weak_ptr实现参考weak_ptr源码分析]]></content>
+    <content type="text"><![CDATA[前言weak_ptr是为了解决shared_ptr存在的循环引用问题而诞生的。它依赖于shared_ptr,不能直接管理一块动态开辟的空间。不具备普通指针的行为operator*和operator-&gt;。构造weak_ptr不会引起引用计数的变化。 循环引用问题代码见smart pointer中的crossRef.cc。 weak_ptr实现参考weak_ptr源码分析]]></content>
       <tags>
         <tag>c++</tag>
       </tags>
