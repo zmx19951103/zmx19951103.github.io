@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[多继承与虚基类]]></title>
     <url>%2F2019%2F12%2F06%2F%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8E%E8%99%9A%E5%9F%BA%E7%B1%BB%2F</url>
-    <content type="text"><![CDATA[前言c++ 支持多继承，多继承会带来一些问题，比如典型的菱形继承问题。 菱形继承虚基类参考]]></content>
+    <content type="text"><![CDATA[前言c++ 支持多继承，多继承会带来一些问题，比如典型的菱形继承问题。 菱形继承虚基类参考c++虚继承和虚基类]]></content>
       <tags>
         <tag>c++</tag>
       </tags>
