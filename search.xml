@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[psAllreduce]]></title>
+    <url>%2F2019%2F12%2F07%2FpsAllreduce%2F</url>
+    <content type="text"><![CDATA[前言最近一直对ps-lite增加功能, 这段时间准备借鉴petuum的方式增加ssp,以后功能越来越全以后，和nccl结合搞一个混合的数据并行的框架。]]></content>
+      <tags>
+        <tag>DDL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[petuum/paracel/Angel/ps-lite/byteps]]></title>
     <url>%2F2019%2F12%2F06%2Fpetuum-paracel-Angel-ps-lite-byteps%2F</url>
     <content type="text"></content>
