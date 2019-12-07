@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言在分布式系统中，我们想要确定事件的因果关系，也就是事件发生的前后顺序，与此有关的算法有 Lamport clock, vector clock。 Lamport clockvector clock参考Lamport’s Logical Clocks 和 Vector Clock">
+<meta name="keywords" content="distributed systems">
+<meta property="og:type" content="article">
 <meta property="og:title" content="vector clock">
 <meta property="og:url" content="http://yoursite.com/2019/11/24/vector-clock/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言在分布式系统中，我们想要确定事件的因果关系，也就是事件发生的前后顺序，与此有关的算法有 Lamport clock, vector clock。 Lamport clockvector clock参考Lamport’s Logical Clocks 和 Vector Clock">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-24T07:42:52.492Z">
+<meta property="og:updated_time" content="2019-12-07T11:13:45.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vector clock">
+<meta name="twitter:description" content="前言在分布式系统中，我们想要确定事件的因果关系，也就是事件发生的前后顺序，与此有关的算法有 Lamport clock, vector clock。 Lamport clockvector clock参考Lamport’s Logical Clocks 和 Vector Clock">
     
     
         
@@ -45,7 +49,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -102,7 +107,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lamport-clock"><span class="toc-number">2.</span> <span class="toc-text">Lamport clock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vector-clock"><span class="toc-number">3.</span> <span class="toc-text">vector clock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -135,13 +140,20 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/distributed-systems/">distributed systems</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在分布式系统中，我们想要确定事件的因果关系，也就是事件发生的前后顺序，与此有关的算法有 Lamport clock, vector clock。</p>
+<h2 id="Lamport-clock"><a href="#Lamport-clock" class="headerlink" title="Lamport clock"></a>Lamport clock</h2><h2 id="vector-clock"><a href="#vector-clock" class="headerlink" title="vector clock"></a>vector clock</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/foxmailed/archive/2012/01/11/2319854.html" target="_blank" rel="noopener">Lamport’s Logical Clocks 和 Vector Clock</a></p>
+
   </div>
 </article>
 
@@ -176,7 +188,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lamport-clock"><span class="toc-number">2.</span> <span class="toc-text">Lamport clock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vector-clock"><span class="toc-number">3.</span> <span class="toc-text">vector clock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -259,26 +271,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>

@@ -158,7 +158,10 @@
   <entry>
     <title><![CDATA[vector clock]]></title>
     <url>%2F2019%2F11%2F24%2Fvector-clock%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言在分布式系统中，我们想要确定事件的因果关系，也就是事件发生的前后顺序，与此有关的算法有 Lamport clock, vector clock。 Lamport clockvector clock参考Lamport’s Logical Clocks 和 Vector Clock]]></content>
+      <tags>
+        <tag>distributed systems</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[distributed kv store]]></title>
