@@ -6,18 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言最近一直对ps-lite增加功能, 这段时间准备借鉴petuum的方式增加ssp,以后功能越来越全以后，和nccl结合搞一个混合的数据并行的框架。">
-<meta name="keywords" content="DDL">
-<meta property="og:type" content="article">
-<meta property="og:title" content="psAllreduce">
-<meta property="og:url" content="http://yoursite.com/2019/12/07/psAllreduce/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="petuum的ssp实现流程">
+<meta property="og:url" content="http://yoursite.com/2019/12/08/petuum的ssp实现流程/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言最近一直对ps-lite增加功能, 这段时间准备借鉴petuum的方式增加ssp,以后功能越来越全以后，和nccl结合搞一个混合的数据并行的框架。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-07T16:02:19.065Z">
+<meta property="og:updated_time" content="2019-12-08T03:08:01.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="psAllreduce">
-<meta name="twitter:description" content="前言最近一直对ps-lite增加功能, 这段时间准备借鉴petuum的方式增加ssp,以后功能越来越全以后，和nccl结合搞一个混合的数据并行的框架。">
+<meta name="twitter:title" content="petuum的ssp实现流程">
     
     
         
@@ -37,7 +33,7 @@
         
     
     <!-- title -->
-    <title>psAllreduce</title>
+    <title>petuum的ssp实现流程</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -76,10 +72,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/12/08/petuum的ssp实现流程/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/12/06/petuum-paracel-Angel-ps-lite-byteps/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/12/07/psAllreduce/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -92,21 +86,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/07/psAllreduce/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/07/psAllreduce/&text=psAllreduce"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/07/psAllreduce/&is_video=false&description=psAllreduce"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=psAllreduce&body=Check out this article: http://yoursite.com/2019/12/07/psAllreduce/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/07/psAllreduce/&name=psAllreduce&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/petuum的ssp实现流程/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&text=petuum的ssp实现流程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&is_video=false&description=petuum的ssp实现流程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=petuum的ssp实现流程&body=Check out this article: http://yoursite.com/2019/12/08/petuum的ssp实现流程/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&name=petuum的ssp实现流程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li></ol>
+      
     </div>
   </span>
 </div>
@@ -118,7 +112,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        psAllreduce
+        petuum的ssp实现流程
     </h1>
 
 
@@ -130,7 +124,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-12-07T15:59:57.000Z" itemprop="datePublished">2019-12-07</time>
+        <time datetime="2019-12-08T03:08:01.000Z" itemprop="datePublished">2019-12-08</time>
         
       
     </div>
@@ -139,19 +133,13 @@
       
 
       
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/DDL/">DDL</a>
-    </div>
-
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直对ps-lite增加功能, 这段时间准备借鉴petuum的方式增加ssp,以后功能越来越全以后，和nccl结合搞一个混合的数据并行的框架。</p>
-<h2 id><a href="#" class="headerlink" title=" "></a> </h2>
+    
   </div>
 </article>
 
@@ -186,21 +174,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li></ol>
+      
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/07/psAllreduce/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/07/psAllreduce/&text=psAllreduce"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/07/psAllreduce/&is_video=false&description=psAllreduce"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=psAllreduce&body=Check out this article: http://yoursite.com/2019/12/07/psAllreduce/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/07/psAllreduce/&title=psAllreduce"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/07/psAllreduce/&name=psAllreduce&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/petuum的ssp实现流程/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&text=petuum的ssp实现流程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&is_video=false&description=petuum的ssp实现流程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=petuum的ssp实现流程&body=Check out this article: http://yoursite.com/2019/12/08/petuum的ssp实现流程/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&title=petuum的ssp实现流程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/petuum的ssp实现流程/&name=petuum的ssp实现流程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
