@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="前言c++ 支持多继承，多继承会带来一些问题，比如典型的菱形继承中，会出现最开始的基类在派生类对象中存在两份拷贝的问题，也就会出现二义性。为了消除这种二义性，我们可以使用虚继承，使得基类在派生类中只有一份拷贝。而c++的虚继承的实现方式一般是用一个指针指向虚基类表，但是在最新的g++编译器中，已经把虚表指针和虚基类表指针给合并了，本来这些都是编译器的具体实现，而c++规范中并没有明确具体的实现方式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-19T15:00:05.567Z">
+<meta property="og:updated_time" content="2019-12-19T15:03:52.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多继承与虚基类">
 <meta name="twitter:description" content="前言c++ 支持多继承，多继承会带来一些问题，比如典型的菱形继承中，会出现最开始的基类在派生类对象中存在两份拷贝的问题，也就会出现二义性。为了消除这种二义性，我们可以使用虚继承，使得基类在派生类中只有一份拷贝。而c++的虚继承的实现方式一般是用一个指针指向虚基类表，但是在最新的g++编译器中，已经把虚表指针和虚基类表指针给合并了，本来这些都是编译器的具体实现，而c++规范中并没有明确具体的实现方式">
@@ -49,8 +49,7 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -153,18 +152,8 @@
   <div class="content" itemprop="articleBody">
     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>c++ 支持多继承，多继承会带来一些问题，比如典型的菱形继承中，会出现最开始的基类在派生类对象中存在两份拷贝的问题，也就会出现二义性。为了消除这种二义性，我们可以使用虚继承，使得基类在派生类中只有一份拷贝。而c++的虚继承的实现方式一般是用一个指针指向虚基类表，但是在最新的g++编译器中，已经把虚表指针和虚基类表指针给合并了，本来这些都是编译器的具体实现，而c++规范中并没有明确具体的实现方式。</p>
 <h2 id="菱形继承"><a href="#菱形继承" class="headerlink" title="菱形继承"></a>菱形继承</h2><p>菱形继承如下图所示，v代表B,C虚继承A,A是虚基类：</p>
-<pre><code>           /****************************/
-           /*                          */
-           /*             A            */
-           /*           v/ \v          */
-           /*           /   \          */
-           /*          B     C         */
-           /*           \   /          */
-           /*            \ /           */
-           /*             D            */
-           /*                          */
-           /****************************/
-</code></pre><h2 id="虚继承的的对象内存布局"><a href="#虚继承的的对象内存布局" class="headerlink" title="虚继承的的对象内存布局"></a>虚继承的的对象内存布局</h2><p>具体见参考,g++的实现是将虚基类放在派生类对象的底部。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/****************************/</span></span><br><span class="line"><span class="comment">/*                          */</span></span><br><span class="line"><span class="comment">/*             A            */</span></span><br><span class="line"><span class="comment">/*           v/ \v          */</span></span><br><span class="line"><span class="comment">/*           /   \          */</span></span><br><span class="line"><span class="comment">/*          B     C         */</span></span><br><span class="line"><span class="comment">/*           \   /          */</span></span><br><span class="line"><span class="comment">/*            \ /           */</span></span><br><span class="line"><span class="comment">/*             D            */</span></span><br><span class="line"><span class="comment">/*                          */</span></span><br><span class="line"><span class="comment">/****************************/</span></span><br></pre></td></tr></table></figure>
+<h2 id="虚继承的的对象内存布局"><a href="#虚继承的的对象内存布局" class="headerlink" title="虚继承的的对象内存布局"></a>虚继承的的对象内存布局</h2><p>具体见参考,g++的实现是将虚基类放在派生类对象的底部。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> ax;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f0</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">bar</span><span class="params">()</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"A: bar()"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A           <span class="comment">/****************************/</span></span><br><span class="line">&#123;                                     <span class="comment">/*                          */</span></span><br><span class="line">    <span class="keyword">int</span> bx;</span><br><span class="line">   B()&#123; bx=<span class="number">5</span>;&#125;                        <span class="comment">/*             A            */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f0</span><span class="params">()</span> override </span>&#123;&#125;             <span class="comment">/*           v/ \v          */</span></span><br><span class="line">&#125;;                                    <span class="comment">/*           /   \          */</span></span><br><span class="line">                                      <span class="comment">/*          B     C         */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A           <span class="comment">/*           \   /          */</span></span><br><span class="line">&#123;                                     <span class="comment">/*            \ /           */</span></span><br><span class="line">    <span class="keyword">int</span> cx;</span><br><span class="line">    C()&#123;cx=<span class="number">8</span>;&#125;                        <span class="comment">/*             D            */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f0</span><span class="params">()</span> override </span>&#123;&#125;             <span class="comment">/*                          */</span></span><br><span class="line">&#125;;                                    <span class="comment">/****************************/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span> :</span> <span class="keyword">public</span> B, <span class="keyword">public</span> C</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> dx;</span><br><span class="line">    D()&#123;dx=<span class="number">6</span>;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f0</span><span class="params">()</span> override </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt; <span class="number">9</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*func)</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">D d;</span><br><span class="line"><span class="keyword">long</span>* p = (<span class="keyword">long</span>*)&amp;d;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> address = *p;</span><br><span class="line">func q =(func)(*(<span class="keyword">long</span>*)address);</span><br><span class="line"></span><br><span class="line">q();</span><br><span class="line"></span><br><span class="line">p++;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t = (*(<span class="keyword">int</span>*)p);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;t&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>* u = (<span class="keyword">int</span>*)p;</span><br><span class="line">u+=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">q = (func)( *(<span class="keyword">long</span>*) (*(<span class="keyword">long</span>*)u) );</span><br><span class="line">q();</span><br><span class="line"><span class="keyword">long</span>* y = (<span class="keyword">long</span>*)u;</span><br><span class="line">y++;</span><br><span class="line">u = (<span class="keyword">int</span>*)y;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;*u&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">u+=<span class="number">1</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;*u&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">u+=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">q = (func)( *((<span class="keyword">long</span>*) (*((<span class="keyword">long</span>*)u))+<span class="number">1</span>) );</span><br><span class="line">q();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的测试代码中u+=2是处于内存对齐的考虑.</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/41309205" target="_blank" rel="noopener">c++虚继承和虚基类</a></p>
@@ -286,6 +275,26 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
