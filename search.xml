@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[蓄水池抽样]]></title>
     <url>%2F2019%2F12%2F23%2F%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%2F</url>
-    <content type="text"><![CDATA[问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码Init : a reservoir with the size： k for i= k+1 to N M=random(1, i); if( M &lt; k) SWAP the Mth value and ith value end for 首先直接用前k条数据初始化一个size为k的蓄水池.然后对从k+1到N的数据进行遍历，对于第i条数据，它有 $ \frac{k}{i}$的概率被选中，然后以 $\frac{1}{k}$的概率替换掉蓄水池中的任意一条数据. 证明我们来证明一下，这个算法使得每条数据被选中的概率是相等的。 对于第k+1条数据，它被选中的概率是$\frac{k}{k+1}$,对于前k条数据，被选中的概率是1-被第k+1条数据替换的概率= $ 1- \frac{k}{k+1}*\frac{1}{k} = \frac{k}{k+1}$. 假设前i条数据，每条被选中的概率是 $\frac{k}{i}$ . 那么前i+1条数据，对于第i+1条数据，被选中的概率是$\frac{k}{i+1}$, 前i条数据每条被选中的概率是前i次被选中概率乘以(1-被第i+1条数据替换的概率)，也就是$\frac{k}{i}|cdot(1-\frac{k}{i+1}\cdot\frac{1}{k}) = \frac{k}{i+1} $. 所以前i+1条数据，每条被选中的概率是$\frac{k}{i+1}$. leetcode例题leetcode中有很多题涉及到蓄水池抽样问题.]]></content>
+    <content type="text"><![CDATA[问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码Init : a reservoir with the size： k for i= k+1 to N M=random(1, i); if( M &lt; k) SWAP the Mth value and ith value end for 首先直接用前k条数据初始化一个size为k的蓄水池.然后对从k+1到N的数据进行遍历，对于第i条数据，它有 $ \frac{k}{i}$的概率被选中，然后以 $\frac{1}{k}$的概率替换掉蓄水池中的任意一条数据. 证明我们来证明一下，这个算法使得每条数据被选中的概率是相等的。 对于第k+1条数据，它被选中的概率是$\frac{k}{k+1}$,对于前k条数据，被选中的概率是1-被第k+1条数据替换的概率= $ 1- \frac{k}{k+1}*\frac{1}{k} = \frac{k}{k+1}$. 假设前i条数据，每条被选中的概率是 $\frac{k}{i}$ . 那么前i+1条数据，对于第i+1条数据，被选中的概率是$\frac{k}{i+1}$, 前i条数据每条被选中的概率是前i次被选中概率乘以(1-被第i+1条数据替换的概率)，也就是$\frac{k}{i}\cdot(1-\frac{k}{i+1}\cdot\frac{1}{k}) = \frac{k}{i+1} $. 所以前i+1条数据，每条被选中的概率是$\frac{k}{i+1}$. leetcode例题leetcode中有很多题涉及到蓄水池抽样问题.]]></content>
       <tags>
         <tag>algorithm</tag>
       </tags>
