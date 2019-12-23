@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码及证明Init : a reservoir with the size： k  for i= k+1 to N     M=random(1, i);      if( M &amp;lt; k)       SWAP the Mth value and ith value  end for">
+    <meta name="description" content="问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码Init : a reservoir with the size： k  for i= k+1 to N     M=random(1, i);      if( M &amp;lt; k)       SWAP the Mth value and ith value  end for 首先直接">
 <meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓄水池抽样">
 <meta property="og:url" content="http://yoursite.com/2019/12/23/蓄水池抽样/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码及证明Init : a reservoir with the size： k  for i= k+1 to N     M=random(1, i);      if( M &amp;lt; k)       SWAP the Mth value and ith value  end for">
+<meta property="og:description" content="问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码Init : a reservoir with the size： k  for i= k+1 to N     M=random(1, i);      if( M &amp;lt; k)       SWAP the Mth value and ith value  end for 首先直接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-23T10:19:36.404Z">
+<meta property="og:updated_time" content="2019-12-23T11:01:19.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓄水池抽样">
-<meta name="twitter:description" content="问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码及证明Init : a reservoir with the size： k  for i= k+1 to N     M=random(1, i);      if( M &amp;lt; k)       SWAP the Mth value and ith value  end for">
+<meta name="twitter:description" content="问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码Init : a reservoir with the size： k  for i= k+1 to N     M=random(1, i);      if( M &amp;lt; k)       SWAP the Mth value and ith value  end for 首先直接">
     
     
         
@@ -104,7 +104,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法伪代码及证明"><span class="toc-number">2.</span> <span class="toc-text">算法伪代码及证明</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法伪代码"><span class="toc-number">2.</span> <span class="toc-text">算法伪代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证明"><span class="toc-number">3.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode例题"><span class="toc-number">4.</span> <span class="toc-text">leetcode例题</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -149,7 +149,12 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $.</p>
-<h2 id="算法伪代码及证明"><a href="#算法伪代码及证明" class="headerlink" title="算法伪代码及证明"></a>算法伪代码及证明</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Init : a reservoir with the size： k  </span><br><span class="line"><span class="keyword">for</span> i= k+<span class="number">1</span> to N </span><br><span class="line">    M=random(<span class="number">1</span>, i);  </span><br><span class="line">    <span class="keyword">if</span>( M &lt; k)  </span><br><span class="line">     SWAP the Mth value <span class="keyword">and</span> ith value  </span><br><span class="line">end <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
+<h2 id="算法伪代码"><a href="#算法伪代码" class="headerlink" title="算法伪代码"></a>算法伪代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Init : a reservoir with the size： k  </span><br><span class="line"><span class="keyword">for</span> i= k+<span class="number">1</span> to N </span><br><span class="line">    M=random(<span class="number">1</span>, i);  </span><br><span class="line">    <span class="keyword">if</span>( M &lt; k)  </span><br><span class="line">     SWAP the Mth value <span class="keyword">and</span> ith value  </span><br><span class="line">end <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
+<p>首先直接用前k条数据初始化一个size为k的蓄水池.然后对从k+1到N的数据进行遍历，对于第i条数据，它有 $ \frac{k}{i}$的概率被选中，然后以 $\frac{1}{k}$的概率替换掉蓄水池中的任意一条数据. </p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>我们来证明一下，这个算法使得每条数据被选中的概率是相等的。</p>
+<p>对于第k+1条数据，它被选中的概率是$\frac{k}{k+1}$,对于前k条数据，被选中的概率是1-被第k+1条数据替换的概率= 1 - $ \frac{k}{k+1}*\frac{1}{k} = \frac{k}{k+1}$.</p>
+<p>假设前i条数据，每条被选中的概率是 $\frac{k}{i}$ . 那么前i+1条数据，对于第i+1条数据，被选中的概率是$\frac{k}{i+1}$, 前i条数据每条被选中的概率是 前i次被选中概率<em>(1-被第i+1条数据替换的概率)，也就是$\frac{k}{i}</em>(1-\frac{k}{i+1}*\frac{1}{k}) = \frac{k}{i+1} $. 所以前i+1条数据，每条被选中的概率是$\frac{k}{i+1}$.</p>
+<h2 id="leetcode例题"><a href="#leetcode例题" class="headerlink" title="leetcode例题"></a>leetcode例题</h2><p>leetcode中有很多题涉及到蓄水池抽样问题.</p>
 
   </div>
 </article>
@@ -185,7 +190,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法伪代码及证明"><span class="toc-number">2.</span> <span class="toc-text">算法伪代码及证明</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法伪代码"><span class="toc-number">2.</span> <span class="toc-text">算法伪代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证明"><span class="toc-number">3.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode例题"><span class="toc-number">4.</span> <span class="toc-text">leetcode例题</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
