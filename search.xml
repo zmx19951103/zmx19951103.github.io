@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[IPC(进程间通信)]]></title>
+    <url>%2F2019%2F12%2F23%2FIPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[select/poll/epoll]]></title>
     <url>%2F2019%2F12%2F23%2Fselect-poll-epoll%2F</url>
     <content type="text"></content>
