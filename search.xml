@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[零拷贝]]></title>
+    <url>%2F2019%2F12%2F24%2F%E9%9B%B6%E6%8B%B7%E8%B4%9D%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[IPC(进程间通信)]]></title>
     <url>%2F2019%2F12%2F23%2FIPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%2F</url>
     <content type="text"></content>
