@@ -368,7 +368,10 @@
   <entry>
     <title><![CDATA[生产者消费者模型]]></title>
     <url>%2F2019%2F09%2F19%2F%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言生产者消费者模型是著名的线程同步模型，在实际的工业产品中都体现着这种模型。 问题有一个大小为N的buffer,有多个线程对其进行操作，这些线程分为两类，分别是生产者和消费者，其中生产者生产数据并放到buffer里，消费者从buffer里取数据消费。如果buffer满了，那么生产者不能继续生产数据，如果buffer为空，那么消费者不能消费数据.以及同一时刻只能有一个线程来访问buffer. 实现使用一个mutex和两个semaphores(信号量)来实现 full = semaphore(0)empty = semaphore(N)mutex = 1 生产者: p(empty)p(mutex) // 多个线程之间的互斥，同一时刻只能有一个线程来访问buffer.produce()放入bufferv(mutex)v(full) 消费者: p(full)p(mutex)从buffer取出,consume()v(mutex)v(empty) 参考生产者消费者模型]]></content>
+      <tags>
+        <tag>operating system</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[c++11 std::thread]]></title>
