@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="在一个排序数组中找&amp;lt;=target的最大的数while(l&amp;lt;r)&amp;#123;int middle = (l+r+1)/2;if(nums[middle]&amp;lt;=target)l =middle ; else r = middle -1;&amp;#125; 在一个排序数组中找&amp;gt;=x的最小的数while(l&amp;lt;r)&amp;#123;int middle = (l+r)/2;if(nums[">
+    <meta name="description" content="在一个排序数组nums中找&amp;lt;=target的最大的数while(l&amp;lt;r)&amp;#123;int middle = (l+r+1)/2;if(nums[middle]&amp;lt;=target)l =middle ; else r = middle -1;&amp;#125;return nums[l]; 在一个排序数组nums中找&amp;gt;=x的最小的数while(l&amp;lt;r)&amp;#123;int mi">
 <meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二分法的两种写法">
 <meta property="og:url" content="http://yoursite.com/2019/12/23/二分法的两种写法/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="在一个排序数组中找&amp;lt;=target的最大的数while(l&amp;lt;r)&amp;#123;int middle = (l+r+1)/2;if(nums[middle]&amp;lt;=target)l =middle ; else r = middle -1;&amp;#125; 在一个排序数组中找&amp;gt;=x的最小的数while(l&amp;lt;r)&amp;#123;int middle = (l+r)/2;if(nums[">
+<meta property="og:description" content="在一个排序数组nums中找&amp;lt;=target的最大的数while(l&amp;lt;r)&amp;#123;int middle = (l+r+1)/2;if(nums[middle]&amp;lt;=target)l =middle ; else r = middle -1;&amp;#125;return nums[l]; 在一个排序数组nums中找&amp;gt;=x的最小的数while(l&amp;lt;r)&amp;#123;int mi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-23T14:13:34.841Z">
+<meta property="og:updated_time" content="2019-12-23T14:24:22.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分法的两种写法">
-<meta name="twitter:description" content="在一个排序数组中找&amp;lt;=target的最大的数while(l&amp;lt;r)&amp;#123;int middle = (l+r+1)/2;if(nums[middle]&amp;lt;=target)l =middle ; else r = middle -1;&amp;#125; 在一个排序数组中找&amp;gt;=x的最小的数while(l&amp;lt;r)&amp;#123;int middle = (l+r)/2;if(nums[">
+<meta name="twitter:description" content="在一个排序数组nums中找&amp;lt;=target的最大的数while(l&amp;lt;r)&amp;#123;int middle = (l+r+1)/2;if(nums[middle]&amp;lt;=target)l =middle ; else r = middle -1;&amp;#125;return nums[l]; 在一个排序数组nums中找&amp;gt;=x的最小的数while(l&amp;lt;r)&amp;#123;int mi">
     
     
         
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组中找-lt-target的最大的数"><span class="toc-number">1.</span> <span class="toc-text">在一个排序数组中找&lt;=target的最大的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组中找-gt-x的最小的数"><span class="toc-number">2.</span> <span class="toc-text">在一个排序数组中找&gt;=x的最小的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode例题"><span class="toc-number">3.</span> <span class="toc-text">leetcode例题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组nums中找-lt-target的最大的数"><span class="toc-number">1.</span> <span class="toc-text">在一个排序数组nums中找&lt;=target的最大的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组nums中找-gt-x的最小的数"><span class="toc-number">2.</span> <span class="toc-text">在一个排序数组nums中找&gt;=x的最小的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode例题"><span class="toc-number">3.</span> <span class="toc-text">leetcode例题</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -150,8 +150,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="在一个排序数组中找-lt-target的最大的数"><a href="#在一个排序数组中找-lt-target的最大的数" class="headerlink" title="在一个排序数组中找&lt;=target的最大的数"></a>在一个排序数组中找&lt;=target的最大的数</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> middle = (l+r+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(nums[middle]&lt;=target)l =middle ; <span class="keyword">else</span> r = middle <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="在一个排序数组中找-gt-x的最小的数"><a href="#在一个排序数组中找-gt-x的最小的数" class="headerlink" title="在一个排序数组中找&gt;=x的最小的数"></a>在一个排序数组中找&gt;=x的最小的数</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line"><span class="keyword">int</span> middle = (l+r)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(nums[middle]&gt;=x) r = middle; <span class="keyword">else</span> l = middle + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <h2 id="在一个排序数组nums中找-lt-target的最大的数"><a href="#在一个排序数组nums中找-lt-target的最大的数" class="headerlink" title="在一个排序数组nums中找&lt;=target的最大的数"></a>在一个排序数组nums中找&lt;=target的最大的数</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> middle = (l+r+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(nums[middle]&lt;=target)l =middle ; <span class="keyword">else</span> r = middle <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> nums[l];</span><br></pre></td></tr></table></figure>
+<h2 id="在一个排序数组nums中找-gt-x的最小的数"><a href="#在一个排序数组nums中找-gt-x的最小的数" class="headerlink" title="在一个排序数组nums中找&gt;=x的最小的数"></a>在一个排序数组nums中找&gt;=x的最小的数</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line"><span class="keyword">int</span> middle = (l+r)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(nums[middle]&gt;=x) r = middle; <span class="keyword">else</span> l = middle + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> nums[l];</span><br></pre></td></tr></table></figure>
 <p>以上两种写法能保证循环退出时，l==r, 来自于算法竞赛进阶指南.</p>
 <h2 id="leetcode例题"><a href="#leetcode例题" class="headerlink" title="leetcode例题"></a>leetcode例题</h2><p><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. 在排序数组中查找元素的第一个和最后一个位置</a></p>
 <p>很直接的用两种二分法各求一遍，得到答案.</p>
@@ -192,7 +192,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组中找-lt-target的最大的数"><span class="toc-number">1.</span> <span class="toc-text">在一个排序数组中找&lt;=target的最大的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组中找-gt-x的最小的数"><span class="toc-number">2.</span> <span class="toc-text">在一个排序数组中找&gt;=x的最小的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode例题"><span class="toc-number">3.</span> <span class="toc-text">leetcode例题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组nums中找-lt-target的最大的数"><span class="toc-number">1.</span> <span class="toc-text">在一个排序数组nums中找&lt;=target的最大的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在一个排序数组nums中找-gt-x的最小的数"><span class="toc-number">2.</span> <span class="toc-text">在一个排序数组nums中找&gt;=x的最小的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode例题"><span class="toc-number">3.</span> <span class="toc-text">leetcode例题</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
