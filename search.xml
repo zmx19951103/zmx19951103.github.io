@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[蓄水池抽样]]></title>
     <url>%2F2019%2F12%2F23%2F%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%2F</url>
-    <content type="text"><![CDATA[问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码及证明]]></content>
+    <content type="text"><![CDATA[问题从n条数据中，随机抽取k条数据，要求每条数据被抽取到的概率相等即$ \frac{k}{n} $. 算法伪代码及证明Init : a reservoir with the size： k for i= k+1 to N M=random(1, i); if( M &lt; k) SWAP the Mth value and ith value end for]]></content>
       <tags>
         <tag>algorithm</tag>
       </tags>
