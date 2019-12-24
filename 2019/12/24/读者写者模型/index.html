@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 读者优先实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&amp;#123;p(mutex)read">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T03:13:44.131Z">
+<meta property="og:updated_time" content="2019-12-24T18:42:32.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读者写者模型">
 <meta name="twitter:description" content="前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 读者优先实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&amp;#123;p(mutex)read">
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读者优先实现"><span class="toc-number">3.</span> <span class="toc-text">读者优先实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写者优先实现"><span class="toc-number">4.</span> <span class="toc-text">写者优先实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公平竞争"><span class="toc-number">5.</span> <span class="toc-text">公平竞争</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读者优先实现"><span class="toc-number">3.</span> <span class="toc-text">读者优先实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写者优先实现"><span class="toc-number">4.</span> <span class="toc-text">写者优先实现</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -157,7 +157,12 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">p(mutex)</span><br><span class="line">readcount++</span><br><span class="line"><span class="keyword">if</span>(readcount==<span class="number">1</span>)</span><br><span class="line">   p(wrt)</span><br><span class="line">v(mutex)</span><br><span class="line"></span><br><span class="line">read</span><br><span class="line"></span><br><span class="line">p(mutext)</span><br><span class="line">readcount--</span><br><span class="line"><span class="keyword">if</span>(readcount==<span class="number">0</span>)</span><br><span class="line">   v(wrt)</span><br><span class="line">v(mutex)</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
 <p>写者：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">p(wrt)</span><br><span class="line"></span><br><span class="line">write</span><br><span class="line"></span><br><span class="line">v(wrt)</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
 <p>仔细分析，上面的程序，只要有一个写者，其他线程就不能访问数据，一旦有一个读者获取wrt从而访问数据，其他的读者就能能够一起访问数据。可以看出上面的程序是读者优先的，一旦有一个读者获取到wrt，其他读者就能够源源不断的访问数据，从而饿死写者.</p>
-<h2 id="写者优先实现"><a href="#写者优先实现" class="headerlink" title="写者优先实现"></a>写者优先实现</h2><h2 id="公平竞争"><a href="#公平竞争" class="headerlink" title="公平竞争"></a>公平竞争</h2>
+<h2 id="写者优先实现"><a href="#写者优先实现" class="headerlink" title="写者优先实现"></a>写者优先实现</h2><p>写者优先的话，一旦有一个写进程来，就阻塞后续的读进程，需要增加一个writercount,一个信号量r，以及一个互斥量mutexwriter来更新writercount</p>
+<p>写者:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">p(mutexwriter)</span><br><span class="line">  writercount++</span><br><span class="line">  <span class="keyword">if</span>(writercount==<span class="number">1</span>) p(r)</span><br><span class="line">v(mutexwriter)</span><br><span class="line"></span><br><span class="line">p(w)</span><br><span class="line">写</span><br><span class="line">v(w)</span><br><span class="line"></span><br><span class="line">p(mutexwriter)</span><br><span class="line">   writercount--;</span><br><span class="line">   <span class="keyword">if</span>(writercount==<span class="number">0</span>) v(r)</span><br><span class="line">v(mutexwriter)</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<p>读进程</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">p(r)</span><br><span class="line"></span><br><span class="line"> p(mutexreader)</span><br><span class="line">   readcount++</span><br><span class="line">   <span class="keyword">if</span>(readcount==<span class="number">1</span>)p(w)</span><br><span class="line"> v(mutexreader)</span><br><span class="line"></span><br><span class="line">v(r)</span><br><span class="line"></span><br><span class="line">read</span><br><span class="line"></span><br><span class="line">p(mutexreader)</span><br><span class="line"></span><br><span class="line">  readcount--</span><br><span class="line">  <span class="keyword">if</span>(readcount==<span class="number">0</span>)v(w)</span><br><span class="line"></span><br><span class="line">v(mutexreader)</span><br></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -192,7 +197,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读者优先实现"><span class="toc-number">3.</span> <span class="toc-text">读者优先实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写者优先实现"><span class="toc-number">4.</span> <span class="toc-text">写者优先实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公平竞争"><span class="toc-number">5.</span> <span class="toc-text">公平竞争</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读者优先实现"><span class="toc-number">3.</span> <span class="toc-text">读者优先实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写者优先实现"><span class="toc-number">4.</span> <span class="toc-text">写者优先实现</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
