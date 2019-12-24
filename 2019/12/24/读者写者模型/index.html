@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言读者写者问题是另一个经典的线程同步问题. 问题实现">
+    <meta name="description" content="前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&amp;#123;p(mutex)readcoun">
 <meta name="keywords" content="operating system">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读者写者模型">
 <meta property="og:url" content="http://yoursite.com/2019/12/24/读者写者模型/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言读者写者问题是另一个经典的线程同步问题. 问题实现">
+<meta property="og:description" content="前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&amp;#123;p(mutex)readcoun">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-23T19:39:54.982Z">
+<meta property="og:updated_time" content="2019-12-24T02:04:17.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读者写者模型">
-<meta name="twitter:description" content="前言读者写者问题是另一个经典的线程同步问题. 问题实现">
+<meta name="twitter:description" content="前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&amp;#123;p(mutex)readcoun">
     
     
         
@@ -149,7 +149,13 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>读者写者问题是另一个经典的线程同步问题.</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据.</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>mutext = 1<br>wrt = semaphore(1)<br>readcount =0</p>
+<p>读者：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">p(mutex)</span><br><span class="line">readcount++</span><br><span class="line"><span class="keyword">if</span>(readcount==<span class="number">1</span>)</span><br><span class="line">   p(wrt)</span><br><span class="line">v(mutex)</span><br><span class="line"></span><br><span class="line">read</span><br><span class="line"></span><br><span class="line">p(mutext)</span><br><span class="line">readcount--</span><br><span class="line"><span class="keyword">if</span>(readcount==<span class="number">0</span>)</span><br><span class="line">   v(wrt)</span><br><span class="line">v(mutex)</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<p>写者：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">p(wrt)</span><br><span class="line"></span><br><span class="line">write</span><br><span class="line"></span><br><span class="line">v(wrt)</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
+<p>仔细分析，上面的程序，只要有一个写者，其他线程就不能访问数据，一旦有一个读者获取wrt从而访问数据，其他的读者就能能够一起访问数据。可以看出上面的程序是读者优先的，一旦有一个读者获取到wrt，其他读者就能够源源不断的访问数据，从而饿死写者.</p>
+
   </div>
 </article>
 
