@@ -15,7 +15,7 @@
 <meta property="og:description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子. 可能死锁的实现semaphore forks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:  do&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/Philosophers/phi.jpeg">
-<meta property="og:updated_time" content="2019-12-24T03:35:01.697Z">
+<meta property="og:updated_time" content="2019-12-24T07:48:59.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哲学家就餐问题">
 <meta name="twitter:description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子. 可能死锁的实现semaphore forks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:  do&amp;">
@@ -51,8 +51,7 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -156,7 +155,9 @@
     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>哲学家就餐问题是经典的线程同步问题。</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:<br><img src="/images/Philosophers/phi.jpeg" alt title="哲学家就餐问题"><br>哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子.</p>
 <h2 id="可能死锁的实现"><a href="#可能死锁的实现" class="headerlink" title="可能死锁的实现"></a>可能死锁的实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">semaphore forks[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> philosopher i:</span><br><span class="line">  <span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">    p(forks[i]);</span><br><span class="line">    p(forks[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">    就餐</span><br><span class="line">    v(forks[i]);</span><br><span class="line">    v(forks[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"> &#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2>
+<p>当所有的哲学家同时拿起左手边的叉子的时候，系统就死锁了，他们都拿不到右手边的叉子，但是又不放下左手边的叉子，最后都饿死了.</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>我们总结下导致死锁的原因和四个必要条件:</p>
+
   </div>
 </article>
 
@@ -274,6 +275,26 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
