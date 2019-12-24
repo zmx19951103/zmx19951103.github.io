@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="题目1129. 颜色交替的最短路径 代码: class Solution &amp;#123;public:       vector&amp;lt;int&amp;gt; shortestAlternatingPaths(int n, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; red_edges, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; blue_edg">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
 <meta property="og:title" content="dijkstra复习">
 <meta property="og:url" content="http://yoursite.com/2019/12/24/dijkstra复习/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="题目1129. 颜色交替的最短路径 代码: class Solution &amp;#123;public:       vector&amp;lt;int&amp;gt; shortestAlternatingPaths(int n, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; red_edges, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; blue_edg">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T08:10:15.869Z">
+<meta property="og:updated_time" content="2019-12-24T08:15:46.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dijkstra复习">
+<meta name="twitter:description" content="题目1129. 颜色交替的最短路径 代码: class Solution &amp;#123;public:       vector&amp;lt;int&amp;gt; shortestAlternatingPaths(int n, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; red_edges, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; blue_edg">
     
     
         
@@ -45,7 +49,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -100,7 +105,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +138,21 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/algorithm/">algorithm</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/shortest-path-with-alternating-colors/" target="_blank" rel="noopener">1129. 颜色交替的最短路径</a></p>
+<p>代码:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; shortestAlternatingPaths(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; red_edges, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; blue_edges) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; graph(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n,<span class="number">0x3f3f3f3f</span>));</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; color(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n,<span class="number">-1</span>)); <span class="comment">// </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp; e: red_edges)&#123; graph[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = <span class="number">1</span>; color[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = <span class="number">0</span>;&#125; </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp; e: blue_edges)&#123; graph[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = <span class="number">1</span>; <span class="keyword">if</span>(color[e[<span class="number">0</span>]][e[<span class="number">1</span>]]==<span class="number">0</span>)color[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = <span class="number">2</span>; <span class="keyword">else</span> color[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = <span class="number">1</span>;  &#125; <span class="comment">// 一个方向的边可能既有蓝色又有红色</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// read , blue</span></span><br><span class="line">        <span class="comment">// vector&lt;int&gt; res(n,-1);</span></span><br><span class="line">        <span class="comment">// 选择路径的时候加上边的颜色的限制</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; min_len(<span class="number">2</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n,<span class="number">0x3f3f3f3f</span>));</span><br><span class="line"></span><br><span class="line">        min_len[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        min_len[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; used(<span class="number">2</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n,<span class="number">0</span>)); <span class="comment">// 0 means not used,1 means used</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       <span class="comment">// vector&lt;int&gt; last_col(n,-1) ; // -1 means start , 0 means red , 1 means blue</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       <span class="comment">/////////</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">2</span>*n;</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">while</span>(p--)&#123; </span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> red_chosen;</span><br><span class="line">            <span class="keyword">int</span> blue_chosen;</span><br><span class="line">            <span class="keyword">int</span> red_max_ = <span class="number">0x3f3f3f3f</span>; <span class="comment">// infinite</span></span><br><span class="line">            <span class="keyword">int</span> blue_max_ = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; n; i++ ) &#123;</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">if</span>(!used[<span class="number">0</span>][i]&amp;&amp; min_len[<span class="number">0</span>][i]&lt;red_max_ ) &#123; red_max_ = min_len[<span class="number">0</span>][i]; red_chosen= i;&#125;</span><br><span class="line">                  <span class="keyword">if</span>(!used[<span class="number">1</span>][i]&amp;&amp; min_len[<span class="number">1</span>][i]&lt;blue_max_ ) &#123; blue_max_ = min_len[<span class="number">1</span>][i]; blue_chosen= i;&#125;  </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(red_max_==<span class="number">0x3f3f3f3f</span> &amp;&amp; blue_max_==<span class="number">0x3f3f3f3f</span>) <span class="keyword">break</span>;</span><br><span class="line">           </span><br><span class="line">            <span class="keyword">if</span>(red_max_!=<span class="number">0x3f3f3f3f</span>)&#123;</span><br><span class="line"></span><br><span class="line">               used[<span class="number">0</span>][red_chosen] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123; <span class="comment">// 更新路径距离</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(!used[<span class="number">1</span>][i] &amp;&amp; color[red_chosen][i] != <span class="number">0</span> ) &#123; <span class="comment">// 1 or 2 </span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span>(min_len[<span class="number">1</span>][i]&gt; min_len[<span class="number">0</span>][red_chosen]+ graph[red_chosen][i])&#123;</span><br><span class="line">                      </span><br><span class="line">                      <span class="comment">//last_col[i] = 1- last_col[chosen];</span></span><br><span class="line">                      min_len[<span class="number">1</span>][i] = <span class="built_in">std</span>::min(min_len[<span class="number">1</span>][i], min_len[<span class="number">0</span>][red_chosen]+graph[red_chosen][i]);</span><br><span class="line">                     </span><br><span class="line">                     &#125; </span><br><span class="line">                     </span><br><span class="line">                     &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span>(blue_max_!=<span class="number">0x3f3f3f3f</span>)&#123;</span><br><span class="line"></span><br><span class="line">                used[<span class="number">1</span>][blue_chosen] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123; <span class="comment">// 更新路径距离</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(!used[<span class="number">0</span>][i] &amp;&amp; color[blue_chosen][i] != <span class="number">1</span> ) &#123; <span class="comment">// 1 or 2 </span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span>(min_len[<span class="number">0</span>][i]&gt; min_len[<span class="number">1</span>][blue_chosen]+ graph[blue_chosen][i])&#123;</span><br><span class="line">                      </span><br><span class="line">                      <span class="comment">//last_col[i] = 1- last_col[chosen];</span></span><br><span class="line"></span><br><span class="line">                      min_len[<span class="number">0</span>][i] = <span class="built_in">std</span>::min(min_len[<span class="number">0</span>][i], min_len[<span class="number">1</span>][blue_chosen]+graph[blue_chosen][i]);</span><br><span class="line">                     </span><br><span class="line">                     &#125; </span><br><span class="line">                     </span><br><span class="line">                     &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res(n,<span class="number">0x3f3f3f3f</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i&lt; n; i++ )&#123;</span><br><span class="line">           <span class="keyword">if</span>(min_len[<span class="number">0</span>][i]==<span class="number">0x3f3f3f3f</span> &amp;&amp; min_len[<span class="number">1</span>][i]==<span class="number">0x3f3f3f3f</span>) res[i]=<span class="number">-1</span>;</span><br><span class="line">           <span class="keyword">else</span> res[i] = <span class="built_in">std</span>::min(min_len[<span class="number">0</span>][i],min_len[<span class="number">1</span>][i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -174,7 +187,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -257,26 +270,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
