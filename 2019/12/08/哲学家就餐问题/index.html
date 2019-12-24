@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有筷子前，不会放下手中的筷子. 可能死锁的实现semaphore chopsticks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:">
+    <meta name="description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子. 可能死锁的实现semaphore forks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:  do&amp;">
 <meta name="keywords" content="operating system">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哲学家就餐问题">
 <meta property="og:url" content="http://yoursite.com/2019/12/08/哲学家就餐问题/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有筷子前，不会放下手中的筷子. 可能死锁的实现semaphore chopsticks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:">
+<meta property="og:description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子. 可能死锁的实现semaphore forks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:  do&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/Philosophers/phi.jpeg">
-<meta property="og:updated_time" content="2019-12-24T03:31:50.855Z">
+<meta property="og:updated_time" content="2019-12-24T03:35:01.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哲学家就餐问题">
-<meta name="twitter:description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有筷子前，不会放下手中的筷子. 可能死锁的实现semaphore chopsticks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:">
+<meta name="twitter:description" content="前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子. 可能死锁的实现semaphore forks[5]=&amp;#123;1,1,1,1,1&amp;#125;;for philosopher i:  do&amp;">
 <meta name="twitter:image" content="http://yoursite.com/images/Philosophers/phi.jpeg">
     
     
@@ -154,8 +154,8 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>哲学家就餐问题是经典的线程同步问题。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:<br><img src="/images/Philosophers/phi.jpeg" alt title="哲学家就餐问题"><br>哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有筷子前，不会放下手中的筷子.</p>
-<h2 id="可能死锁的实现"><a href="#可能死锁的实现" class="headerlink" title="可能死锁的实现"></a>可能死锁的实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">semaphore chopsticks[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> philosopher i:</span><br><span class="line">  <span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">    p(chopsticks[i]);</span><br><span class="line">    p(chopsticks[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">    就餐</span><br><span class="line">    v(chopsticks[i]);</span><br><span class="line">    v(chopsticks[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"> &#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:<br><img src="/images/Philosophers/phi.jpeg" alt title="哲学家就餐问题"><br>哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子.</p>
+<h2 id="可能死锁的实现"><a href="#可能死锁的实现" class="headerlink" title="可能死锁的实现"></a>可能死锁的实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">semaphore forks[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> philosopher i:</span><br><span class="line">  <span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">    p(forks[i]);</span><br><span class="line">    p(forks[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">    就餐</span><br><span class="line">    v(forks[i]);</span><br><span class="line">    v(forks[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"> &#125;<span class="keyword">while</span>(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2>
   </div>
 </article>

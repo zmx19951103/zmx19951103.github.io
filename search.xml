@@ -55,7 +55,7 @@
   <entry>
     <title><![CDATA[哲学家就餐问题]]></title>
     <url>%2F2019%2F12%2F08%2F%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%B0%B1%E9%A4%90%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有筷子前，不会放下手中的筷子. 可能死锁的实现semaphore chopsticks[5]=&#123;1,1,1,1,1&#125;;for philosopher i: do&#123; p(chopsticks[i]); p(chopsticks[(i+1)%5]); 就餐 v(chopsticks[i]); v(chopsticks[(i+1)%5]); &#125;while(true) 解决方案]]></content>
+    <content type="text"><![CDATA[前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有叉子前，不会放下手中的叉子. 可能死锁的实现semaphore forks[5]=&#123;1,1,1,1,1&#125;;for philosopher i: do&#123; p(forks[i]); p(forks[(i+1)%5]); 就餐 v(forks[i]); v(forks[(i+1)%5]); &#125;while(true) 解决方案]]></content>
       <tags>
         <tag>operating system</tag>
       </tags>
