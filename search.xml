@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[读者写者模型]]></title>
     <url>%2F2019%2F12%2F24%2F%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85%E6%A8%A1%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&#123;p(mutex)readcount++if(readcount==1) p(wrt)v(mutex)readp(mutext)readcount--if(readcount==0) v(wrt)v(mutex)&#125;while(true) 写者：do&#123;p(wrt)writev(wrt)&#125;while(true) 仔细分析，上面的程序，只要有一个写者，其他线程就不能访问数据，一旦有一个读者获取wrt从而访问数据，其他的读者就能能够一起访问数据。可以看出上面的程序是读者优先的，一旦有一个读者获取到wrt，其他读者就能够源源不断的访问数据，从而饿死写者.]]></content>
+    <content type="text"><![CDATA[前言读者写者问题是另一个经典的线程同步问题. 问题一个数据由多个线程共享，这些线程分为两类，一类是读者线程，一类是写者线程。读者线程只读数据，不修改数据，写者线程会修改数据。读读不互斥，写和读，写和写都互斥，也就是只要有一个写线程，其他线程就不能访问数据. 读者优先实现mutext = 1wrt = semaphore(1)readcount =0 读者： do&#123;p(mutex)readcount++if(readcount==1) p(wrt)v(mutex)readp(mutext)readcount--if(readcount==0) v(wrt)v(mutex)&#125;while(true) 写者：do&#123;p(wrt)writev(wrt)&#125;while(true) 仔细分析，上面的程序，只要有一个写者，其他线程就不能访问数据，一旦有一个读者获取wrt从而访问数据，其他的读者就能能够一起访问数据。可以看出上面的程序是读者优先的，一旦有一个读者获取到wrt，其他读者就能够源源不断的访问数据，从而饿死写者. 写者优先实现公平竞争]]></content>
       <tags>
         <tag>operating system</tag>
       </tags>
@@ -55,7 +55,10 @@
   <entry>
     <title><![CDATA[哲学家就餐问题]]></title>
     <url>%2F2019%2F12%2F08%2F%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%B0%B1%E9%A4%90%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言哲学家就餐问题是经典的线程同步问题。 问题有5个哲学家围坐在一个圆桌上，桌上有5盘食物，5个叉子，如下图所示:哲学家就餐或者思考，就餐时哲学家会拿起左右手的两个叉子，只有当两个叉子都拿到时，哲学家才能进行就餐，在没有拿到所有筷子前，不会放下手中的筷子. 可能死锁的实现semaphore chopsticks[5]=&#123;1,1,1,1,1&#125;;for philosopher i: do&#123; p(chopsticks[i]); p(chopsticks[(i+1)%5]); 就餐 v(chopsticks[i]); v(chopsticks[(i+1)%5]); &#125;while(true) 解决方案]]></content>
+      <tags>
+        <tag>operating system</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[c++进程同步和线程同步]]></title>
