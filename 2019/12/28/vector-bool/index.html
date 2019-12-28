@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言去第四范式面试实习，被问了这么一个题，vector a(10000),占用多少内存，首先一开始问的是vector a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯，我想应该是对的，然后就">
+    <meta name="description" content="前言去第四范式面试实习，被问了这么一个题，vector&amp;lt;bool&amp;gt; a(10000),占用多少内存，首先一开始问的是vector a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vector&lt;bool&gt;">
 <meta property="og:url" content="http://yoursite.com/2019/12/28/vector-bool/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言去第四范式面试实习，被问了这么一个题，vector a(10000),占用多少内存，首先一开始问的是vector a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯，我想应该是对的，然后就">
+<meta property="og:description" content="前言去第四范式面试实习，被问了这么一个题，vector&amp;lt;bool&amp;gt; a(10000),占用多少内存，首先一开始问的是vector a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-28T07:46:54.905Z">
+<meta property="og:updated_time" content="2019-12-28T07:48:35.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vector&lt;bool&gt;">
-<meta name="twitter:description" content="前言去第四范式面试实习，被问了这么一个题，vector a(10000),占用多少内存，首先一开始问的是vector a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯，我想应该是对的，然后就">
+<meta name="twitter:description" content="前言去第四范式面试实习，被问了这么一个题，vector&amp;lt;bool&amp;gt; a(10000),占用多少内存，首先一开始问的是vector a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯">
     
     
         
@@ -150,7 +150,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>去第四范式面试实习，被问了这么一个题，vector<bool\> a(10000),占用多少内存，首先一开始问的是vector<int \> a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯，我想应该是对的，然后就给出了前面的那个问题，vector<bool\>占多少内存呢，其实我一开始说bool值用一位表示就可以了，但是想到c++中的bool类型，我突然犹豫了，因为细细回想，我还真没有注意过bool类型占多少个字节，平时写c++程序，也不会对bool类型的变量取sizeof,一般需要一个判断条件的时候声明一个bool变量，而且bool变量在c++里面打印出来都是0，1，至于具体的字节数还真没有留意过。</bool\></int></bool\></p>
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>去第四范式面试实习，被问了这么一个题，vector&lt;bool&gt; a(10000),占用多少内存，首先一开始问的是vector<int \> a(10000)占用多少内存，其实一开始我是有点意外的，因为对STL内部实现的机制并不是很熟，这块这个寒假要补上来,但是想一个int就占4个字节，10000个不就是40000个字节，STL内部应该不会再怎么压缩存储吧，就说是40000个字节，然后面试官就说嗯，我想应该是对的，然后就给出了前面的那个问题，vector<bool\>占多少内存呢，其实我一开始说bool值用一位表示就可以了，但是想到c++中的bool类型，我突然犹豫了，因为细细回想，我还真没有注意过bool类型占多少个字节，平时写c++程序，也不会对bool类型的变量取sizeof,一般需要一个判断条件的时候声明一个bool变量，而且bool变量在c++里面打印出来都是0，1，至于具体的字节数还真没有留意过。</bool\></int></p>
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>可以看到bool类型占一个字节，然后还有指向bool类型的指针，不过到目前为止，我还没有写过指向bool类型的指针，真的也是很垃圾了. 那vector<bool> a(10000)是不是就占了10000个字节了，不敢确定，因为我心里一直想的是bool类型用一位就可以表示，STL会不会做优化呢，感觉不做太浪费内存了把.我们继续来确定一下这件事情.</bool></p>
 
