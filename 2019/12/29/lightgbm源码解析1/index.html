@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言最近开始看lightgbm的源码，毕竟是个面试就会问的东西，核心代码是用c++写的，可以把它全看了,对实现ML算法会有很大的帮助 main.cpp#include &amp;lt;LightGBM/application.h&amp;gt;#include &amp;lt;iostream&amp;gt;#include &quot;network/linkers.h&quot;int main(int argc, char** argv) &amp;">
+<meta name="keywords" content="gbdt">
+<meta property="og:type" content="article">
 <meta property="og:title" content="lightgbm源码解析1">
 <meta property="og:url" content="http://yoursite.com/2019/12/29/lightgbm源码解析1/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言最近开始看lightgbm的源码，毕竟是个面试就会问的东西，核心代码是用c++写的，可以把它全看了,对实现ML算法会有很大的帮助 main.cpp#include &amp;lt;LightGBM/application.h&amp;gt;#include &amp;lt;iostream&amp;gt;#include &quot;network/linkers.h&quot;int main(int argc, char** argv) &amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-28T17:32:01.948Z">
+<meta property="og:updated_time" content="2019-12-28T17:43:50.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lightgbm源码解析1">
+<meta name="twitter:description" content="前言最近开始看lightgbm的源码，毕竟是个面试就会问的东西，核心代码是用c++写的，可以把它全看了,对实现ML算法会有很大的帮助 main.cpp#include &amp;lt;LightGBM/application.h&amp;gt;#include &amp;lt;iostream&amp;gt;#include &quot;network/linkers.h&quot;int main(int argc, char** argv) &amp;">
     
     
         
@@ -100,7 +104,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main-cpp"><span class="toc-number">2.</span> <span class="toc-text">main.cpp</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +137,21 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/gbdt/">gbdt</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近开始看lightgbm的源码，毕竟是个面试就会问的东西，核心代码是用c++写的，可以把它全看了,对实现ML算法会有很大的帮助</p>
+<h2 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;LightGBM/application.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"network/linkers.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">bool</span> success = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    LightGBM::<span class="function">Application <span class="title">app</span><span class="params">(argc, argv)</span></span>; <span class="comment">// 定义了App类的对象，然后调用run</span></span><br><span class="line">    app.Run();</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> USE_MPI</span></span><br><span class="line">    LightGBM::Linkers::MpiFinalizeIfIsParallel();</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    success = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::exception&amp; ex) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Met Exceptions:"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; ex.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ex) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Met Exceptions:"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; ex &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span> (...) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Unknown Exceptions"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!success) &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> USE_MPI</span></span><br><span class="line">    LightGBM::Linkers::MpiAbortIfIsParallel();</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到main.cc真的相当简单.</p>
+
   </div>
 </article>
 
@@ -174,7 +186,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main-cpp"><span class="toc-number">2.</span> <span class="toc-text">main.cpp</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
