@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[拓扑排序]]></title>
+    <url>%2F2020%2F01%2F11%2F%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[前言刷题的季节，熟悉一下以前学过的算法，拓扑排序，其实就是对一个有向无环图的顶点进行排序，得到一个线性的顺序， 在这个顺序中任意两个节点u,v,如果在原图中有u指向v的路径，那么u排在v的前面。 代码本科的时候学的就是入度的解法，这里给出的也是入度的解法，比较直观 class Solution &#123;public: bool canFinish(int numCourses, vector&lt;vector&lt;int&gt;&gt;&amp; prerequisites) &#123; std::unordered_map&lt;int,int&gt; ind; std::unordered_map&lt;int, std::vector&lt;int&gt;&gt; mapp; std::queue&lt;int&gt; que; for(int i = 0; i&lt; numCourses;i++) ind[i] = 0; for(auto&amp; e : prerequisites)&#123; ind[e[0]] +=1; mapp[e[1]].push_back(e[0]); &#125; for(auto&amp; e : ind)&#123; if( e.second==0) &#123; que.push(e.first); &#125; &#125; int cnt = 0; while(que.size()&gt;0)&#123; cnt++; for(auto&amp; t : mapp[que.front()]) &#123;ind[t]--; if(ind[t]==0) que.push(t);&#125; que.pop(); &#125; if (cnt==numCourses) return true; else return false; &#125;&#125;; 代码的思路就是，我们首先用mapp记录这个图，每个节点会有它的邻接节点，每个节点会有一个入度，我们每次只要选取入度为0的节点就可以了，首先我们用一个队列将所有入度为0的节点加入队列，只要队列不为空，我们就从队列里面取出节点，每次一个节点被取出，它的邻居节点的入度就会减1，如果它的邻居节点的入度变为0，那么就将邻居节点加入队列，直到队列为空。 例题207 课程表210 课程表II]]></content>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[lightgbm/xgboost]]></title>
     <url>%2F2019%2F12%2F30%2Flightgbm-xgboost%2F</url>
     <content type="text"><![CDATA[前言参考lightgbm]]></content>
