@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[盛最多水的容器]]></title>
     <url>%2F2020%2F01%2F11%2F%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言这道题应该也是用双指针做,一个很暴力的做法就是两重循环,时间复杂度$O(n^{2})$]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[接雨水]]></title>
