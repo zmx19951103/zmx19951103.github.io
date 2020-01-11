@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[接雨水]]></title>
+    <url>%2F2020%2F01%2F11%2F%E6%8E%A5%E9%9B%A8%E6%B0%B4%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[morris遍历]]></title>
     <url>%2F2020%2F01%2F11%2Fmorris%E9%81%8D%E5%8E%86%2F</url>
     <content type="text"></content>
@@ -8,7 +13,10 @@
   <entry>
     <title><![CDATA[KMP]]></title>
     <url>%2F2020%2F01%2F11%2FKMP%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言KMP是一个非常经典的字符串匹配算法，其实之前也有学习过，但是好久没用过，彻底给忘了，最近拿出来重新复习一下, 但是感觉面试的时候基本也是用不到的.好想也没看到过直接考这个的 算法思想例题]]></content>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[拓扑排序]]></title>
