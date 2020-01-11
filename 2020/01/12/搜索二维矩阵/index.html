@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言这题题目告诉了你是个二维矩阵，但其实就是个一维的排序矩阵， 那我们要找某个数，直接二分就好了 代码class Solution &amp;#123;public:    bool searchMatrix(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; matrix, int target) &amp;#123;                //O(m*n)暴力        //">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
 <meta property="og:title" content="搜索二维矩阵">
 <meta property="og:url" content="http://yoursite.com/2020/01/12/搜索二维矩阵/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言这题题目告诉了你是个二维矩阵，但其实就是个一维的排序矩阵， 那我们要找某个数，直接二分就好了 代码class Solution &amp;#123;public:    bool searchMatrix(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; matrix, int target) &amp;#123;                //O(m*n)暴力        //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-11T18:37:36.595Z">
+<meta property="og:updated_time" content="2020-01-11T18:52:02.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搜索二维矩阵">
+<meta name="twitter:description" content="前言这题题目告诉了你是个二维矩阵，但其实就是个一维的排序矩阵， 那我们要找某个数，直接二分就好了 代码class Solution &amp;#123;public:    bool searchMatrix(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; matrix, int target) &amp;#123;                //O(m*n)暴力        //">
     
     
         
@@ -100,7 +104,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +137,21 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/leetcode/">leetcode</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这题题目告诉了你是个二维矩阵，但其实就是个一维的排序矩阵， 那我们要找某个数，直接二分就好了</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//O(m*n)暴力</span></span><br><span class="line">        <span class="comment">// 整体是有序的，直接用二分</span></span><br><span class="line">        <span class="keyword">int</span> m = matrix.size();</span><br><span class="line">        <span class="keyword">if</span>(m==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span> , right= m*n <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">            <span class="keyword">int</span> middle = (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> row = middle / n , col = middle% n;</span><br><span class="line">            <span class="keyword">if</span>(matrix[row][col]&gt;=target) right = middle;</span><br><span class="line">            <span class="keyword">else</span> left = middle +<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(matrix[left/n][left%n] == target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>用之前用过的二分查找模板里面的其中一个就好了</p>
+
   </div>
 </article>
 
@@ -174,7 +186,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
