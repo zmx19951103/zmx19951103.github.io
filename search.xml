@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[不同的二叉搜索数II]]></title>
+    <url>%2F2020%2F01%2F18%2F%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%95%B0II%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[emplace]]></title>
     <url>%2F2020%2F01%2F12%2Femplace%2F</url>
     <content type="text"><![CDATA[前言看lightgbm的代码遇到了 unordered_map 的 emplace 成员函数，之前并没有用过,所以查了一下用法，主要应该是在往哈希表里插入元素的时候，并没有 发生复制或者移动， 而是in place的构造了一个元素并插入. cppreference]]></content>
