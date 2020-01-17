@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[不同的二叉搜索数II]]></title>
     <url>%2F2020%2F01%2F18%2F%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%95%B0II%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言 这道题一开始就想到是递归，但是还是想了一会才想出来. 其实遍历每个树，把它当作树根，然后递归生成左子树和右子树，不过这里的左子树和右子树返回的不是一个指针，而是指针的数组，因为左子树和右子树都有可能有多种结构，这个看例子就可以看出来，所以对于左子树的可能的个数n和右子树的可能个数m，总共应该产生 n*m 个 根节点. 如果左子树为空，右子树n个可能，那么就产生n个根节点，对应不同的右子树，如果右子树为空，同理. 代码/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: vector&lt;TreeNode*&gt; helper(const std::vector&lt;int&gt;&amp; vec) &#123; if (vec.empty()) return &#123;&#125;; if(vec.size()==1)return &#123;new TreeNode(vec[0])&#125;; vector&lt;TreeNode*&gt; ret; for(int i = 0; i &lt; vec.size(); i++) &#123; std::vector&lt;int&gt; left(vec.begin(), vec.begin()+i); std::vector&lt;int&gt; right(vec.begin()+i+1, vec.end()); vector&lt;TreeNode*&gt; left_vec = helper(left); vector&lt;TreeNode*&gt; right_vec = helper(right); //vector&lt;TreeNode*&gt; temp_left; if (!left_vec.empty() &amp;&amp; !right_vec.empty() ) &#123; // for (auto&amp; e : left_vec)&#123; // TreeNode* root = new TreeNode(vec[i]); // root-&gt;left = e; // temp_left.push_back(root); // &#125; for(auto &amp; e : left_vec) for(auto&amp; j: right_vec) &#123; TreeNode* root = new TreeNode(vec[i]); root-&gt;left = e; root-&gt;right = j; ret.push_back(root); &#125; &#125; else if(!right_vec.empty()) &#123; for (auto&amp; e : right_vec)&#123; TreeNode *node = new TreeNode(vec[i]); node-&gt;right = e; ret.push_back(node); &#125; &#125; else if(!left_vec.empty()) &#123; for (auto&amp; e : left_vec)&#123; TreeNode *node = new TreeNode(vec[i]); node-&gt;left = e; ret.push_back(node); &#125; &#125; &#125; return ret; &#125; vector&lt;TreeNode*&gt; generateTrees(int n) &#123; // 二叉搜索树 //回溯法 std::vector&lt;int&gt; vec; for(int i =1;i&lt;=n;i++) vec.push_back(i); return helper(vec); &#125;&#125;;]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[emplace]]></title>
