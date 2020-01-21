@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[最大数]]></title>
+    <url>%2F2020%2F01%2F22%2F%E6%9C%80%E5%A4%A7%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[前言这道题其实本质是设计一个比较两个数“大小“的排序标准，也就是给定两个数，谁应该排在前面，使得作为字符串连接后数更大, 一开始没有想到其实只要排一下序就好，后来突然意识到就是设计排序标准，然后排序再依次连接就好，在写排序的时候也没有一开始就想到这样做，后来突然意识到就是字符串比较就行, a和b分开来比不好比，但是a+b 和 b+a 就很好比了 代码class Solution &#123;public: static bool helper(const string &amp; a , const string &amp; b) &#123; //string a_ = to_string(a); //string b_ = to_string(b); return a + b &gt; b + a; &#125; string largestNumber(vector&lt;int&gt;&amp; nums) &#123; // 返回字符串 //vector&lt;int&gt; ret; // int size = nums.size(); vector&lt;string&gt; strNums(nums.size()); std::transform(nums.begin(), nums.end(), strNums.begin(), [](int x) &#123; return std::to_string(x); &#125;); // 排序一下 ,直接得到答案 sort(strNums.begin(),strNums.end(),helper); string ret=""; for(int i = 0 ; i &lt; strNums.size(); i++) ret += strNums[i]; //std::cout&lt;&lt;ret&lt;&lt;std::endl; int i = 0; while(ret[i] == '0')i++; if(i==0) return ret; if( i == ret.size()) return "0"; int num = ret.size()-i; ret = ret.substr(i,num); return ret; &#125;&#125;; 其实仔细想想，这道题貌似很简单…]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[连续值的分桶算法]]></title>
     <url>%2F2020%2F01%2F20%2F%E8%BF%9E%E7%BB%AD%E5%80%BC%E7%9A%84%E5%88%86%E6%A1%B6%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"></content>
