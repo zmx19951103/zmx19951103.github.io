@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[133.克隆图]]></title>
+    <url>%2F2020%2F01%2F26%2F133-%E5%85%8B%E9%9A%86%E5%9B%BE%2F</url>
+    <content type="text"><![CDATA[前言这道题是中等题，但其实就是一个图的遍历问题 代码/*// Definition for a Node.class Node &#123;public: int val; vector&lt;Node*&gt; neighbors; Node() &#123; val = 0; neighbors = vector&lt;Node*&gt;(); &#125; Node(int _val) &#123; val = _val; neighbors = vector&lt;Node*&gt;(); &#125; Node(int _val, vector&lt;Node*&gt; _neighbors) &#123; val = _val; neighbors = _neighbors; &#125;&#125;;*/class Solution &#123;public: Node* cloneGraph(Node* node) &#123; // 图的深拷贝 if(!node)return NULL; if(used.find(node)!= used.end()) return used[node]; Node* new_node = new Node(node-&gt;val); used[node] = new_node; for(auto &amp;e : node-&gt;neighbors)&#123; //if(used.find(e)!= used.end()) &#123; new_node-&gt;neighbors.push_back(used[e]);continue;&#125; Node* temp = cloneGraph(e); new_node-&gt;neighbors.push_back(temp); &#125; return new_node; &#125; std::unordered_map&lt;Node*,Node*&gt; used;&#125;; 用的是dfs, 用一个map来保存旧图的节点到新图的节点的映射，来保证不会重复建立新节点.一旦一个节点被new出来就加入map, 这样再添加邻居的时候，就可以防止对同一个节点new多个新节点. 这道题也可以用bfs做.]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[旋转数组]]></title>
     <url>%2F2020%2F01%2F24%2F%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%2F</url>
     <content type="text"><![CDATA[前言这道题是一道简单题,它的要求是原地，我一开始想到的是移动，每次移动一个数，但是会超时，后来想到反转 代码class Solution &#123;public: void helper(vector&lt;int&gt;&amp; nums, int left, int right)&#123; int i = left, j = right; while(i&lt;j)&#123; std::swap(nums[i],nums[j]); i++; j--; &#125; &#125; void rotate(vector&lt;int&gt;&amp; nums, int k) &#123; // deque，模拟 // 原地 // 确定从哪个位置开始的元素需要搬运 k = k % nums.size(); if(k)&#123; int left_start =0, left_end = nums.size()-k-1; int right_start = nums.size()-k,right_end = nums.size()-1; helper(nums, left_start, left_end); helper(nums, right_start, right_end); helper(nums, 0, nums.size()-1); // while(k--)&#123; // int temp = nums[nums.size()-1]; // for(int j = nums.size()-2;j&gt;=0;j--)&#123; // nums[j+1] = nums[j]; // &#125; // nums[0] = temp; // &#125; &#125; &#125;&#125;; 这个思想还是比较巧妙的，三次逆序.原地，而且时间复杂度是O(n).]]></content>
