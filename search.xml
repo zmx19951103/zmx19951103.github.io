@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[组合总和]]></title>
+    <url>%2F2020%2F01%2F29%2F%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[前言这道题就是一道回溯，不过要去重，在递归的过程中去重，我们把原来的数组排序，然后当前选取的数不能比上一个选取的数小就能达到去重的目的. 代码class Solution &#123;public: void helper(vector&lt;int&gt;&amp; candidates, vector&lt;int&gt;&amp; res, int target)&#123; if(target&lt;0) return; if ( target == 0 ) &#123; ret.push_back(res); return; &#125; int size= candidates.size(); for(int i =0;i&lt;size;i++)&#123; if(candidates[i] &lt;= target) &#123; if(res.size() &gt;0 &amp;&amp; candidates[i] &lt; res[res.size()-1]) continue; res.push_back(candidates[i]); helper(candidates,res,target-candidates[i]); res.pop_back(); &#125; &#125; &#125; vector&lt;vector&lt;int&gt;&gt; combinationSum(vector&lt;int&gt;&amp; candidates, int target) &#123; vector&lt;int&gt; res =&#123;&#125;; std::sort(candidates.begin(),candidates.end()); helper(candidates,res,target); return ret; &#125; vector&lt;vector&lt;int&gt;&gt; ret;&#125;;]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[两整数之和]]></title>
     <url>%2F2020%2F01%2F29%2F%E4%B8%A4%E6%95%B4%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
     <content type="text"><![CDATA[前言这道题要求不用+和-两个运算符，实现两个整数的加法. 我们用异或和与两个位运算来实现+运算符 思考异或操作符，我们知道如果对应位上是相同的则为0，否则为1. 这和加法相同，但是有一点不同，异或操作没有进位的概念，如果相应的位上都是1，那么应该有一个向前的进位，那我们如何知道这个位上有没有向前的进位呢， 我们用与运算，如果两个都是1，结果才是1， 但是进位是向前的，所以我们需要将与运算的结果左移一位然后和异或的结果继续相加，相加的话还是用异或来得到，那么还是没有进位，还要与，直到异或没有进位为止. 需要注意的是如果与操作的结果是一个负数，负数左移会报错，所以先转换成 unsigned int再左移. 代码class Solution &#123;public: int getSum(int a, int b) &#123; int t = a^b; int p = a&amp;b; while(p)&#123; p = (unsigned int)p &lt;&lt; 1; int temp = t; t = t ^ p; p = temp &amp; p; &#125; return t; &#125;&#125;; 参考两整数之和]]></content>
