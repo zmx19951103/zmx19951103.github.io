@@ -4,6 +4,38 @@
   
     
     <entry>
+      <title>“和为k的子数组”</title>
+      <link href="/2020/02/04/%E2%80%9C%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E2%80%9D/"/>
+      <url>/2020/02/04/%E2%80%9C%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E2%80%9D/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这道题的思想和两数之和的思想有点像，都用了哈希表来优化时间复杂度, 这道题的思想是我们要找到一个和为k的子数组,那么就是一个区间i-j， 使得sum[j]-sum[i-1]==k. 这里的sum为前缀和数组。对于j来说，我们其实不需要知道具体的i，因为题目只需要计算数组的个数，这样我们只需要知道有多少个i，i&lt;j,使得 sum[j]-sum[i-1] ==k, 想到这里我们就知道要记录前缀和的出现频率，这样我们在遍历到j位置的时候，通过哈希表就可以查到 前缀和为sum[j]-k的索引个数.</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; mapping;</span><br><span class="line">        <span class="keyword">int</span> sum =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        mapping[<span class="number">0</span>] =<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;nums.size();i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">if</span>(mapping.find(sum-k)!=mapping.end()) cnt+=mapping[sum-k];</span><br><span class="line">            mapping[sum]++;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>并查集</title>
+      <link href="/2020/02/02/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+      <url>/2020/02/02/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LRU缓存机制</title>
       <link href="/2020/02/01/LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
       <url>/2020/02/01/LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/</url>
