@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[TopN]]></title>
+    <url>%2F2020%2F03%2F02%2FTopN%2F</url>
+    <content type="text"><![CDATA[前言TopN问题是面试中的高频面试问题,主要两个思路，一个是分治，一个是用堆. 参考TopN]]></content>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[STL_treemap,hashmap实现]]></title>
+    <url>%2F2020%2F02%2F16%2FSTL-treemap-hashmap%E5%AE%9E%E7%8E%B0%2F</url>
+    <content type="text"><![CDATA[前言]]></content>
+      <tags>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[最短无序连续子数组]]></title>
     <url>%2F2020%2F02%2F16%2F%E6%9C%80%E7%9F%AD%E6%97%A0%E5%BA%8F%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%2F</url>
     <content type="text"><![CDATA[前言这道题我一开始的想法是就是找到这个无序子数组的左右边界,怎么找呢，一个数如果它不在它应该在的位置，那么这个数肯定在子数组的范围内，那么我们只要找到在这个范围内的数在最左边和最右边的数，那么就可以了，我首先想到的办法是排序，然后遍历，复杂度是O(nlogn),空间复杂度是O(n). 其实这道题还可以用单调栈来做，时间复杂度可以优化到O(n),其实想一想按照单调栈的实现,我们就可以得到这个数组从哪个位置开始的数是不应该在这个位置的。 代码]]></content>
