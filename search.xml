@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[进程调度算法]]></title>
+    <url>%2F2020%2F03%2F18%2F%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[线程安全，可重入]]></title>
+    <url>%2F2020%2F03%2F18%2F%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%8C%E5%8F%AF%E9%87%8D%E5%85%A5%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Python装饰器]]></title>
+    <url>%2F2020%2F03%2F18%2FPython%E8%A3%85%E9%A5%B0%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[前言Python的装饰器是面试经常会问的问题，今天来学习一下Python的装饰器语法. 参考python装饰器]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[队列最大值]]></title>
     <url>%2F2020%2F03%2F17%2F%E9%98%9F%E5%88%97%E6%9C%80%E5%A4%A7%E5%80%BC%2F</url>
     <content type="text"><![CDATA[前言这道题用单调队列做，当你插入一个新元素以后，保证单调队列的队头元素永远是最大的，用单调递减队列。我们需要从队尾pop元素，从队头pop元素，所以用deque双端队列。 代码class MaxQueue &#123;public: MaxQueue() &#123; &#125; int max_value() &#123; if(que.empty()) return -1; else return deq.front(); &#125; void push_back(int value) &#123; if(deq.empty()) deq.push_back(value); else &#123; while(!deq.empty() &amp;&amp; deq.back() &lt; value) deq.pop_back(); deq.push_back(value); &#125; que.push(value); &#125; int pop_front() &#123; if(que.empty()) return -1; else &#123; int ele = que.front(); que.pop(); //如果 ele == max_value if(ele == deq.front()) deq.pop_front(); return ele; &#125; &#125; std::queue&lt;int&gt; que; std::deque&lt;int&gt; deq;&#125;;/** * Your MaxQueue object will be instantiated and called as such: * MaxQueue* obj = new MaxQueue(); * int param_1 = obj-&gt;max_value(); * obj-&gt;push_back(value); * int param_3 = obj-&gt;pop_front(); */]]></content>
@@ -344,7 +362,10 @@
   <entry>
     <title><![CDATA[select/poll/epoll]]></title>
     <url>%2F2019%2F12%2F23%2Fselect-poll-epoll%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等]]></content>
+      <tags>
+        <tag>网络编程</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[双指针]]></title>
