@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言在腾讯的面试中遇到这个问题才发现自己对STL的掌握是在是太缺乏了，同理还有对网络编程和多线程编程以及操作系统的系统性知识的缺乏，后续都要补，不然秋招的时候就惨了.下面我们就来讨论STL迭代器失效的问题. STL迭代器失效的问题我们要对STL迭代器失效的问题进行全盘的考虑，因为底层的实现有连续内存，list,rbtree以及hash table,我们要分别考虑这些底层数据结构下的迭代器失效的问题">
+<meta name="keywords" content="STL">
+<meta property="og:type" content="article">
 <meta property="og:title" content="STL迭代器失效的问题">
 <meta property="og:url" content="http://yoursite.com/2020/03/11/STL迭代器失效的问题/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言在腾讯的面试中遇到这个问题才发现自己对STL的掌握是在是太缺乏了，同理还有对网络编程和多线程编程以及操作系统的系统性知识的缺乏，后续都要补，不然秋招的时候就惨了.下面我们就来讨论STL迭代器失效的问题. STL迭代器失效的问题我们要对STL迭代器失效的问题进行全盘的考虑，因为底层的实现有连续内存，list,rbtree以及hash table,我们要分别考虑这些底层数据结构下的迭代器失效的问题">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-11T03:19:06.775Z">
+<meta property="og:updated_time" content="2020-03-11T05:39:13.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL迭代器失效的问题">
+<meta name="twitter:description" content="前言在腾讯的面试中遇到这个问题才发现自己对STL的掌握是在是太缺乏了，同理还有对网络编程和多线程编程以及操作系统的系统性知识的缺乏，后续都要补，不然秋招的时候就惨了.下面我们就来讨论STL迭代器失效的问题. STL迭代器失效的问题我们要对STL迭代器失效的问题进行全盘的考虑，因为底层的实现有连续内存，list,rbtree以及hash table,我们要分别考虑这些底层数据结构下的迭代器失效的问题">
     
     
         
@@ -72,6 +76,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/03/17/队列最大值/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/03/02/TopN/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -100,7 +106,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL迭代器失效的问题"><span class="toc-number">2.</span> <span class="toc-text">STL迭代器失效的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector迭代器失效"><span class="toc-number">2.1.</span> <span class="toc-text">vector迭代器失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list迭代器失效"><span class="toc-number">2.2.</span> <span class="toc-text">list迭代器失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unordered-set-和-unordered-map的迭代器失效"><span class="toc-number">2.3.</span> <span class="toc-text">unordered_set 和 unordered_map的迭代器失效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set和map的迭代器失效"><span class="toc-number">3.</span> <span class="toc-text">set和map的迭代器失效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +139,22 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/STL/">STL</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在腾讯的面试中遇到这个问题才发现自己对STL的掌握是在是太缺乏了，同理还有对网络编程和多线程编程以及操作系统的系统性知识的缺乏，后续都要补，不然秋招的时候就惨了.下面我们就来讨论STL迭代器失效的问题.</p>
+<h2 id="STL迭代器失效的问题"><a href="#STL迭代器失效的问题" class="headerlink" title="STL迭代器失效的问题"></a>STL迭代器失效的问题</h2><p>我们要对STL迭代器失效的问题进行全盘的考虑，因为底层的实现有连续内存，list,rbtree以及hash table,我们要分别考虑这些底层数据结构下的迭代器失效的问题.</p>
+<h3 id="vector迭代器失效"><a href="#vector迭代器失效" class="headerlink" title="vector迭代器失效"></a>vector迭代器失效</h3><p>vector 迭代器失效的时机是如果没有重分配发生的话，指向insert pointer之前的所有迭代器都不会失效，但是insert pointer之后的迭代器都会失效.如果有重分配发生的话，那么指向原容器的所有迭代器都会失效.</p>
+<h3 id="list迭代器失效"><a href="#list迭代器失效" class="headerlink" title="list迭代器失效"></a>list迭代器失效</h3><h3 id="unordered-set-和-unordered-map的迭代器失效"><a href="#unordered-set-和-unordered-map的迭代器失效" class="headerlink" title="unordered_set 和 unordered_map的迭代器失效"></a>unordered_set 和 unordered_map的迭代器失效</h3><h2 id="set和map的迭代器失效"><a href="#set和map的迭代器失效" class="headerlink" title="set和map的迭代器失效"></a>set和map的迭代器失效</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[vector迭代器失效的思考]（<a href="https://www.cnblogs.com/qiaoconglovelife/p/5370396.html）" target="_blank" rel="noopener">https://www.cnblogs.com/qiaoconglovelife/p/5370396.html）</a></p>
+
   </div>
 </article>
 
@@ -174,7 +189,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL迭代器失效的问题"><span class="toc-number">2.</span> <span class="toc-text">STL迭代器失效的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector迭代器失效"><span class="toc-number">2.1.</span> <span class="toc-text">vector迭代器失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list迭代器失效"><span class="toc-number">2.2.</span> <span class="toc-text">list迭代器失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unordered-set-和-unordered-map的迭代器失效"><span class="toc-number">2.3.</span> <span class="toc-text">unordered_set 和 unordered_map的迭代器失效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set和map的迭代器失效"><span class="toc-number">3.</span> <span class="toc-text">set和map的迭代器失效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
