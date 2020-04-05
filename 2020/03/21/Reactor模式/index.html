@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
-<meta property="og:title" content="使用tcpdump分析tcp协议">
-<meta property="og:url" content="http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/index.html">
+    <meta name="description" content="前言Reactor模式是许多高性能网络库比如libevent和netty基于的模式">
+<meta name="keywords" content="网络编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reactor模式">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/Reactor模式/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言Reactor模式是许多高性能网络库比如libevent和netty基于的模式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-21T06:34:30.700Z">
+<meta property="og:updated_time" content="2020-03-21T11:32:28.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用tcpdump分析tcp协议">
+<meta name="twitter:title" content="Reactor模式">
+<meta name="twitter:description" content="前言Reactor模式是许多高性能网络库比如libevent和netty基于的模式">
     
     
         
@@ -33,7 +37,7 @@
         
     
     <!-- title -->
-    <title>使用tcpdump分析tcp协议</title>
+    <title>Reactor模式</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -72,10 +76,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2020/03/21/Reactor模式/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/04/05/mutable关键字/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2020/03/18/无锁编程/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/03/21/使用tcpdump分析tcp协议/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -88,21 +92,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&text=使用tcpdump分析tcp协议"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&is_video=false&description=使用tcpdump分析tcp协议"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=使用tcpdump分析tcp协议&body=Check out this article: http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&name=使用tcpdump分析tcp协议&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/21/Reactor模式/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/21/Reactor模式/&text=Reactor模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/21/Reactor模式/&is_video=false&description=Reactor模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Reactor模式&body=Check out this article: http://yoursite.com/2020/03/21/Reactor模式/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/21/Reactor模式/&name=Reactor模式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -114,7 +118,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        使用tcpdump分析tcp协议
+        Reactor模式
     </h1>
 
 
@@ -126,7 +130,7 @@
       
     <div class="postdate">
       
-        <time datetime="2020-03-21T06:34:30.000Z" itemprop="datePublished">2020-03-21</time>
+        <time datetime="2020-03-21T11:30:58.000Z" itemprop="datePublished">2020-03-21</time>
         
       
     </div>
@@ -135,13 +139,19 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/网络编程/">网络编程</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Reactor模式是许多高性能网络库比如libevent和netty基于的模式</p>
+
   </div>
 </article>
 
@@ -176,21 +186,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&text=使用tcpdump分析tcp协议"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&is_video=false&description=使用tcpdump分析tcp协议"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=使用tcpdump分析tcp协议&body=Check out this article: http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&title=使用tcpdump分析tcp协议"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/21/使用tcpdump分析tcp协议/&name=使用tcpdump分析tcp协议&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/21/Reactor模式/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/21/Reactor模式/&text=Reactor模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/21/Reactor模式/&is_video=false&description=Reactor模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Reactor模式&body=Check out this article: http://yoursite.com/2020/03/21/Reactor模式/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/21/Reactor模式/&title=Reactor模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/21/Reactor模式/&name=Reactor模式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

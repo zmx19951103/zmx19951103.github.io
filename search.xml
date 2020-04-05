@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mutable关键字]]></title>
+    <url>%2F2020%2F04%2F05%2Fmutable%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Reactor模式]]></title>
+    <url>%2F2020%2F03%2F21%2FReactor%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[前言Reactor模式是许多高性能网络库比如libevent和netty基于的模式]]></content>
+      <tags>
+        <tag>网络编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用tcpdump分析tcp协议]]></title>
     <url>%2F2020%2F03%2F21%2F%E4%BD%BF%E7%94%A8tcpdump%E5%88%86%E6%9E%90tcp%E5%8D%8F%E8%AE%AE%2F</url>
     <content type="text"></content>
