@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[mutable关键字]]></title>
     <url>%2F2020%2F04%2F05%2Fmutable%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言mutable是c++中的一个关键字,它的应用场景是在类的const成员函数中.当我们想要在类的const成员函数中修改类的某些数据成员的时候，就会用到这个关键字. mutable数据成员用const修饰的成员函数表示该该函数不会修改调用该函数的对象的内部状态,const object 只能调用 const member function, 如果要在const member function里修改对象的数据成员是不被允许的，因为这样会破坏对象的常量性.但是如果必须要修改某些成员，就要用到mutable关键字，它表明修改该数据成员不会破坏对象的常量性. 例子#include&lt;iostream&gt;using namespace std;class A&#123;public: void test() const&#123; c = 8; std::cout &lt;&lt; "a" &lt;&lt; std::endl; &#125; void test() &#123; std::cout &lt;&lt; "b" &lt;&lt; std::endl; &#125; mutable int c = 9;&#125;;int main()&#123; A a; const A a_; a.test(); a_.test(); return 0;&#125; 上述代码编译通过， 并且还可以看到非const对象在const成员函数和非const成员函数中优先调用非const成员函数.]]></content>
+      <tags>
+        <tag>c++</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Reactor模式]]></title>

@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="前言mutable是c++中的一个关键字,它的应用场景是在类的const成员函数中.当我们想要在类的const成员函数中修改类的某些数据成员的时候，就会用到这个关键字. mutable数据成员用const修饰的成员函数表示该该函数不会修改调用该函数的对象的内部状态,const object 只能调用 const member function, 如果要在const member function里">
+<meta name="keywords" content="c++">
+<meta property="og:type" content="article">
 <meta property="og:title" content="mutable关键字">
 <meta property="og:url" content="http://yoursite.com/2020/04/05/mutable关键字/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
+<meta property="og:description" content="前言mutable是c++中的一个关键字,它的应用场景是在类的const成员函数中.当我们想要在类的const成员函数中修改类的某些数据成员的时候，就会用到这个关键字. mutable数据成员用const修饰的成员函数表示该该函数不会修改调用该函数的对象的内部状态,const object 只能调用 const member function, 如果要在const member function里">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-05T09:43:26.026Z">
+<meta property="og:updated_time" content="2020-04-05T13:51:49.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mutable关键字">
+<meta name="twitter:description" content="前言mutable是c++中的一个关键字,它的应用场景是在类的const成员函数中.当我们想要在类的const成员函数中修改类的某些数据成员的时候，就会用到这个关键字. mutable数据成员用const修饰的成员函数表示该该函数不会修改调用该函数的对象的内部状态,const object 只能调用 const member function, 如果要在const member function里">
     
     
         
@@ -45,7 +49,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -100,7 +105,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mutable数据成员"><span class="toc-number">2.</span> <span class="toc-text">mutable数据成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-number">3.</span> <span class="toc-text">例子</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -133,13 +138,22 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/c/">c++</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>mutable是c++中的一个关键字,它的应用场景是在类的const成员函数中.当我们想要在类的const成员函数中修改类的某些数据成员的时候，就会用到这个关键字.</p>
+<h2 id="mutable数据成员"><a href="#mutable数据成员" class="headerlink" title="mutable数据成员"></a>mutable数据成员</h2><p>用const修饰的成员函数表示该该函数不会修改调用该函数的对象的内部状态,const object 只能调用 const member function, 如果要在const member function里修改对象的数据成员是不被允许的，因为这样会破坏对象的常量性.但是如果必须要修改某些成员，就要用到mutable关键字，它表明修改该数据成员不会破坏对象的常量性.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">const</span></span>&#123;</span><br><span class="line">        c = <span class="number">8</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"a"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span>  <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"b"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mutable</span> <span class="keyword">int</span> c = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	A a;</span><br><span class="line">	<span class="keyword">const</span> A a_;</span><br><span class="line">	a.test();</span><br><span class="line">	a_.test();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码编译通过， 并且还可以看到非const对象在const成员函数和非const成员函数中优先调用非const成员函数.</p>
+
   </div>
 </article>
 
@@ -174,7 +188,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mutable数据成员"><span class="toc-number">2.</span> <span class="toc-text">mutable数据成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-number">3.</span> <span class="toc-text">例子</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -257,26 +271,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
