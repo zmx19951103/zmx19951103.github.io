@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[信号量]]></title>
+    <url>%2F2020%2F07%2F22%2F%E4%BF%A1%E5%8F%B7%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. 例子leetcode 1114题 按序打印 #include &lt;semaphore.h&gt;class Foo &#123;protected: sem_t firstJobDone; sem_t secondJobDone;public: Foo() &#123; sem_init(&amp;firstJobDone, 0, 0); // 第二个参数是limit,表示信号量的可取的最大值，也就是同时能有多少线程能进入临界区 sem_init(&amp;secondJobDone, 0, 0); // 第三个参数就是初始量 &#125; void first(function&lt;void()&gt; printFirst) &#123; // printFirst() outputs "first". printFirst(); sem_post(&amp;firstJobDone); &#125; void second(function&lt;void()&gt; printSecond) &#123; sem_wait(&amp;firstJobDone); // printSecond() outputs "second". printSecond(); sem_post(&amp;secondJobDone); &#125; void third(function&lt;void()&gt; printThird) &#123; sem_wait(&amp;secondJobDone); // printThird() outputs "third". printThird(); &#125;&#125;; 参考semaphore]]></content>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[future,promise,packaged_task,async]]></title>
     <url>%2F2020%2F07%2F22%2Ffuture-promise-packaged-task-async%2F</url>
     <content type="text"><![CDATA[前言c++11有很多异步操作相关的库，相比thread可以更加方便的得到异步操作的结果. 例子 Std::future 作为异步结果的传输通道，方便的获取线程函数的返回值 Std::promise 包装一个值，将数据和future绑定起来，方便线程赋值 Std::package_task 包装一个可调用对象，将函数和future绑定，以便异步调用 Std::future如果我们要拿到线程的返回值，再没有future之前是需要定义一个变量，然后在线程函数中对这个变量赋值，然后等待线程函数操作完成，我们拿到结果,这样很繁琐.用来获取异步操作的结果，可以通过不断查询future的状态来得到异步操作的状态，一个future 的状态有: Deferred: 异步操作还未开始 Ready: 异步操作已经完成 TimeOut: 异步操作超时获取 future的结果有三种，get(), wait(), wait_for()Get()就是最常用的等待异步操作结束，然后拿到结果， wait就是等待异步操作结束，没有拿返回值，wait_for是超时等待并拿返回值, future的模板参数是返回结果的类型. Std::promise 协助线程赋值的类将数据和future绑定， 这个绑定的含义如何理解. 其实就是可以更加方便的拿到线程中的值，在线程中给从外面传进来的 std::promise 对象赋值. std::promise&lt;int&gt; pr;std::thread t([](std::promise&lt;int&gt; &amp; p)&#123; p.set_value_at_thread_exit(8);&#125;, std::ref(pr));t.detach();std::future&lt;int&gt; ret = pr.get_future();auto r = ret.get();std::cout &lt;&lt; r &lt;&lt; std::endl; Std::packaged_task将函数和future绑定, 其实它就是封装了一个可调用对象， 然后用thread执行，然后从 Std::packaged_task 对象中拿到 future，获取返回值，这个拿future 可以是创建线程之前或者之后. std::packaged_task&lt;int()&gt; task([]()-&gt;int&#123;return 9;&#125;);std::future&lt;int&gt; f2= task.get_future();std::thread t2(std::move(task));t2.detach(); Std::async线程异步操作函数，可以代替std::thread, 返回类型是一个future。 /* * std::async */ std::vector&lt;std::future&lt;int&gt;&gt; v; auto f = std::async(std::launch::async, [](int a, int b)-&gt;int &#123; return a + b;&#125;, 2, 3); v.push_back(std::move(f)); std::cout &lt;&lt; "the shared_future result is " &lt;&lt; v[0].get() &lt;&lt; std::endl; 参考future]]></content>
