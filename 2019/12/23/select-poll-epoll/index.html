@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等">
+    <meta name="description" content="前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等.下面就用代码来详细了解一下select, poll, epoll的区别 select">
 <meta name="keywords" content="网络编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="select&#x2F;poll&#x2F;epoll">
 <meta property="og:url" content="http://yoursite.com/2019/12/23/select-poll-epoll/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等">
+<meta property="og:description" content="前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等.下面就用代码来详细了解一下select, poll, epoll的区别 select">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-18T07:58:21.398Z">
+<meta property="og:updated_time" content="2020-07-22T03:46:33.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="select&#x2F;poll&#x2F;epoll">
-<meta name="twitter:description" content="前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等">
+<meta name="twitter:description" content="前言select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等.下面就用代码来详细了解一下select, poll, epoll的区别 select">
     
     
         
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">2.</span> <span class="toc-text">select</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -150,8 +150,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等</p>
-
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>select/poll/epoll的区别是面试中问得最多的考点了，在腾讯的面试中就出现了。同理还有阻塞io/非阻塞io,同步io,异步io等等.下面就用代码来详细了解一下select, poll, epoll的区别</p>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2>
   </div>
 </article>
 
@@ -186,7 +186,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">2.</span> <span class="toc-text">select</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
