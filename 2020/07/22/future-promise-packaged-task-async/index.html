@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="前言c++11有很多异步操作相关的库，相比thread可以更加方便的得到异步操作的结果. 例子 Std::future 作为异步结果的传输通道，方便的获取线程函数的返回值 Std::promise 包装一个值，将数据和future绑定起来，方便线程赋值 Std::package_task 包装一个可调用对象，将函数和future绑定，以便异步调用  Std::future如果我们要拿到线程的返回值">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-22T03:56:14.035Z">
+<meta property="og:updated_time" content="2020-07-22T04:02:34.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="future,promise,packaged_task,async">
 <meta name="twitter:description" content="前言c++11有很多异步操作相关的库，相比thread可以更加方便的得到异步操作的结果. 例子 Std::future 作为异步结果的传输通道，方便的获取线程函数的返回值 Std::promise 包装一个值，将数据和future绑定起来，方便线程赋值 Std::package_task 包装一个可调用对象，将函数和future绑定，以便异步调用  Std::future如果我们要拿到线程的返回值">
@@ -49,7 +49,8 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -154,13 +155,13 @@
 <li>Std::promise 包装一个值，将数据和future绑定起来，方便线程赋值</li>
 <li>Std::package_task 包装一个可调用对象，将函数和future绑定，以便异步调用</li>
 </ol>
-<h3 id="Std-future"><a href="#Std-future" class="headerlink" title="Std::future"></a>Std::future</h3><p>如果我们要拿到线程的返回值，再没有future之前是需要定义一个变量，然后在线程函数中对这个变量赋值，然后等待线程函数操作完成，我们拿到结果,这样很繁琐.<br>用来获取异步操作的结果，可以通过不断查询future的状态来得到异步操作的状态，一个future 的状态有:<br> Deferred: 异步操作还未开始<br> Ready: 异步操作已经完成<br> TimeOut: 异步操作超时<br>获取 future的结果有三种，get(), wait(), wait_for()<br>Get()就是最常用的等待异步操作结束，然后拿到结果， wait就是等待异步操作结束，没有拿返回值，wait_for是超时等待并拿返回值???这个怎么拿的</p>
-<h3 id="Std-promise-协助线程赋值的类"><a href="#Std-promise-协助线程赋值的类" class="headerlink" title="Std::promise 协助线程赋值的类"></a>Std::promise 协助线程赋值的类</h3><p>将数据和future绑定， 这个绑定的含义如何理解. 其实就是可以更加方便的拿到线程中的值，在线程中给从外面传进来的 std::promise 对象赋值. </p>
+<h3 id="Std-future"><a href="#Std-future" class="headerlink" title="Std::future"></a>Std::future<t></t></h3><p>如果我们要拿到线程的返回值，再没有future之前是需要定义一个变量，然后在线程函数中对这个变量赋值，然后等待线程函数操作完成，我们拿到结果,这样很繁琐.<br>用来获取异步操作的结果，可以通过不断查询future的状态来得到异步操作的状态，一个future 的状态有:<br> Deferred: 异步操作还未开始<br> Ready: 异步操作已经完成<br> TimeOut: 异步操作超时<br>获取 future的结果有三种，get(), wait(), wait_for()<br>Get()就是最常用的等待异步操作结束，然后拿到结果， wait就是等待异步操作结束，没有拿返回值，wait_for是超时等待并拿返回值, future的模板参数是返回结果的类型.</p>
+<h3 id="Std-promise-协助线程赋值的类"><a href="#Std-promise-协助线程赋值的类" class="headerlink" title="Std::promise 协助线程赋值的类"></a>Std::promise<t> 协助线程赋值的类</t></h3><p>将数据和future绑定， 这个绑定的含义如何理解. 其实就是可以更加方便的拿到线程中的值，在线程中给从外面传进来的 std::promise 对象赋值. </p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::promise&lt;<span class="keyword">int</span>&gt; pr;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">([](<span class="built_in">std</span>::promise&lt;<span class="keyword">int</span>&gt; &amp; p)&#123; p.set_value_at_thread_exit(<span class="number">8</span>);&#125;, <span class="built_in">std</span>::ref(pr))</span></span>;</span><br><span class="line">t.detach();</span><br><span class="line"><span class="built_in">std</span>::future&lt;<span class="keyword">int</span>&gt; ret = pr.get_future();</span><br><span class="line"><span class="keyword">auto</span> r = ret.get();</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; r &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="Std-packaged-task"><a href="#Std-packaged-task" class="headerlink" title="Std::packaged_task"></a>Std::packaged_task</h3><p>将函数和future绑定,  其实它就是封装了一个可调用对象， 然后用thread执行，然后从  Std::packaged_task 对象中拿到 future，获取返回值，这个拿future 可以是创建线程之前或者之后. </p>
+<h3 id="Std-packaged-task"><a href="#Std-packaged-task" class="headerlink" title="Std::packaged_task"></a>Std::packaged_task<t></t></h3><p>将函数和future绑定,  其实它就是封装了一个可调用对象， 然后用thread执行，然后从  Std::packaged_task 对象中拿到 future，获取返回值，这个拿future 可以是创建线程之前或者之后. </p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::packaged_task&lt;<span class="keyword">int</span>()&gt; task([]()-&gt;<span class="keyword">int</span>&#123;<span class="keyword">return</span> <span class="number">9</span>;&#125;);</span><br><span class="line"><span class="built_in">std</span>::future&lt;<span class="keyword">int</span>&gt; f2= task.get_future();</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t2</span><span class="params">(<span class="built_in">std</span>::move(task))</span></span>;</span><br><span class="line">t2.detach();</span><br></pre></td></tr></table></figure>
 <h3 id="Std-async"><a href="#Std-async" class="headerlink" title="Std::async"></a>Std::async</h3><p>线程异步操作函数，可以代替std::thread, 返回类型是一个future。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * std::async</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::future&lt;<span class="keyword">int</span>&gt;&gt; v;</span><br><span class="line">  <span class="keyword">auto</span> f = <span class="built_in">std</span>::async(<span class="built_in">std</span>::launch::async, [](<span class="keyword">int</span> a, <span class="keyword">int</span> b)-&gt;<span class="keyword">int</span> &#123; <span class="keyword">return</span> a + b;&#125;, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">  v.push_back(<span class="built_in">std</span>::move(f));</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"the shared_future result is "</span> &lt;&lt; v[<span class="number">0</span>].get() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">future的模板参数是返回结果的类型</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * std::async</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::future&lt;<span class="keyword">int</span>&gt;&gt; v;</span><br><span class="line">  <span class="keyword">auto</span> f = <span class="built_in">std</span>::async(<span class="built_in">std</span>::launch::async, [](<span class="keyword">int</span> a, <span class="keyword">int</span> b)-&gt;<span class="keyword">int</span> &#123; <span class="keyword">return</span> a + b;&#125;, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">  v.push_back(<span class="built_in">std</span>::move(f));</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"the shared_future result is "</span> &lt;&lt; v[<span class="number">0</span>].get() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://en.cppreference.com/w/cpp/thread/future" target="_blank" rel="noopener">future</a></p>
 
   </div>
@@ -280,26 +281,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>
