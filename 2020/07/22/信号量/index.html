@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. 例子leetcode 1114题 按序">
+    <meta name="description" content="前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. c++的 semphore 的类型是s">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信号量">
 <meta property="og:url" content="http://yoursite.com/2020/07/22/信号量/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. 例子leetcode 1114题 按序">
+<meta property="og:description" content="前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. c++的 semphore 的类型是s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-22T08:23:16.979Z">
+<meta property="og:updated_time" content="2020-07-22T08:31:16.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信号量">
-<meta name="twitter:description" content="前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. 例子leetcode 1114题 按序">
+<meta name="twitter:description" content="前言信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. c++的 semphore 的类型是s">
     
     
         
@@ -148,7 +148,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了.</p>
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>信号量具备同步和互斥的语义(也就是 mutex+condition_variable).一个二元变量可以当作mutex使用, 可以解决生产者-消费者问题. 他和mutex很大的一个不同点在于mutex 要求是同一个线程上锁和解锁.而semaphore可以在一个线程执行P操作，在另一个线程执行V操作. 这也是信号量的问题，容易出错。所以c++11都弃用了. c++的 semphore 的类型是sem_t, 用 sem_init 初始化，P操作就是sem_wait, V操作就是sem_post, V操作将信号量加1，然后notify阻塞在这信号量上的进程.</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>leetcode 1114题 按序打印</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;semaphore.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">sem_t</span> firstJobDone;</span><br><span class="line">    <span class="keyword">sem_t</span> secondJobDone;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    Foo() &#123;</span><br><span class="line">        sem_init(&amp;firstJobDone, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">// 第二个参数是limit,表示信号量的可取的最大值，也就是同时能有多少线程能进入临界区</span></span><br><span class="line">        sem_init(&amp;secondJobDone, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">// 第三个参数就是初始量</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">first</span><span class="params">(function&lt;<span class="keyword">void</span>()&gt; printFirst)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// printFirst() outputs "first".</span></span><br><span class="line">        printFirst();</span><br><span class="line">        sem_post(&amp;firstJobDone);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">second</span><span class="params">(function&lt;<span class="keyword">void</span>()&gt; printSecond)</span> </span>&#123;</span><br><span class="line">        sem_wait(&amp;firstJobDone);</span><br><span class="line">        <span class="comment">// printSecond() outputs "second".</span></span><br><span class="line">        printSecond();</span><br><span class="line">        sem_post(&amp;secondJobDone);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">third</span><span class="params">(function&lt;<span class="keyword">void</span>()&gt; printThird)</span> </span>&#123;</span><br><span class="line">        sem_wait(&amp;secondJobDone);</span><br><span class="line">        <span class="comment">// printThird() outputs "third".</span></span><br><span class="line">        printThird();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://dengzuoheng.github.io/cpp-concurency-pattern-3-semaphore" target="_blank" rel="noopener">semaphore</a></p>
