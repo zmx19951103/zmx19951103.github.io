@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="code dog">
+    <meta name="description" content="前言在写线程池的过程中还是接触到了完美转发，这个是绕不过去了，还是把它搞懂把. 完美转发用在模板函数或者模板类的成员函数(静态，非静态)中，当在模板函数中调用了另一个函数，为了保持参数的左右值特性，需要使用std::forward. 代码例子#include &amp;lt;iostream&amp;gt;#include &amp;lt;utility&amp;gt;void f(int&amp;amp; a) &amp;#123;    s">
+<meta name="keywords" content="c++11">
 <meta property="og:type" content="article">
 <meta property="og:title" content="完美转发">
 <meta property="og:url" content="http://yoursite.com/2020/07/29/完美转发/index.html">
 <meta property="og:site_name" content="ZMX&#39;s Blog">
-<meta property="og:description" content="code dog">
+<meta property="og:description" content="前言在写线程池的过程中还是接触到了完美转发，这个是绕不过去了，还是把它搞懂把. 完美转发用在模板函数或者模板类的成员函数(静态，非静态)中，当在模板函数中调用了另一个函数，为了保持参数的左右值特性，需要使用std::forward. 代码例子#include &amp;lt;iostream&amp;gt;#include &amp;lt;utility&amp;gt;void f(int&amp;amp; a) &amp;#123;    s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-29T03:09:19.635Z">
+<meta property="og:updated_time" content="2020-07-29T04:02:01.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="完美转发">
-<meta name="twitter:description" content="code dog">
+<meta name="twitter:description" content="前言在写线程池的过程中还是接触到了完美转发，这个是绕不过去了，还是把它搞懂把. 完美转发用在模板函数或者模板类的成员函数(静态，非静态)中，当在模板函数中调用了另一个函数，为了保持参数的左右值特性，需要使用std::forward. 代码例子#include &amp;lt;iostream&amp;gt;#include &amp;lt;utility&amp;gt;void f(int&amp;amp; a) &amp;#123;    s">
     
     
         
@@ -103,7 +104,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码例子"><span class="toc-number">2.</span> <span class="toc-text">代码例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -136,13 +137,23 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/c-11/">c++11</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在写线程池的过程中还是接触到了完美转发，这个是绕不过去了，还是把它搞懂把. 完美转发用在模板函数或者模板类的成员函数(静态，非静态)中，当在模板函数中调用了另一个函数，为了保持参数的左右值特性，需要使用std::forward.</p>
+<h2 id="代码例子"><a href="#代码例子" class="headerlink" title="代码例子"></a>代码例子</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>&amp; a)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"int&amp;"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>&amp;&amp; a)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"int&amp;&amp;"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>  T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(T&amp;&amp; arg)</span> </span>&#123;</span><br><span class="line">       f(arg);</span><br><span class="line">      <span class="comment">//f(std::forward&lt;T&gt;(arg));</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(T&amp;&amp; arg)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//f(arg);</span></span><br><span class="line">        f(<span class="built_in">std</span>::forward&lt;T&gt;(arg));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    f(<span class="number">6</span>);</span><br><span class="line">    test(<span class="number">6</span>);</span><br><span class="line">    A&lt;<span class="keyword">int</span>&gt;::test(<span class="number">6</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>&amp;&amp;</span><br><span class="line"><span class="keyword">int</span>&amp;</span><br><span class="line"><span class="keyword">int</span>&amp;&amp;</span><br></pre></td></tr></table></figure>
+<p>可以看到不使用 std::forward,就会使得第二个test调用调用了test(int&amp;),而我们传入的是6这个右值,所以并不如我们所愿，所以std::forward是必要的.那我们该怎么理解呢.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
   </div>
 </article>
 
@@ -177,7 +188,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码例子"><span class="toc-number">2.</span> <span class="toc-text">代码例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
