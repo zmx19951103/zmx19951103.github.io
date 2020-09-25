@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[private,public,protect继承]]></title>
+    <url>%2F2020%2F08%2F12%2Fprivate-public-protect%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[完美转发]]></title>
     <url>%2F2020%2F07%2F29%2F%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91%2F</url>
     <content type="text"><![CDATA[前言在写线程池的过程中还是接触到了完美转发，这个是绕不过去了，还是把它搞懂把. 完美转发用在模板函数或者模板类的成员函数(静态，非静态)中，当在模板函数中调用了另一个函数，为了保持参数的左右值特性，需要使用std::forward. 代码例子#include &lt;iostream&gt;#include &lt;utility&gt;void f(int&amp; a) &#123; std::cout &lt;&lt; "int&amp;" &lt;&lt; std::endl;&#125;void f(int&amp;&amp; a) &#123; std::cout &lt;&lt; "int&amp;&amp;" &lt;&lt; std::endl;&#125;template &lt;typename T&gt;void test(T&amp;&amp; arg) &#123; f(arg); //f(std::forward&lt;T&gt;(arg));&#125;template &lt;typename T&gt;class A&#123; public: static void test(T&amp;&amp; arg) &#123; //f(arg); f(std::forward&lt;T&gt;(arg)); &#125;&#125;;int main() &#123; f(6); test(6); A&lt;int&gt;::test(6); return 0;&#125; 输出结果如下： int&amp;&amp;int&amp;int&amp;&amp; 可以看到不使用 std::forward,就会使得第二个test调用调用了test(int&amp;),而我们传入的是6这个右值,所以并不如我们所愿，所以std::forward是必要的.那我们该怎么理解呢. 参考]]></content>
@@ -98,7 +103,10 @@
   <entry>
     <title><![CDATA[无锁编程]]></title>
     <url>%2F2020%2F03%2F18%2F%E6%97%A0%E9%94%81%E7%BC%96%E7%A8%8B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言参考无锁队列]]></content>
+      <tags>
+        <tag>无锁编程</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[RAII资源获取即初始化]]></title>
@@ -383,7 +391,10 @@
   <entry>
     <title><![CDATA[morris遍历]]></title>
     <url>%2F2020%2F01%2F11%2Fmorris%E9%81%8D%E5%8E%86%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言morris遍历是二叉树遍历算法，它的时间复杂度是O(),空间复杂度是O(1). 主要是空间复杂度的减少. 主要的思想就是利用叶子节点的左右子节点都为空，存在大量空闲指针，可以利用这些空闲指针使得遍历的时候能够实现正确的跳转.其实就是一个二叉树的线索化的操作. 代码下面是一个morris中序遍历的操作 TreeNode *cur = root, *pre = nullptr;while (cur) &#123; if (!cur-&gt;left) &#123; // ...遍历 cur cur = cur-&gt;right; continue; &#125; pre = cur-&gt;left; while (pre-&gt;right &amp;&amp; pre-&gt;right != cur) &#123; pre = pre-&gt;right; &#125; if (!pre-&gt;right) &#123; pre-&gt;right = cur; cur = cur-&gt;left; &#125; else &#123; pre-&gt;right = nullptr; // ...遍历 cur cur = cur-&gt;right; &#125;&#125; 参考morris遍历]]></content>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[KMP]]></title>
