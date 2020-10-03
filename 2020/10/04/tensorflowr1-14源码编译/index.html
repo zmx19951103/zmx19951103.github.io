@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="ZMX&#39;s Blog">
 <meta property="og:description" content="前言想要学习tensorflow源码，就必须经过tensorflow源码编译这个步骤。不断改代码，重新编译。现在我们针对tensorflow r1.14 这个版本进行源码编译 步骤 安装bazeltensorflow编译需要使用bazel,对于r1.14版本，我们使用bazel 0.24.1版本，下载页面. bash bazel-0.24.1-installer-linux-x86_64.sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-03T19:48:35.501Z">
+<meta property="og:updated_time" content="2020-10-03T19:50:40.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflowr1.14源码编译">
 <meta name="twitter:description" content="前言想要学习tensorflow源码，就必须经过tensorflow源码编译这个步骤。不断改代码，重新编译。现在我们针对tensorflow r1.14 这个版本进行源码编译 步骤 安装bazeltensorflow编译需要使用bazel,对于r1.14版本，我们使用bazel 0.24.1版本，下载页面. bash bazel-0.24.1-installer-linux-x86_64.sh">
@@ -49,8 +49,7 @@
     
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -154,15 +153,13 @@
 <li><p>安装bazel<br>tensorflow编译需要使用bazel,对于r1.14版本，我们使用bazel 0.24.1版本，<a href="https://github.com/bazelbuild/bazel/releases/tag/0.24.1" target="_blank" rel="noopener">下载页面</a>.</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">bash bazel<span class="number">-0.24</span><span class="number">.1</span>-installer-linux-x86_64.sh</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>下载，配置tensorflow</p>
+<li><p>下载，配置tensorflow. 因为编译的是cpu版本，也出于想从最简单的版本入手的目的，我所有选项都选了N.</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/tensorflow/tensorflow.git</span></span><br><span class="line">cd tensorflow</span><br><span class="line">git checkout r1<span class="number">.14</span></span><br><span class="line">./configure</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>因为编译的是cpu版本，也出于想从最简单的版本入手的目的，我所有选项都选了N.</p>
-<ol>
-<li>编译tensorflow</li>
-</ol>
+<li><p>编译tensorflow</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">bazel build --config=opt <span class="comment">//tensorflow:libtensorflow_cc.so  # CPU版</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>然后就等待编译成功，生成对应的.so文件.</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/yy2yy99/article/details/104535276" target="_blank" rel="noopener">Ubuntu下 Tensorflow 1.14源码编译</a></p>
 
@@ -283,6 +280,26 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 </body>

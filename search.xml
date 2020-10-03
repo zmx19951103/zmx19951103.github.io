@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[tensorflowr1.14源码编译]]></title>
     <url>%2F2020%2F10%2F04%2Ftensorflowr1-14%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%2F</url>
-    <content type="text"><![CDATA[前言想要学习tensorflow源码，就必须经过tensorflow源码编译这个步骤。不断改代码，重新编译。现在我们针对tensorflow r1.14 这个版本进行源码编译 步骤 安装bazeltensorflow编译需要使用bazel,对于r1.14版本，我们使用bazel 0.24.1版本，下载页面. bash bazel-0.24.1-installer-linux-x86_64.sh 下载，配置tensorflow git clone https://github.com/tensorflow/tensorflow.gitcd tensorflowgit checkout r1.14./configure 因为编译的是cpu版本，也出于想从最简单的版本入手的目的，我所有选项都选了N. 编译tensorflow bazel build --config=opt //tensorflow:libtensorflow_cc.so # CPU版 然后就等待编译成功，生成对应的.so文件. 参考Ubuntu下 Tensorflow 1.14源码编译]]></content>
+    <content type="text"><![CDATA[前言想要学习tensorflow源码，就必须经过tensorflow源码编译这个步骤。不断改代码，重新编译。现在我们针对tensorflow r1.14 这个版本进行源码编译 步骤 安装bazeltensorflow编译需要使用bazel,对于r1.14版本，我们使用bazel 0.24.1版本，下载页面. bash bazel-0.24.1-installer-linux-x86_64.sh 下载，配置tensorflow. 因为编译的是cpu版本，也出于想从最简单的版本入手的目的，我所有选项都选了N. git clone https://github.com/tensorflow/tensorflow.gitcd tensorflowgit checkout r1.14./configure 编译tensorflow bazel build --config=opt //tensorflow:libtensorflow_cc.so # CPU版 然后就等待编译成功，生成对应的.so文件. 参考Ubuntu下 Tensorflow 1.14源码编译]]></content>
       <tags>
         <tag>tensorflow源码分析</tag>
       </tags>
