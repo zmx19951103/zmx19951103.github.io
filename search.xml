@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[132.分割回文串II]]></title>
+    <url>%2F2020%2F10%2F06%2F132-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2II%2F</url>
+    <content type="text"><![CDATA[前言这道题用dp做,首先可以用一个二维dp,dp[i][j]表示s[i]～s[j]这个子字符串是否为回文串,然后用一个一维dp,dp[i]表示从s[0]~s[i]这个子字符串的最少分割次数, 对于dp[i]来说，我们需要找到他的最后一个回文子串的分割点假设这个分割点是j,那么dp[i] = dp[j-1] + 1. 代码class Solution &#123;public: int minCut(string s) &#123; std::vector&lt;std::vector&lt;int&gt;&gt; dp(s.size(),std::vector&lt;int&gt;(s.size(),0)); std::vector&lt;int&gt; min_dp(s.size(),0); for (int len = 1; len &lt;= s.size(); len++) &#123; for(int i = 0; i + len &lt;= s.size(); i++) &#123; if(len == 1) &#123; dp[i][i+len-1] = 1; &#125; else if (len == 2)&#123; // len &gt; 1 if(s[i] == s[i+len-1]) &#123; dp[i][i+len-1] = 1; &#125; else &#123; dp[i][i+len-1] = 0; &#125; &#125; else &#123; // len &gt; 2 if( dp[i+1][i+len-2] == 1 &amp;&amp; s[i] == s[i+len-1]) &#123; dp[i][i+len-1] = 1; &#125; else &#123; dp[i][i+len-1] = 0; &#125; &#125; &#125; &#125; // 如果本身是回文的，min_dp[i][j] = 1, 如果不是 min_dp[i][j] = // 一个字符串无论如何都能分割成回文串的 // // aabc for(int i = 0; i &lt; s.size(); i++) min_dp[i] = i; for(int i = 0; i &lt; s.size(); i++) &#123; // 回文串不需分割 if(dp[0][i] == 1) min_dp[i] = 0; // 非回文串 // else &#123; for(int j = 1; j &lt;= i;j++) if(dp[j][i]) min_dp[i] = std::min(min_dp[i],min_dp[j-1] + 1); &#125; &#125; return min_dp[s.size()-1]; &#125; &#125;;]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[tensorflow计算图]]></title>
     <url>%2F2020%2F10%2F04%2Ftensorflow%E8%AE%A1%E7%AE%97%E5%9B%BE%2F</url>
     <content type="text"></content>
